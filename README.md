@@ -14,7 +14,7 @@ Recipe Central is a software system that allows for people to write and share re
 ## Core Team Members
 
 - Emily Nesson: github link- https://github.com/icequeenemily
-- 
+- Danielle Jones: github link - https://github.com/dansjo99
 
 ## Project History and Contribution
 
