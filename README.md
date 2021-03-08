@@ -17,6 +17,7 @@ Recipe Central is for users with various cooking skills who are looking to find 
 - Danielle Jones: github link - https://github.com/dansjo99
 - Allyson Chan: github link - https://github.com/tinybitofheaven
 - An Yi: github link - https://github.com/yiandan
+- Matt Vinca: github link- https://github.com/mv1572
 
 ## Project History and Contribution
 
