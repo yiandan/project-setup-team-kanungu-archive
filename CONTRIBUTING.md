@@ -1,9 +1,20 @@
 # Guide to Contributing
 
 ## Team Norms
-the project's values and team norms, including the definition of "done"
+- An aspect of the project is done when developers and graders are satisfied with it.
+- Listen to member's ideas and thoughts
+- Try to resolve issues in the project without blaming anyone.
+- If you are having trouble with a task, let others know ASAP.
+- If you see an issue that hasn't been brought up by anyone, bring it up.
+- Prioritize the most important tasks first and work in order of importance.
 
 ## Team Values
+- Commitment: Members of the team must be committed to finishing the project and putting commitment into the project, while not being undercommited or overcommited. 
+- Courage: Temm members must have the courage to speak out on issues of the project, and to say no to a task if they believe they do not have the ability to do it, or to ask for help if they need it. 
+- Collaborating: Members must be willing to assist and collaborate on the project with other team members and work on features of the app together. 
+- Respect: Team members must show each other respect.
+- Focus: Members must focus on the assigned tasks and finish them before moving on to new tasks.
+
 
 ## Sprint Cadence
 
