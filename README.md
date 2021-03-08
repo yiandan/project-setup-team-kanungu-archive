@@ -15,6 +15,7 @@ Recipe Central is for users with various cooking skills who are looking to find 
 
 - Emily Nesson: github link- https://github.com/icequeenemily
 - Danielle Jones: github link - https://github.com/dansjo99
+- Nancy Huang : github link - https://github.com/nh1416
 - Allyson Chan: github link - https://github.com/tinybitofheaven
 - An Yi: github link - https://github.com/yiandan
 - Matt Vinca: github link- https://github.com/mv1572
