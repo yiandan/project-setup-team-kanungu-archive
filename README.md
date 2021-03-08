@@ -8,7 +8,7 @@ Recipe Central is a software system that allows for people to write and share re
 
 ### Product Vision Statement
 
-
+Recipe Central is for users with various cooking skills who are looking to find and share recipes. Recipe Central is a social-media-esque recipe sharing webapp that allows users to search, create, browse, and share recipes based on groupings including ingredient type, cuisine type, person who created the recipe, and difficulty level. This is unlike other recipe websites that are less interactive and less social-media-esque, which will attract younger users. The MVP of Recipe Central will be the ability to create an account/sign in, post recipes, go through user feed, and search recipes.
 
 
 ## Core Team Members
