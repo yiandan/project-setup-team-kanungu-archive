@@ -8,14 +8,17 @@ import Search from './Search'
 import Reach from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignedOutLogin from './SignedOutLogin'
+import MyRecipes from './MyRecipes'
+import MyFeed from './MyFeed'
+import SavedPosts from './SavedPosts'
+import About from './About'
+import SignOut from './SignOut'
 
 const Home=(props)=> {
     return (
         <div className="container">
             <h1>Home Page</h1>
             <Nav />
-          
-            <Search />
             
 
         </div>
