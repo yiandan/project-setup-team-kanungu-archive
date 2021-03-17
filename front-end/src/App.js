@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Reach from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home'
 import Search from './Search'
+import SignedOutLogin from './SignedOutLogin'
+
 import Nav from './Nav'
 
 
@@ -32,6 +34,8 @@ function App() {
      <Switch>
        <Route exact path="/" component={Home} />
        <Route exact path="/search" component={Search} />
+       <Route exact path="/signedOutLogin" component={SignedOutLogin} />
+       
      </Switch>
    </Router>
  </div>
