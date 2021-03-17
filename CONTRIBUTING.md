@@ -27,7 +27,7 @@ We will have daily standups for 5-10 minutes on the following schedule:
 - Wednesday before class at 3:20pm
 - Sunday evening at 8pm
 
-Link: https://nyu.zoom.us/j/92176599146
+Link: https://nyu.zoom.us/j/5266146549
 
 As per class/scrum instructions:
 - we agree that members will not cover for other members who do not participate
