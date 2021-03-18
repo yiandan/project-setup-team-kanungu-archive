@@ -26,3 +26,4 @@ const Profile=()=> {
 
     
 export default RecipePage
+
