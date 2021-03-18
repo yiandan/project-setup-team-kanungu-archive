@@ -13,11 +13,13 @@ import MyFeed from './MyFeed'
 import SavedPosts from './SavedPosts'
 import About from './About'
 import SignOut from './SignOut'
+import SearchBar from './SearchBar'
 
 const Home=(props)=> {
     return (
         <div className="container">
             <h1>Home Page</h1>
+            <SearchBar />
             <Nav />
             
 
