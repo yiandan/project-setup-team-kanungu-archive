@@ -9,6 +9,7 @@ const SavedPosts=()=> {
     return (
         <div className="container">
             <h1>Saved Posts</h1>
+            <Nav />
         </div>
     )
 }
