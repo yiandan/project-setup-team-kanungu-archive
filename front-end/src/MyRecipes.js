@@ -9,6 +9,7 @@ const MyRecipes=()=> {
     return (
         <div className="container">
             <h1>My Recipes</h1>
+            <Nav />
         </div>
     )
 }
