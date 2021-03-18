@@ -1,0 +1,25 @@
+.recipe{
+        position: 'relative';
+        left: '80px';
+        top: '20px';
+        background-color: 'cornsilk';
+        width: '600px';
+        height: '750px';
+        border: '10px solid lightsalmon';
+        padding: '50px';
+        margin: '20px';
+
+}
+.Avatar{
+    border-radius: '50%';
+    width: '120px';
+    height:'120px';
+
+}
+.authorName{
+    font-size: '7px';
+    padding-left: '130px';
+    position:'relative';
+    top: '-100px';
+
+}
