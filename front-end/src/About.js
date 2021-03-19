@@ -9,7 +9,7 @@ const About=()=> {
     return (
         <div className="container">
             <h1>About Recipe Central</h1>
-            <Nav />
+          
         </div>
     )
 }

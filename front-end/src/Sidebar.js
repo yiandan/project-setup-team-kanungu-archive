@@ -1,17 +1,25 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import './Sidebar.css'
+import { BrowserRouter as NavLink, Switch, Route } from 'react-router-dom';
+import Profile from './Profile'
 
 
 export default props => {
   return (
     <Menu>
       <a className="menu-item" href="/">
-        Home
+      <NavLink activeClassName="current" to="/">
+          Home
+        </NavLink>
       </a>
       <a className="menu-item" href="/Profile">
-        Profile
+      <NavLink activeClassName="current" to="/Profile">
+          Profile
+        </NavLink>
+
       </a>
+      
       <a className="menu-item" href="/Search">
         Search
       </a>
@@ -40,5 +48,6 @@ export default props => {
         Results
       </a>
     </Menu>
+    
   );
 };

@@ -11,7 +11,7 @@ const SignedOutLogin=()=> {
     return (
         <div className="container">
             <h1>Home Page</h1>
-            <Nav />
+  
           
             
             <p>Hi</p>

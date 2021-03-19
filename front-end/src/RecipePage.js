@@ -11,7 +11,7 @@ const Profile=()=> {
     return (
         <div className="container">
             <h1>Profile</h1>
-            <Nav />
+         
             <div className = "recipe" style = {backgroundStyle}>
             <img class = "Avatar" src={Avatar} alt="Avatar"></img>
                 <div className = "authorName">

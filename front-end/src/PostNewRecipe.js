@@ -9,7 +9,7 @@ const PostNewRecipe=()=> {
     return (
         <div className="container">
             <h1>Post New Recipe</h1>
-            <Nav />
+          
         </div>
     )
 }
