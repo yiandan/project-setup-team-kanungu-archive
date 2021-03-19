@@ -1,0 +1,12 @@
+.parent {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.Options {
+    width: 200px;
+    height: 200px;
+    border-color: black;
+    background-color: pink;
+    margin: 5px 5px 5px 5px;
+}
