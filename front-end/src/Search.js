@@ -7,13 +7,19 @@ import Nav from './Nav'
 import SearchBar from './SearchBar'
 
 const Search=()=> {
+    /*
+    const Ingredients = document.getElementById('ingredient')
+    Ingredients.addEventListener('click', function() {
+        <a href = '/Results'></a>
+    }, false);
+    */
     return (
         <div className="container">
             <h1>Search Page</h1>
             <Nav />
             <SearchBar />
             <div className="parent">
-            <div className="Options">
+            <div className="Options" id="ingredient">
               Ingredient
             </div>
             <div className="Options">
