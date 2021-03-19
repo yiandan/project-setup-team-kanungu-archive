@@ -26,6 +26,7 @@ const Results=()=> {
               Difficulty
             </div>
             </div>
+
         </div>
     )
 }

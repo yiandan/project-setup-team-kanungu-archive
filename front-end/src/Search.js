@@ -16,7 +16,7 @@ const Search=()=> {
     return (
         <div className="container">
             <h1>Search Page</h1>
-            <Nav />
+            
             <SearchBar />
             <div className="parent">
             <div className="Options" id="ingredient">
