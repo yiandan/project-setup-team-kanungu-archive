@@ -12,6 +12,21 @@ const Search=()=> {
             <h1>Search Page</h1>
             <Nav />
             <SearchBar />
+            <div className="parent">
+            <div className="Options">
+              Ingredient
+            </div>
+            <div className="Options">
+              Cuisine
+            </div>
+            <div className="Options">
+              Person
+            </div>
+            <div className="Options">
+              Difficulty
+            </div>
+            </div>
+            
         </div>
     )
 }
