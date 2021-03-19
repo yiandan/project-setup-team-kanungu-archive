@@ -6,14 +6,14 @@ import Avatar from './T8YC63.jpg'
 import './RecipePage.css'
 import Nav from './Nav'
 
-const Profile=()=> {
+const RecipePage=()=> {
    
     return (
-        <div className="container">
+        <div className= "container">
             <h1>Profile</h1>
-         
             <div className = "recipe" style = {backgroundStyle}>
             <img class = "Avatar" src={Avatar} alt="Avatar"></img>
+
                 <div className = "authorName">
                     <h1>Author Name</h1>
                 </div>
@@ -26,4 +26,3 @@ const Profile=()=> {
 
     
 export default RecipePage
-
