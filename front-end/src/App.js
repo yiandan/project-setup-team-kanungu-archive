@@ -14,6 +14,7 @@ import About from './About'
 import SignOut from'./SignOut'
 import Results from './Results'
 import Nav from './Nav'
+import Sidebar from './Sidebar'
 
 
 function App() {
@@ -36,7 +37,12 @@ function App() {
       </header>
     </div>
   */
- <div className="container">
+ 
+ <div className="App" id="inner-container">
+   <div className="App" id="outer-container">
+   <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+     
+    </div>
    <Router>
      <Switch>
        <Route exact path="/" component={Home} />
@@ -53,7 +59,10 @@ function App() {
        
      </Switch>
    </Router>
+   
  </div>
+
+
   );
 }
 
