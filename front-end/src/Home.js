@@ -20,7 +20,7 @@ const Home=(props)=> {
         <div className="container">
             <h1>Home Page</h1>
             <SearchBar />
-            <Nav />
+            <h2>Please pardon our appearance... hopefully we'll have a cute app soon</h2>
             
 
         </div>

@@ -9,7 +9,7 @@ const MyFeed=()=> {
     return (
         <div className="container">
             <h1>My Feed</h1>
-            <Nav />
+         
         </div>
     )
 }
