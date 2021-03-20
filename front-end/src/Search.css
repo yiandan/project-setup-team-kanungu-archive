@@ -2,6 +2,12 @@
     display: flex;
     flex-flow: row;
     justify-content: center;
+    margin: 10px;
+}
+
+.advanceddropdown {
+    height: 50px;
+    margin: 10px;
 }
 .Options {
     width: 200px;
@@ -9,4 +15,12 @@
     border-color: black;
     background-color: pink;
     margin: 5px 5px 5px 5px;
+}
+
+p {
+    border: none;
+}
+
+#dropdown {
+    flex: row;
 }

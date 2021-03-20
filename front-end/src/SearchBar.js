@@ -7,8 +7,17 @@ const SearchBar=()=> {
      <div className="SearchBar">
         <input type="text" className="input" placeholder="Search..." />
     </div>
+
+    
     */
     <div class="wrapper">
+        
+        <select name="category" id="dropdown">
+            <option value="" disabled selected>Select a category</option>
+              <option value="ingredient" >Ingredient</option>
+              <option value="cuisine" >Cuisine</option>
+              <option value="person" >Person</option>
+            </select>
     <input placeholder="Search"
            type="text" 
            class="search"/>

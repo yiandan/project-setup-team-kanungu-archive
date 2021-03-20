@@ -7,30 +7,27 @@ import Nav from './Nav'
 import SearchBar from './SearchBar'
 
 const Search=()=> {
-    /*
-    const Ingredients = document.getElementById('ingredient')
-    Ingredients.addEventListener('click', function() {
-        <a href = '/Results'></a>
-    }, false);
-    */
+
     return (
         <div className="container">
             <h1>Search Page</h1>
-            
             <SearchBar />
+            <br></br>
+            <span>Or browse by:</span>
             <div className="parent">
-            <div className="Options" id="ingredient">
-              Ingredient
-            </div>
-            <div className="Options">
-              Cuisine
-            </div>
-            <div className="Options">
-              Person
-            </div>
-            <div className="Options">
-              Difficulty
-            </div>
+            <select name="category" className="advanceddropdown">
+            <option value="" disabled selected>Difficulty Level</option>
+              <option value="easy" >Easy</option>
+              <option value="intermediate" >Intermediate</option>
+              <option value="advanced" >Advanced</option>
+            </select>
+
+            <select name="category" className="advanceddropdown">
+            <option value="" disabled selected>Recipe Time</option>
+              <option value="easy" >30 minutes or less</option>
+              <option value="intermediate" >30 minutes to an hour</option>
+              <option value="advanced" >Longer than an hour</option>
+            </select>
             </div>
             
         </div>
