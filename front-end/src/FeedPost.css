@@ -1,0 +1,13 @@
+.collapse-button {
+    display: block;
+    margin: auto;
+    /* align: center; */
+  }
+  
+.collapse-content.collapsed {
+display: none;
+}
+  
+.collapsed-content.expanded {
+display: block;
+}
