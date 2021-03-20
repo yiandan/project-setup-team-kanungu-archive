@@ -10,7 +10,6 @@ const Results=()=> {
     return (
         <div className="container">
             <h1>Results</h1>
-            <Nav />
             <SearchBar />
             <div className="parent">
             <div className="Options" id="ingredient">
