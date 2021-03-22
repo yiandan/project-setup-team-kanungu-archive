@@ -39,7 +39,7 @@ const PostNewRecipe=()=> {
                  </select>
                <label>
                  <p>Instructions</p>
-                 <textarea class="instructions" cols="80" rows="50"></textarea>
+                 <textarea class="instructions" cols="80" rows="35"></textarea>
                </label>
                  </fieldset>
                 <button type="post">Post</button>
