@@ -21,6 +21,7 @@ const Article = ( { number, content } ) => {
     )
 }
 
+/*
 function Options(props) {
     return (
         <postContent>
@@ -29,7 +30,7 @@ function Options(props) {
         </postContent>
     )
 }
-
+*/
 const MyPost = ( { post } ) => {
     return (
         <postContent>
@@ -53,10 +54,14 @@ const Profile=()=> {
                 <Article number="000" content="Following"> </Article>
             </section>
 
-            <moreOptions>
-                <Options action={ () => { fetch('https://google.com') }}/>
-                
-            </moreOptions>
+            <row> 
+                <moreOptions>Edit Profile</moreOptions>
+                <moreOptions>Change Password</moreOptions>
+            </row>
+           
+
+
+            
 
         
             <row>
