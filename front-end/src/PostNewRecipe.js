@@ -9,9 +9,7 @@ const PostNewRecipe=()=> {
     return (
         <div className="container">
             <h1>Post a New Recipe!</h1>
-            
             <div className="wrapper">
-            </div>
              <form>
              <fieldset>
                <legend>New Recipe:</legend>
@@ -28,6 +26,10 @@ const PostNewRecipe=()=> {
                  <input name="NameOfRecipe" />
                </label>
                <label>
+                 <p>Instructions</p>
+                 <input name="NameOfRecipe" />
+               </label>
+               <label>
                 <p> Difficulty </p>
                </label>
                <select name="diff" id="diff">
@@ -37,15 +39,11 @@ const PostNewRecipe=()=> {
                  <option value="Difficult">Difficult</option>
                  </optgroup>
                  </select>
-               <label>
-                 <p>Instructions</p>
-                 <textarea class="instructions" cols="80" rows="35"></textarea>
-               </label>
                  </fieldset>
                 <button type="post">Post</button>
               
              </form>
-        
+        </div>
         </div>
     )
 }
