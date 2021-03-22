@@ -14,19 +14,21 @@ article {
 }
 
 moreOptions {
+    flex: auto;
     border: 1px solid black;   
-    margin: 20%;
-    margin-left: 500%;
-    margin-right: 500%;
-    padding: 50px;
+    
+  
 }
 
 row {
     display: flex;  
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 postContent {
     flex: auto;
+    border: 1px solid black;
     margin: 20px;
     padding: 20px;
 }
