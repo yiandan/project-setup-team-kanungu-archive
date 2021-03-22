@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-bootstrap-validation": "^0.1.11",
     "react-burger-menu": "^2.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"

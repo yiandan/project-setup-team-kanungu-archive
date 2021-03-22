@@ -55,7 +55,7 @@ const Login = (props) => {
                 </Button>
                 </Form>
                 </div>
-                <a href="url">Make an Account</a>
+                <a href="SignUp">Make an Account</a>
 
                 <p>{email}</p>
                 <p>{password}</p>
