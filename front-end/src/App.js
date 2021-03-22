@@ -16,7 +16,6 @@ import Results from './Results'
 import Nav from './Nav'
 import Sidebar from './Sidebar'
 import Login from './Login'
-import SignUp from './SignUp'
 
 
 function App() {
@@ -59,7 +58,6 @@ function App() {
        <Route exact path="/signOut" component={SignOut} />
        <Route exact path="/Results" component={Results} />
        <Route exact path="/Login" component={Login} />
-       <Route exact path="/SignUp" component={SignUp} />
        
        
      </Switch>
