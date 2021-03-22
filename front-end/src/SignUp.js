@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./Login.css";
+import "./SignUp.css";
 
 // const Login=()=> {
 //     return (
@@ -14,7 +14,7 @@ import "./Login.css";
 
 // export default Login
 
-const Login = (props) => {
+const SignUp = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -28,7 +28,7 @@ const Login = (props) => {
     }
 //https://serverless-stack.com/chapters/create-a-login-page.html
     return (
-            <div className="login">
+            <div className="SignUp">
                 <div className="form">
                 <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
@@ -51,11 +51,11 @@ const Login = (props) => {
                     />
                 </Form.Group>
                 <Button block size="lg" type="submit" disabled={!validateForm()}>
-                    Login
+                    Make an Account
                 </Button>
                 </Form>
                 </div>
-                <a href="SignUp">Make an Account</a>
+                
 
                 <p>{email}</p>
                 <p>{password}</p>
@@ -63,6 +63,4 @@ const Login = (props) => {
     )
   }
 
-export default Login
-
-
+export default SignUp
