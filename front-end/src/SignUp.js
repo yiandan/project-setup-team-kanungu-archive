@@ -1,11 +1,19 @@
-
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import App from './App'
-import './SignUp.css'
-import Nav from './Nav'
-//copied from Login Screen
+import "./SignUp.css";
+
+// const Login=()=> {
+//     return (
+//         <div className="container">
+//             <h1>Login</h1>
+            
+//         </div>
+//     )
+// }
+
+// export default Login
+
 const SignUp = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,7 +28,7 @@ const SignUp = (props) => {
     }
 //https://serverless-stack.com/chapters/create-a-login-page.html
     return (
-            <div className="login">
+            <div className="SignUp">
                 <div className="form">
                 <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
@@ -42,8 +50,8 @@ const SignUp = (props) => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button block size="SU" type="submit" disabled={!validateForm()}>
-                    Sign up!
+                <Button block size="lg" type="submit" disabled={!validateForm()}>
+                    Make an Account
                 </Button>
                 </Form>
                 </div>
@@ -52,7 +60,6 @@ const SignUp = (props) => {
                 <p>{email}</p>
                 <p>{password}</p>
             </div>
-            
     )
   }
 
