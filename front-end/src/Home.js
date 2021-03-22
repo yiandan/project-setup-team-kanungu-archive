@@ -15,18 +15,40 @@ import About from './About'
 import SignOut from './SignOut'
 import SearchBar from './SearchBar'
 import FeedPost from './FeedPost'
+import RecipePage from './RecipePage';
+import Login from './Login';
+
 
 
 const Home=(props)=> {
     return (
         <div className="container">
-            <h1>Home Page</h1>
+
+            {/* <div className="top_bar">
+                <div className="bar" >
+                    <h1 className='item'>Home Page</h1>
+                    <div className="float_right">
+                        <Link to="./Login">
+                            <button type="button" className="login_btn">
+                                Login
+                            </button>
+                        </Link> 
+                    </div>
+                </div>
+            </div> */}
+
+                <h1 className='home_header'>Home Page</h1>
+                <Link to="./Login">
+                    <button type="button" className="float">
+                        Login
+                    </button>
+                </Link>
+
             <SearchBar />
             <h2>Please pardon our appearance... hopefully we'll have a cute app soon</h2>
-            
+
             <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
+                <RecipePage/>
             </FeedPost>
         </div>
     )

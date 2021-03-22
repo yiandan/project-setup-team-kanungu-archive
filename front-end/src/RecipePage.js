@@ -11,8 +11,9 @@ const RecipePage=()=> {
     return (
         <div className= "container">
             <h1>Profile</h1>
-            <div className = "recipe" style = {backgroundStyle}>
-            <img class = "Avatar" src={Avatar} alt="Avatar"></img>
+            {/* <div className = "recipe" style = {backgroundStyle}> */}
+            <div className = "recipe">
+            {/* <img class = "Avatar" src={Avatar} alt="Avatar"></img> */}
 
                 <div className = "authorName">
                     <h1>Author Name</h1>
