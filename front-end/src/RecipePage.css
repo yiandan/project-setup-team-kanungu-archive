@@ -1,6 +1,6 @@
 .recipe {
     position: relative;
-    left: 80px;
+    left: 230px;
     top: 20px;
     background-color: cornsilk;
     width: 600px;
@@ -11,6 +11,8 @@
 
 }
 .avatar {
+position:relative;
+left:-200px;
 border-radius: 50%;
 width: 120px;
 height: 120px;
@@ -21,6 +23,18 @@ font-size: 7px;
 padding-left: 130px;
 position: relative;
 top: -100px;
+left: -150px;
 
 }
-
+.car{
+    position: relative;
+    top: -150px;
+    left: 10px;
+}
+.Text{
+    border: none;
+    position: relative;
+    top:-220px;
+    left:-110px;
+    font-size:12px;
+}
