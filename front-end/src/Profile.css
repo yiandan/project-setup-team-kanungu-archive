@@ -1,0 +1,32 @@
+section {
+    display: flex;
+    padding: 10px;
+    margin-right: 60%;
+    margin-left: 20%;
+  }
+
+  
+article {
+    flex: auto;
+    
+    margin: 20px;
+    padding: 20px;
+}
+
+moreOptions {
+    border: 1px solid black;   
+    margin: 20%;
+    margin-left: 500%;
+    margin-right: 500%;
+    padding: 50px;
+}
+
+row {
+    display: flex;  
+}
+
+postContent {
+    flex: auto;
+    margin: 20px;
+    padding: 20px;
+}

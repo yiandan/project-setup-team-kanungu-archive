@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './FeedPost.css'
 
 const FeedPost=({ collapsed, children })=> {
-    const [isCollapsed, setIsCollapsed] = useState(collapsed);
+    const [isCollapsed, setIsCollapsed] = useState(true);
 
     return (
         // https://www.30secondsofcode.org/react/s/collapse
