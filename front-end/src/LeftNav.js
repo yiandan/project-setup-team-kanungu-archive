@@ -15,8 +15,6 @@ const LeftNav = ({open}) => {
             <li> <NavLink to="./About"> About</NavLink></li>
             <li> <NavLink to="./signedOutLogin"> Sign In</NavLink></li>
             <li> <NavLink to="./signOut"> Sign Out</NavLink></li>
-            <li> <NavLink to="./Results"> Results</NavLink></li>
-
         </ul>
     )
 }

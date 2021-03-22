@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import App from './App'
 import './Search.css'
 import Nav from './Nav'
 import SearchBar from './SearchBar'
 
 const Search=()=> {
+
+  const location= useLocation();
 
     return (
         <div className="container">
@@ -28,6 +30,9 @@ const Search=()=> {
               <option value="intermediate" >30 minutes to an hour</option>
               <option value="advanced" >Longer than an hour</option>
             </select>
+            </div>
+            <div>
+              {location.result}
             </div>
             
         </div>
