@@ -7,6 +7,7 @@ import FeedPost from './FeedPost'
 import Nav from './Nav'
 import Todo from './ShoppingList'
 import Sidebar from './Sidebar'
+import RecipePage from './RecipePage'
 
 const SavedPosts=()=> {
     return (
@@ -18,24 +19,16 @@ const SavedPosts=()=> {
   
             <h1>Saved Posts</h1>
             <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
+                <RecipePage />
             </FeedPost>
             <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
+                <RecipePage />
             </FeedPost>
             <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
+                <RecipePage />
             </FeedPost>
             <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
-            </FeedPost>
-            <FeedPost> 
-                <h1>This is a open</h1>
-                <p>Hello world!</p>
+                <RecipePage />
             </FeedPost>
            
 
