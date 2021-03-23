@@ -18,7 +18,7 @@ const FeedPost=({ collapsed, children })=> {
           className="collapse-button"
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
-          {isCollapsed ? 'Show' : 'Hide'} content
+          {isCollapsed ? '▼ Expand ▼' : '▲ Collapse ▲' } 
         </button>
       </div>
     );
