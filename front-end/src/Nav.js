@@ -14,16 +14,6 @@ const Nav = () => {
         </nav>
     )
 };
-    /*
-  return (
-    <nav className="main-nav">
-      <ul>
-        <li><NavLink to="./Home">Home</NavLink></li>
-        <li><NavLink to="./Search">Search</NavLink></li>
-      </ul>
-    </nav>
-  );
-  */
 
 
 export default Nav;

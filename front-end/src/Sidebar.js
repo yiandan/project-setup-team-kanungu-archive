@@ -44,9 +44,6 @@ export default props => {
       <a className="menu-item" href="/SignOut">
         Sign Out
       </a>
-      <a className="menu-item" href="/Results">
-        Results
-      </a>
     </Menu>
     
   );
