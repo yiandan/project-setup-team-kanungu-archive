@@ -13,7 +13,7 @@ const LeftNav = ({open}) => {
             <li> <NavLink to="./MyFeed"> My Feed</NavLink></li>
             <li> <NavLink to="./SavedPosts"> Saved Posts</NavLink></li>
             <li> <NavLink to="./About"> About</NavLink></li>
-            <li> <NavLink to="./signedOutLogin"> Sign In</NavLink></li>
+            <li> <NavLink to="./Login"> Log in</NavLink></li>
             <li> <NavLink to="./signOut"> Sign Out</NavLink></li>
         </ul>
     )
