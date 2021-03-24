@@ -37,7 +37,7 @@ const Home=(props)=> {
                 </div>
             </div> */}
 
-                <h1 className='home_header'>Home Page</h1>
+                <h1 className='home_header'>Recipe Central</h1>
                 <Link to="./Login">
                     <button type="button" className="float">
                         Login
