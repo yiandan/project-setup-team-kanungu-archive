@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
 import './RecipePage.css'
 import ImageSlider from './TestRecipe'
 const Comment = require('./comment.png')
@@ -9,9 +9,22 @@ const Avatar = 'https://picsum.photos/200/300';
 const food1 = 'https://picsum.photos/300/400';
 const food2 = 'https://picsum.photos/500/600';
 const food3 = 'https://picsum.photos/600/700';
+let rec = ''
+let name = ''
 
 const RecipePage=()=> {
-   
+    
+    async function GetData(){
+    
+        const response = await fetch('https://my.api.mockaroo.com/useres.json?key=81cab390')
+       
+        
+        let data =  await response.json();
+        
+        name = data["first_name"]
+        rec =data["Recipe"]
+    }
+    GetData()
     return (
         <div className= "container">
             <h1>Recipe Page</h1>
@@ -20,7 +33,7 @@ const RecipePage=()=> {
                 <img className = "avatar" src={Avatar} alt="Avatars"></img>
                 
                 <div className = "authorName">
-                    <h1>Author Name</h1>
+                    <h1>authorName</h1>
                    
                 </div>
                 <div className = 'car'><ImageSlider images={[food1,food2,food3]}/></div>
@@ -44,11 +57,20 @@ const RecipePage=()=> {
                 </br> accumsan mollis sem. Morbi id nulla rhoncus,<br>
                 </br> dictum dolor eu, tempus turpis. Praesent bibendum nibh velit,<br>
                 </br> vel laoreet quam rutrum quis.
-               
+                
 </i>
 </div>
+<form className ="comment">
+      <span className="formtext"></span>
+    	  <input 
+          type="text" 
+          placeholder="Enter a Comment" 
+          required 
+        />
+        <button>LeaveComment!</button>
+    	</form>
             </div>
-            
+        <button className = "like">LIKE</button>
         </div>
     )
     

@@ -38,3 +38,15 @@ left: -150px;
     left:-110px;
     font-size:12px;
 }
+.like{
+    position:relative;
+    left:-210px;
+    top:-40px;
+
+    
+}
+.comment{
+    position:relative;
+    left: -80px;
+    top: -30px;
+}
