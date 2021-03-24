@@ -8,6 +8,7 @@ import Nav from './Nav'
 import Todo from './ShoppingList'
 import Sidebar from './Sidebar'
 import RecipePage from './RecipePage'
+import SearchBar from './SearchBar'
 
 const SavedPosts=()=> {
     return (
@@ -15,9 +16,11 @@ const SavedPosts=()=> {
         
             
         <div className="container">
-        <Todo />
+        
   
             <h1>Saved Posts</h1>
+            <SearchBar />
+            <Todo />
             <FeedPost> 
                 <RecipePage />
             </FeedPost>

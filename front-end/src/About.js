@@ -4,11 +4,13 @@ import {NavLink, Link } from 'react-router-dom';
 import App from './App'
 import './About.css'
 import Nav from './Nav'
+import SearchBar from './SearchBar';
 
 const About=()=> {
     return (
         <div className="container">
             <h1>About Recipe Central</h1>
+            <SearchBar />
             <p>
             Recipe Central allows for users to write and share recipes. Users are 
             able to post recipes and save and comment on others.
