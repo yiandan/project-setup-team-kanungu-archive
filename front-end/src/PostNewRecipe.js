@@ -21,12 +21,24 @@ const PostNewRecipe=()=> {
                </label>
                <label>
                  <p>Ingredients</p>
-                 <input name="NameOfRecipe" />
+                 <input name="Ingredients" />
                </label>
                <label>
-                 <p>Cuisine</p>
-                 <input name="NameOfRecipe" />
+                <p> Cuisine  </p>
                </label>
+               <select name="cuisine" id="cuisine">
+                 <optgroup>
+                 <option value="Italian">Italian</option>
+                 <option value="Chinese">Chinese</option>
+                 <option value="Japanese">Japanese</option>
+                 <option value="Indian">Indian</option>
+                 <option value="Mexican">Mexican</option>
+                 <option value="Thai">Thai</option>
+                 <option value="American">American</option>
+                 <option value="French">French</option>
+                 <option value="Vietnamese">Vietnamese</option>
+                 </optgroup>
+                 </select>
                <label>
                 <p> Difficulty </p>
                </label>
