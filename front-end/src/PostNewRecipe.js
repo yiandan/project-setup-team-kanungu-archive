@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import App from './App'
 import './PostNewRecipe.css'
+import SearchBar from './SearchBar'
 import Nav from './Nav'
 
 const PostNewRecipe=()=> {
     return (
         <div className="container">
             <h1>Post a New Recipe!</h1>
+            <SearchBar />
             
             <div className="wrapper">
             </div>
