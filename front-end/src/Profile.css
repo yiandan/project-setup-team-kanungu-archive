@@ -4,7 +4,6 @@ section {
     margin-right: 60%;
     margin-left: 20%;
 }
-
   
 article {
     flex: auto;
@@ -14,16 +13,18 @@ article {
 }
 
 .button {
-    border: none;
-    color: blue;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    width: 400px;
+    padding: 10px 20px;
+    padding-bottom: 28px;
+    font-size: 15px;
+    margin: 8px;
     cursor: pointer;
 }
+
+.button:hover {
+    background-color: #A8A8A8; /* Green */
+    color: white;
+  }
 
 .profileImg {
     position: relative;

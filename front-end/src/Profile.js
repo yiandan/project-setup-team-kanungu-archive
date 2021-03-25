@@ -51,13 +51,18 @@ const MyPost = ( { post } ) => {
 }
 */
 
+const styles = {
+    color: "#FF8C00", 
+    backgroundColor: "#FF2D00"
+}
+
 const Profile=()=> {
     return (
         <div className="container">
-            <h1>Profile</h1>
+            <h1 style={styles}>Profile</h1>
             <SearchBar />
 
-            <h5>Good evening, USERNAME!</h5>
+            <h5 style={{color: "#FF8C00", backgroundColor: "#FF2D00", fontSize: 24}}> Good evening, USERNAME!</h5>
 
             <section>
                 <Article number="000" content="Posts"> </Article>
@@ -66,12 +71,12 @@ const Profile=()=> {
                 <img className = "profileImg" src={Avatar}></img>
             </section>
 
-            <optionRow><button type="button">Edit Profile</button></optionRow>
-            <optionRow><button type="button">Change Password</button></optionRow>
+            <optionRow><button className="button">Edit Profile</button></optionRow>
+            <optionRow><button className="button">Change Password</button></optionRow>
            
         
             <row>
-                <FeedPost> <button type="button"><RecipePage/> </button> </FeedPost>
+                <FeedPost> <button className="button"><RecipePage/> </button> </FeedPost>
                 <FeedPost> <RecipePage/> </FeedPost>
                 <FeedPost> <RecipePage/> </FeedPost>
             </row>
@@ -81,6 +86,8 @@ const Profile=()=> {
                 <FeedPost> <RecipePage/> </FeedPost>
                 <FeedPost> <RecipePage/> </FeedPost>
             </row>
+
+            <h4>Clike here to view all My Posts</h4>
                     
         </div>
     )
