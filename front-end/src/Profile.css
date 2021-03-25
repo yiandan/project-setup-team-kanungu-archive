@@ -3,7 +3,7 @@ section {
     padding: 10px;
     margin-right: 60%;
     margin-left: 20%;
-  }
+}
 
   
 article {
@@ -13,11 +13,27 @@ article {
     padding: 20px;
 }
 
-moreOptions {
-    flex: auto;
-    border: 1px solid black;   
-    
-  
+.button {
+    border: none;
+    color: blue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.profileImg {
+    position: relative;
+    left: 200px;
+    border-radius: 100%;
+    height: 150px;
+}
+
+optionRow {
+    display: block;  
 }
 
 row {
@@ -26,9 +42,3 @@ row {
     margin-right: 25%;
 }
 
-postContent {
-    flex: auto;
-    border: 1px solid black;
-    margin: 20px;
-    padding: 20px;
-}

@@ -7,10 +7,21 @@ import Nav from './Nav'
 
 import SearchBar from './SearchBar'
 import Search from './Search'
+import FeedPost from './FeedPost'
+import RecipePage from './RecipePage';
+
+
+
+const Avatar = 'https://picsum.photos/200';
 //import MyRecipes from './MyRecipes'
 
 
 //const ProfilePhoto = ()
+
+
+
+//var myNewP = document.createElement("p")
+//myNewP.innerHTML = "This is a paragraph"
 
 const Article = ( { number, content } ) => {
     return (
@@ -30,7 +41,7 @@ function Options(props) {
         </postContent>
     )
 }
-*/
+
 const MyPost = ( { post } ) => {
     return (
         <postContent>
@@ -38,7 +49,7 @@ const MyPost = ( { post } ) => {
         </postContent>
     )
 }
-
+*/
 
 const Profile=()=> {
     return (
@@ -46,39 +57,31 @@ const Profile=()=> {
             <h1>Profile</h1>
             <SearchBar />
 
-            <h5>How are you doing today, USERNAME?</h5>
+            <h5>Good evening, USERNAME!</h5>
 
             <section>
                 <Article number="000" content="Posts"> </Article>
                 <Article number="000" content="Followers"> </Article>
                 <Article number="000" content="Following"> </Article>
+                <img className = "profileImg" src={Avatar}></img>
             </section>
 
-            <row> 
-                <moreOptions>Edit Profile</moreOptions>
-                <moreOptions>Change Password</moreOptions>
-            </row>
+            <optionRow><button type="button">Edit Profile</button></optionRow>
+            <optionRow><button type="button">Change Password</button></optionRow>
            
-
-
-            
-
         
             <row>
-                <MyPost post="My Post"></MyPost>
-                <MyPost post="My Post"></MyPost>
-                <MyPost post="My Post"></MyPost>
+                <FeedPost> <button type="button"><RecipePage/> </button> </FeedPost>
+                <FeedPost> <RecipePage/> </FeedPost>
+                <FeedPost> <RecipePage/> </FeedPost>
             </row>
 
             <row>
-                <MyPost post="My Post"></MyPost>
-                <MyPost post="My Post"></MyPost>
-                <MyPost post="My Post"></MyPost>
+                <FeedPost> <RecipePage/> </FeedPost>
+                <FeedPost> <RecipePage/> </FeedPost>
+                <FeedPost> <RecipePage/> </FeedPost>
             </row>
-         
-
-
-            
+                    
         </div>
     )
 }
