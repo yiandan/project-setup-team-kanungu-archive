@@ -59,10 +59,10 @@ const styles = {
 const Profile=()=> {
     return (
         <div className="container">
-            <h1 style={styles}>Profile</h1>
+            <h1>Profile</h1>
             <SearchBar />
 
-            <h5 style={{color: "#FF8C00", backgroundColor: "#FF2D00", fontSize: 24}}> Good evening, USERNAME!</h5>
+            <h5> Good evening, USERNAME!</h5>
 
             <section>
                 <Article number="000" content="Posts"> </Article>
