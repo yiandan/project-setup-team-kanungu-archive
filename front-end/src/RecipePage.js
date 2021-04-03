@@ -14,14 +14,16 @@ let name = ''
 
 const RecipePage=()=> {
     
+    //needs to be triggered
     async function GetData(){
     
-        const response = await fetch('https://my.api.mockaroo.com/useres.json?key=81cab390')
+        //const response = await fetch('https://my.api.mockaroo.com/useres.json?key=81cab390')
+        const response = await fetch('http://localhost:5000/recipes/list')
        
+        //need to use states
+        const data =  await response.json();
         
-        let data =  await response.json();
-        
-        name = data["first_name"]
+        name = data
         rec =data["Recipe"]
     }
     GetData()
@@ -33,7 +35,7 @@ const RecipePage=()=> {
                 <img className = "avatar" src={Avatar} alt="Avatars"></img>
                 
                 <div className = "authorName">
-                    <h1>authorName</h1>
+                    <h1>Hello</h1>
                    
                 </div>
                 <div className = 'car'><ImageSlider images={[food1,food2,food3]}/></div>
