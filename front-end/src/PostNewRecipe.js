@@ -51,6 +51,21 @@ const PostNewRecipe=()=> {
                  <option value="Difficult">Difficult</option>
                  </optgroup>
                  </select>
+                 
+                 
+                 <label>
+                   <p>Upload Recipe Images</p>
+                 </label>
+                 <form method="POST" action="/upload-multiple-images" enctype="multipart/form-data">
+                   <div>
+                     <label>Select multiple images:  </label>
+                     <input type="file" name="multiple_images" multiple />
+                     </div>
+                     <div>
+                       <input type="submit" name="btn_upload_multiple_images" value="Upload" />
+                       </div> 
+                  </form>
+               
                <label>
                  <p>Instructions</p>
                  <textarea class="instructions" cols="80" rows="35"></textarea>
