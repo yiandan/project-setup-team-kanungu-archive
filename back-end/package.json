@@ -1,0 +1,38 @@
+{
+  "name": "server.js",
+  "version": "1.0.0",
+  "description": "recipe central backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agile-dev-assignments/project-setup-team-kanungu-archive.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agile-dev-assignments/project-setup-team-kanungu-archive/issues"
+  },
+  "homepage": "https://github.com/agile-dev-assignments/project-setup-team-kanungu-archive#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2",
+    "morgan": "^1.10.0",
+    "ngrok": "^4.0.0",
+    "passport": "^0.4.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "postman": "^0.2.0"
+  }
+}
