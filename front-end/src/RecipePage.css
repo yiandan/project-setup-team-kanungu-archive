@@ -28,25 +28,25 @@ left: -150px;
 }
 .car{
     position: relative;
-    top: -150px;
+    top: -50px;
     left: 10px;
 }
 .Text{
     border: none;
     position: relative;
-    top:-220px;
+    top:-130px;
     left:-110px;
     font-size:12px;
 }
 .like{
     position:relative;
-    left:-210px;
-    top:-40px;
+    left:240px;
+    top:20px;
 
     
 }
 .comment{
     position:relative;
-    left: -80px;
+    left: -100px;
     top: -30px;
 }
