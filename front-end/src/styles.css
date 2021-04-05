@@ -15,12 +15,13 @@
 body {
   font-family: var(--font-family);
 }
-
+/*
 textarea {
   font-family: var(--font-family);
   border: none;
   resize: none;
 }
+*/
 
 textarea::placeholder {
   color: var(--gray);
@@ -29,7 +30,9 @@ textarea::placeholder {
 label {
   height: 0;
   width: 0;
+  /*
   visibility: hidden;
+  */
 }
 
 button {
