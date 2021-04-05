@@ -19,7 +19,7 @@ const ImageSlider = ({ images }) => { // takes in images as props
   return (
     images.length > 0 && (
       <div className = "Carousel">
-          <h1>recipe images</h1>
+         
         <button onClick={slideLeft}>{"<"}</button>
         <img src={images[index]} className = 'images' alt={index} />
         <button onClick={slideRight}>{">"}</button>

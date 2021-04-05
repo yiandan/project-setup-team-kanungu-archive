@@ -1,42 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './RecipePage.css'
 import ImageSlider from './TestRecipe'
-const Comment = require('./comment.png')
-const Avatar = 'https://picsum.photos/200/300';
-const food1 = 'https://picsum.photos/300/400';
-const food2 = 'https://picsum.photos/500/600';
-const food3 = 'https://picsum.photos/600/700';
-let rec = ''
-let name = ''
+import CommentBox from './commentBox'
+import LikeButton from './LikeButton'
 
 const RecipePage=()=> {
+    const seed = Math.floor((Math.random() * 10) + 1);
+    const[Food,setFood] = useState([])
+    const [authorName,setAuthor] = useState("")
+    const [AuthorImage,setAImage] = useState("")
+    const [Recipe,setRecipe] =  useState("")
+    const [text,setText] = useState("")
+    const [userName,setUser] = useState("")
     
+
     async function GetData(){
-    
-        const response = await fetch('https://my.api.mockaroo.com/useres.json?key=81cab390')
+        setFood(['https://picsum.photos/seed/'+seed*2+'/400/300','https://picsum.photos/seed/'+seed*3+'/500/600','https://picsum.photos/seed/'+seed*4+'/400/300'])
+        setAImage('https://picsum.photos/seed/'+seed+'/200/300')
+        
+        const response = await fetch('https://my.api.mockaroo.com/users.json?key=eff75f40')
        
         
         let data =  await response.json();
         
-        name = data["first_name"]
-        rec =data["Recipe"]
+     setAuthor(data["first_name"]);
+     setRecipe(data["Recipe"]);
     }
-    GetData()
+    useEffect(()=>{
+        GetData()
+
+    },[]);
+    
     return (
         <div className= "container">
-            <h1>Recipe Page</h1>
-       
+           
+            
             <div className = "recipe">
-                <img className = "avatar" src={Avatar} alt="Avatars"></img>
+                <img className = "avatar" src={AuthorImage} alt="Avatars"></img>
                 
                 <div className = "authorName">
-                    <h1>authorName</h1>
+                    <h1>Author Name</h1>
                    
                 </div>
-                <div className = 'car'><ImageSlider images={[food1,food2,food3]}/></div>
+                <div className = 'car'><ImageSlider images={Food}/></div>
                 <div className = 'Text'>
                 <i>Lorem ipsum dolor sit amet, consectetur<br>
                 </br> adipiscing elit. Fusce vitae sapien malesuada<br>
@@ -60,17 +69,12 @@ const RecipePage=()=> {
                 
 </i>
 </div>
-<form className ="comment">
-      <span className="formtext"></span>
-    	  <input 
-          type="text" 
-          placeholder="Enter a Comment" 
-          required 
-        />
-        <button>LeaveComment!</button>
-    	</form>
+
+        <div className = 'comment'><CommentBox></CommentBox></div>
+
+    
             </div>
-        <button className = "like">LIKE</button>
+        <LikeButton></LikeButton>
         </div>
     )
     
