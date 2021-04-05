@@ -33,7 +33,6 @@ router.get('/list', async (req, res) => {
     }
   });
   
-  //json body instead of all slashes
   router.get("/list/:category/:difficulty/:search", async (req, res) => {
     const { category, difficulty, search } = req.params;
     console.log(search);
@@ -75,7 +74,6 @@ router.get('/list', async (req, res) => {
           recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.name.includes(search));
         }
       }
-      //let recipe = recipes.filter(recipe => recipe.category ===category && recipe.name === search || recipe.ingredients.includes(search)) ;
       res.status(200).json({
         data: recipe
       });

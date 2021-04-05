@@ -27,7 +27,6 @@ const SearchBar=()=> {
      alert("please select a category");
    }
    else {
-     //use axios
     await fetch(`http://localhost:5000/recipes/list/${category}/${difficulty}/${search}`).then(async (response) => {
       if (response.ok) {
         history.push({

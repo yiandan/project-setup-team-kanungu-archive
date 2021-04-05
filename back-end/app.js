@@ -7,7 +7,7 @@ const logger = require("morgan");
 const recipesRouter = require("./routes/recipes");
 const multer = require('multer');
 const path = require('path');
-const helpers = require('./helpers');
+//const helpers = require('./helpers');
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
 
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
 
 app.post('/upload-multiple-images', (req, res) => {
   // 'profile_pic' is the name of our file input field in the HTML form
-  let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
+  //let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).array('multiple_images', 10);
 
   upload(req, res, function(err) {
       // req.file contains information of uploaded file
