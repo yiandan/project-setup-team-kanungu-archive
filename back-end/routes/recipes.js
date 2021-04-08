@@ -3,6 +3,22 @@ const router = express.Router();
 
 let recipes = require("../dummyDatabase");
 
+let posts = require("../PostDatabase");
+
+router.get('/posts', async (req, res) => {
+    try {
+    
+      res.status(200).json({
+        data: posts
+      });
+    } catch (err) {
+      res.status(400).json({
+        message: "Some error occured",
+        err
+      });
+    }
+  });
+
 router.get('/list', async (req, res) => {
     try {
       res.status(200).json({

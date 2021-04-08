@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import cn from "classnames";
 import useDynamicHeightField from "./useDynamicHeightField";
-import "./styles.css";
+import "./CommentBox.css";
 
 const INITIAL_HEIGHT = 46;
 

@@ -18,6 +18,11 @@ width: 120px;
 height: 120px;
 
 }
+.ing{
+    position:relative;
+    left: 180px;
+    font-size:15px;
+}
 .authorName {
 font-size: 7px;
 padding-left: 130px;
@@ -48,5 +53,5 @@ left: -150px;
 .comment{
     position:relative;
     left: -100px;
-    top: -30px;
+    top: -140px;
 }
