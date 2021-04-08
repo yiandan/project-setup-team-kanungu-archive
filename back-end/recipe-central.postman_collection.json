@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "21b97d14-765a-4528-b7fe-dc94cf5f7c8b",
+		"name": "recipe-central",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload multiple images",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:5000/upload-multiple-images",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"upload-multiple-images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "My First Recipe!",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Alice",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Fry an egg and plate it.",
+							"type": "text"
+						},
+						{
+							"key": "txt",
+							"type": "file",
+							"src": "/C:/Users/vitar/CompSci Repos/AgileDev/recipe_central/project-setup-team-kanungu-archive/back-end/test_files/test.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/upload-recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"upload-recipe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
