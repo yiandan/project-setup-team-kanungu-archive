@@ -21,13 +21,16 @@ const RecipePage=()=> {
         setFood(['https://picsum.photos/seed/'+seed*2+'/400/300','https://picsum.photos/seed/'+seed*3+'/500/600','https://picsum.photos/seed/'+seed*4+'/400/300'])
         setAImage('https://picsum.photos/seed/'+seed+'/200/300')
         
-        const response = await fetch('https://my.api.mockaroo.com/users.json?key=eff75f40')
-       
+        //const response = await fetch('https://my.api.mockaroo.com/users.json?key=eff75f40')
+        const response = await fetch('http://localhost:5000/recipes/posts')
+        const n = Math.floor(Math.random() * 2) + 1
         
         let data =  await response.json();
         
-     setAuthor(data["first_name"]);
-     setRecipe(data["Recipe"]);
+        
+     setAuthor(data.data[n]["author"]);
+     setRecipe(data.data[n]["name"]);
+     setText(data.data[n]["ingredients"]);
     }
     useEffect(()=>{
         GetData()
@@ -36,16 +39,22 @@ const RecipePage=()=> {
     
     return (
         <div className= "container">
-           
+          
             
             <div className = "recipe">
                 <img className = "avatar" src={AuthorImage} alt="Avatars"></img>
-                
+                <h1>{Recipe}</h1>
                 <div className = "authorName">
-                    <h1>Author Name</h1>
-                   
+                    <h1>{authorName}</h1>
+                    
                 </div>
                 <div className = 'car'><ImageSlider images={Food}/></div>
+                <div className = 'ing'>
+                <i>ingredients<br>
+                </br>{
+                text}
+                </i>
+                </div>
                 <div className = 'Text'>
                 <i>Lorem ipsum dolor sit amet, consectetur<br>
                 </br> adipiscing elit. Fusce vitae sapien malesuada<br>
