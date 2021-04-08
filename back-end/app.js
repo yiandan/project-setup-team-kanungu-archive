@@ -21,43 +21,31 @@ app.use("/recipes", recipesRouter);
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
-//check what type is file
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype == 'text/plain') { // checking the MIME type of the uploaded file
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-}
-
 //storage type
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, './uploads/');
+  },
 
-const upload = multer({
-    fileFilter,
-    storage
+  // By default, multer removes file extensions so add them back
+  filename: function(req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
 });
 
-// const storage = multer.diskStorage({
-//   destination: function(req, file, cb) {
-//       cb(null, 'uploads/');
-//   },
+//middleware function
+const upload = multer({storage: storage})
 
-//   // By default, multer removes file extensions so add them back
-//   filename: function(req, file, cb) {
-//       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-//   }
-// });
-
+//upload.array('images', 10)
 //https://medium.com/lucideus-engineering/file-uploads-with-multer-the-complete-guide-aefe5d2f6026
-app.post("/upload-recipe", upload.array('images', 10), (req, res, next) => {
-    console.log(req.images);
+app.post("/upload-recipe", upload.single('img'), (req, res, next) => {
+    console.log(req.file);
     const data = {
         recipe_data: {
           title: req.body.title,
           author: req.body.author,
           text: req.body.text,
-          images: req.txt,
+          images: req.body.images, //nothing happens here
         },
       }
     
@@ -106,7 +94,7 @@ app.post('/upload-multiple-images', (req, res) => {
       }
 
       let result = "You have uploaded these images: <hr />";
-      const files = req.files;
+      const files = req.body.files;
       let index, len;
 
       // Loop through all the uploaded images and display them on frontend
