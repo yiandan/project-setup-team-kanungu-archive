@@ -18,6 +18,8 @@ import Sidebar from './Sidebar'
 import Login from './Login'
 import SignUp from './SignUp';
 import Axios from "axios";
+import EditProfile from './EditProfile';
+import ChangePassword from './ChangePassword';
 
 function App() {
   Axios({
@@ -51,6 +53,8 @@ function App() {
        <Route exact path="/Results" component={Results} />
        <Route exact path="/Login" component={Login} />
        <Route exact path="/SignUp" component={SignUp} />
+       <Route exact path="/EditProfile" component={EditProfile} />
+       <Route exact path="/ChangePassword" component={ChangePassword} />
        
        
      </Switch>

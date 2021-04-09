@@ -9,8 +9,8 @@ import SearchBar from './SearchBar'
 import Search from './Search'
 import FeedPost from './FeedPost'
 import RecipePage from './RecipePage';
-
-
+import EditProfile from './EditProfile';
+import ChangePassword from './ChangePassword';
 
 const Avatar = 'https://picsum.photos/200';
 //import MyRecipes from './MyRecipes'
@@ -71,8 +71,17 @@ const Profile=()=> {
                 <img className = "profileImg" src={Avatar}></img>
             </section>
 
-            <optionRow><button className="button">Edit Profile</button></optionRow>
-            <optionRow><button className="button">Change Password</button></optionRow>
+            <optionRow>
+                <Link to="./EditProfile">
+                    <button className="button">Edit Profile</button>
+                </Link>
+            </optionRow>
+
+            <optionRow>
+                <Link to="./ChangePassword">
+                    <button className="button">Change Password</button>
+                </Link>
+            </optionRow>
            
         
             <row>
