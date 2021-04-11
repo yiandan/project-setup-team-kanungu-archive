@@ -1,6 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 
 import './ChangePassword.css'
 import SearchBar from './SearchBar'
@@ -9,17 +7,15 @@ import SearchBar from './SearchBar'
 const ChangePassword=()=> {
     return (
         <div className="container">
-            <h1>Edit Profile</h1>
+            <h1>Change Password</h1>
             <SearchBar /> 
         
-        <div class="grayRec">
-           <p>Current Password</p>
-           <p>New Password</p>
-           <p>New Password Again</p>
-       </div>
-
-       <h2>save</h2>
-
+            <div className="rec">
+                <div className="inputCol"><labeling>Current Password</labeling><input type="text" className="name" placeholder="abc123"/>*</div>
+                <div className="inputCol"><labeling>New Password</labeling><input type="text" className="name" placeholder="cba456"/>*</div>
+                <div className="inputCol"><labeling>New Password Again</labeling><input type="text" className="name" placeholder="cba456"/>*</div>
+                <button className="saveButton">Save</button>
+            </div>
         </div>
     )
 

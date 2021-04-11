@@ -1,54 +1,69 @@
-
-.colume {
-    display: block;
-   
-}
-
-.colume h1 {
-    font-size:10px;
-    text-align: center;
-}
-
-.colume h2 {
-    font-size:10px;
-}
-
 .inputCol {
-   display: block;
+    display: flex;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left:-25%;
+}
+
+input {
     margin-left: 8%;
+    width: 350px;
+    height: 40px;
 }
-
-.inputCol h1 {
-    font-size:10px;
-    text-align: left;
-    
-}
-
-
 
 input::placeholder {
-    color: red;
+    color: gray;
     font-size: 1.2em;
     font-style: italic;
-  }
-
-row {
-    display: block;  
 }
 
-.grayRec {
+#cuisine {
+    margin-left: 8%;
+    width: 353px;
+    height: 40px;
+    
+    border: 1px solid grey;
+
+    border-radius: 4px;
+    
+
+    color: gray;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+labeling {
+    width: 200px;
+    padding: 2px 0 6px 0;
+    font-size: 20px;
+    text-align: right;
+    display: inline-block;
+}
+
+.saveButton {
+    width: 150px;
+    padding: 5px 20px;
+    padding-bottom: 28px;
+    font-size: 15px;
+    margin-top: 12%;
+    margin-bottom: 25px;
+    margin-right: -45%;
+    cursor: pointer;
+}
+
+.saveButton:hover {
+    background-color: #A8A8A8;
+    color: #f1f1f1;
+}
+
+
+.rec {
     width: 800px;
-    display: flex;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(3,78,136,0.7);
+    background-color: white;
     padding: 10px 20px 10px 200px;
     margin-top: 3%;
     margin-bottom: 20px;
-}
-
-.grayRec p{
-    color:black;
-    text-transform: uppercase;
-    font-size:18px;
 }
