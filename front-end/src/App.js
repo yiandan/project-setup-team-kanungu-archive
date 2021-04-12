@@ -20,6 +20,8 @@ import SignUp from './SignUp';
 import Axios from "axios";
 import EditProfile from './EditProfile';
 import ChangePassword from './ChangePassword';
+import UploadProfileImg from './UploadProfileImg';
+
 
 function App() {
   Axios({
@@ -55,7 +57,7 @@ function App() {
        <Route exact path="/SignUp" component={SignUp} />
        <Route exact path="/EditProfile" component={EditProfile} />
        <Route exact path="/ChangePassword" component={ChangePassword} />
-       
+       <Route exact path="/UploadProfileImg" component={UploadProfileImg} />
        
      </Switch>
    </Router>
