@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import App from './App'
@@ -6,13 +6,14 @@ import './Profile.css'
 import Nav from './Nav'
 
 import SearchBar from './SearchBar'
-import Search from './Search'
 import FeedPost from './FeedPost'
 import RecipePage from './RecipePage';
-import EditProfile from './EditProfile';
-import ChangePassword from './ChangePassword';
+import { Form } from 'react-bootstrap';
+
 
 const Avatar = 'https://picsum.photos/200';
+
+
 //import MyRecipes from './MyRecipes'
 
 
@@ -57,6 +58,31 @@ const styles = {
 }
 
 const Profile=()=> {
+    const [image, setImage] = useState({ preview: "", raw: "" });
+
+    const handleChange = e => {
+        if (e.target.files.length) {
+          setImage({
+            preview: URL.createObjectURL(e.target.files[0]),
+            raw: e.target.files[0]
+          });
+        }
+      };
+
+      const handleUpload = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
+    
+        await fetch("YOUR_URL", {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          body: formData
+        });
+      };
+
     return (
         <div className="container">
             <h1>Profile</h1>
@@ -68,9 +94,11 @@ const Profile=()=> {
                 <Article number="000" content="Posts"> </Article>
                 <Article number="000" content="Followers"> </Article>
                 <Article number="000" content="Following"> </Article>
-                <img className = "profileImg" src={Avatar}></img>
+                <Link to="./UploadProfileImg">
+                    <input type="image" className = "profileImg" alt="Click to upload profile image" src={Avatar}></input>
+                </Link>
             </section>
-
+  
             <optionRow>
                 <Link to="./EditProfile">
                     <button className="button">Edit Profile</button>
@@ -83,7 +111,6 @@ const Profile=()=> {
                 </Link>
             </optionRow>
            
-        
             <row>
                 <FeedPost> <button className="button"><RecipePage/> </button> </FeedPost>
                 <FeedPost> <RecipePage/> </FeedPost>
@@ -95,13 +122,12 @@ const Profile=()=> {
                 <FeedPost> <RecipePage/> </FeedPost>
                 <FeedPost> <RecipePage/> </FeedPost>
             </row>
-
-            <h4>Clike here to view all My Posts</h4>
+            <Link to="./MyFeed">
+                <h4>Clike here to view all My Feed</h4>
+            </Link>
                     
         </div>
     )
 }
-
-
 
 export default Profile
