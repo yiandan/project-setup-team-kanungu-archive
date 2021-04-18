@@ -4,22 +4,37 @@ const app = express() // instantiate an Express object
 const cors = require("cors")
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const mongoose = require('mongoose');
+const userRouter = require('./routes/user.route');
 const recipesRouter = require("./routes/recipes");
 const multer = require('multer');
 const path = require('path');
+require('dotenv').config({path:'../.env'})
+
 //const helpers = require('./helpers');
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
 
+
 app.use(cors())
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/recipes", recipesRouter);
+app.use('/user', userRouter);
 
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
+
+//Mongoose stuff 
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@recipecentral.zmgix.mongodb.net/RecipeCentral?retryWrites=true&w=majority`
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+
+// log connection success or error
+const dbConnection = mongoose.connection
+dbConnection.on('error', (err) => console.log(`Connection error ${err}`))
+dbConnection.once('open', () => console.log('Connected to database'))
 
 //storage type
 const storage = multer.diskStorage({
