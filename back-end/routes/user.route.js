@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let User = require('../db');
+let User = require('../db').User;
 
 
 
@@ -10,8 +10,14 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const newUser = new User({ username });
+    const newUser = new User({
+    username : req.body.username,
+    email : req.body.email,
+    firstName : req.body.firstName,
+    lastName : req.body.lastName,
+    profileImage : req.body.image
+    });
+   
 
     newUser.save()
         .then(() => res.json('User added!'))

@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user.route');
 const recipesRouter = require("./routes/recipes");
+const postsRouter = require("./routes/posts.route");
 const multer = require('multer');
 const path = require('path');
 require('dotenv').config({path:'../.env'})
@@ -19,10 +20,11 @@ require('dotenv').config({path:'../.env'})
 app.use(cors())
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use("/recipes", recipesRouter);
 app.use('/user', userRouter);
+app.use('/post',postsRouter);
 
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
