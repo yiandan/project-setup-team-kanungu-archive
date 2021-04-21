@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }],
     profileImage: { type: String, required: true },
+    text:{type:String}
     
 })
 userSchema.plugin(URLSlugs('username', { field: 'slug' }))
