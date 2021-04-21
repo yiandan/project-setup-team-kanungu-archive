@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const e = require('express');
+const mongoose = require('mongoose')
 let db = require('../db');
 let Recipe = db.Recipe;
 const User = db.User;
+const Comment = db.Comment;
 
 
 
@@ -12,9 +14,9 @@ router.route('/:slug').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/all').get((req, res) => {
+router.route('/').get((req, res) => {
     Recipe.find()
-        .then(recipe => res.json(recipe))
+        .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -60,11 +62,47 @@ router.route('/post').post(async(req, res) => {
 
 
 });
-
-router.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
-        .then(exercise => res.json(exercise))
+//Get all comments on a specific post 
+router.route('/:id/comments').get((req, res) => {
+    Recipe.findById(req.params.id)
+    .select("comments")
+    .populate("comments")
+    
+        .then(recipe => 
+            res.json(recipe))
         .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//Post comment  to recipe with corresponding id 
+router.route('/:id/comment').post((req, res) => {
+    User.findById(mongoose.Types.ObjectId(req.params.id)).then(user=>{
+        Recipe.findById(mongoose.Types.ObjectId(req.params.id))
+        .then(recipe => {
+            const newComment = new Comment({
+                author: user,
+                text: req.body.text, 
+                posted: req.body.date
+            })
+            
+            newComment.save()
+            .then( recipe.comments.push(newComment))
+            .then(recipe.save())
+           
+            .then(()=>res.json("Comment posted!"))
+            .catch(err =>res.status(400).json('error:'+ err))
+        })
+        .catch(err => res.status(400).json('Error'+ err))
+    })
+    .catch(err => res.status(400).json('Error'+err))
+   
+            
+   
+});
+//Like post w/ corresponding id 
+
+router.route('/:id/like').post((req,res) =>{
+    Recipe.findById(mongoose.Types.ObjectId())
+
 });
 
 router.route('/:id').delete((req, res) => {
