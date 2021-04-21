@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import App from './App'
-import './Profile.css'
-import Nav from './Nav'
+import App from './App';
+import './Profile.css';
+import Nav from './Nav';
 
 import SearchBar from './SearchBar'
 import FeedPost from './FeedPost'

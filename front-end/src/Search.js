@@ -6,6 +6,7 @@ import './Search.css'
 import Nav from './Nav'
 import SearchBar from './SearchBar'
 
+//<RecipePage  data={location.result} />
 const Search=()=> {
 
   const location= useLocation();

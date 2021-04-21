@@ -22,6 +22,8 @@ const RecipePage=()=> {
         setAImage('https://picsum.photos/seed/'+seed+'/200/300')
         
         //const response = await fetch('https://my.api.mockaroo.com/users.json?key=eff75f40')
+        //needs to be results from out API
+        //can send data using props (props.data)
         const response = await fetch('http://localhost:5000/recipes/posts')
         const n = Math.floor(Math.random() * 2) + 1
         
