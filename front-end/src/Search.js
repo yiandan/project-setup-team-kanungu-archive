@@ -15,8 +15,10 @@ const Search=()=> {
    useEffect(()=>{
     console.log(location.state);
     //data= location.state.data;
-    setData(location.state.data);
-    console.log(data);
+    if (location.state) {
+        setData(location.state.data);
+        console.log(data);
+    }
      
  },[location]);
    //let data= location.result;
