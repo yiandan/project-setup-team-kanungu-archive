@@ -1,38 +1,28 @@
+
 import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './RecipePage.css'
 import ImageSlider from './TestRecipe'
 import CommentBox from './commentBox'
 import LikeButton from './LikeButton'
-import axios from 'axios'
-import { ResponsiveEmbed } from 'react-bootstrap';
+
 const RecipePage = (props)=> {
-    console.log(props);
-    const[Food,setFood] = useState([])
-    const [authorName,setAuthor] = useState("")
-    const [AuthorImage,setAImage] = useState("")
+   
+
    const [Author, setA] = useState({firstName:'',lastName:'',profileImage:'',username:''})
-    const [text,setText] = useState("")
-    const [userName,setUser] = useState("")
+ 
     const recipe = props.recipe;
     
-  
+
+    
+
     useEffect(()=>{
 
-        axios(`http://localhost:5000/user/${recipe.author}`)
-        .then((response) => {
-           
-            const user = {firstName:response.data.firstName,lastName:response.data.lastName,profileImage:response.data.profileImage,username:response.data.username}
-            setA(user)
-         
-        })
-        .catch((err) => {
-            console.error(err)
-            
-        })
-        
+
+        const user = {firstName:recipe.author.firstName,lastName:recipe.author.lastName,profileImage:recipe.author.profileImage,username:recipe.author.username}
+    setA(user)
+
+
     },[]);
     
     return (
