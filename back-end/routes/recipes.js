@@ -58,17 +58,17 @@ router.get('/list', async (req, res) => {
       //difficulty easy and different categories 
       if (difficulty=== "easy") {
         if (category === "cuisine") {
-          recipe = await Recipe.find({$and: [{difficulty:'easy'},{cuisine : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'easy'},{cuisine : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         
         else if (category==="ingredient") {
-          recipe = await Recipe.find({$and: [{difficulty:'easy'},{ingredients : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'easy'},{ingredients : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         
         else if (category==="name") {
-          recipe = await Recipe.find({$and: [{difficulty:'easy'},{title : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'easy'},{title : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
       }
@@ -76,31 +76,31 @@ router.get('/list', async (req, res) => {
       //difficulty intermediate and different categories 
       else if (difficulty=== "intermediate") {
         if (category === "cuisine") {
-          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{cuisine : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{cuisine : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         
         else if (category==="ingredient") {
-          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{ingredients : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{ingredients : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         else if (category==="name") {
-          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{title : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{title : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
       }
       //difficulty advanced and different categories 
       else if (difficulty=== "advanced") {
         if (category === "cuisine") {
-          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{cuisine : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{cuisine : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         else if (category==="ingredient") {
-          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{ingredients : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{ingredients : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);
         }
         else if (category==="name") {
-          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{title : {$regex : new RegExp(search, "i")}}]});
+          recipe = await Recipe.find({$and: [{difficulty:'advanced'},{title : {$regex : new RegExp(search, "i")}}]}).populate("author");
           console.log(recipe);       
         }
       }
