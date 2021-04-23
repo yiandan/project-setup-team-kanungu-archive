@@ -4,8 +4,6 @@ let db = require('../db');
 let Recipe = db.Recipe;
 const User = db.User;
 
-//let recipes = require("../dummyDatabase");
-
 let posts = require("../PostDatabase");
 
 router.get('/posts', async (req, res) => {
@@ -60,19 +58,16 @@ router.get('/list', async (req, res) => {
       //difficulty easy and different categories 
       if (difficulty=== "easy") {
         if (category === "cuisine") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.cuisine.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'easy'},{cuisine : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         
         else if (category==="ingredient") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.ingredients.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'easy'},{ingredients : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         
         else if (category==="name") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.name.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'easy'},{title : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
@@ -81,18 +76,15 @@ router.get('/list', async (req, res) => {
       //difficulty intermediate and different categories 
       else if (difficulty=== "intermediate") {
         if (category === "cuisine") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.cuisine.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{cuisine : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         
         else if (category==="ingredient") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.ingredients.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{ingredients : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         else if (category==="name") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.name.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'intermediate'},{title : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
@@ -100,17 +92,14 @@ router.get('/list', async (req, res) => {
       //difficulty advanced and different categories 
       else if (difficulty=== "advanced") {
         if (category === "cuisine") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.cuisine.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'advanced'},{cuisine : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         else if (category==="ingredient") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.ingredients.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'advanced'},{ingredients : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);
         }
         else if (category==="name") {
-          //recipe = recipes.filter(recipe => recipe.difficulty=== difficulty && recipe.name.includes(search));
           recipe = await Recipe.find({$and: [{difficulty:'advanced'},{title : {$regex : new RegExp(search, "i")}}]});
           console.log(recipe);       
         }

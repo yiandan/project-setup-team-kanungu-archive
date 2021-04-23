@@ -9,7 +9,7 @@ import LikeButton from './LikeButton'
 import axios from 'axios'
 import { ResponsiveEmbed } from 'react-bootstrap';
 const RecipePage = (props)=> {
- 
+    console.log(props);
     const[Food,setFood] = useState([])
     const [authorName,setAuthor] = useState("")
     const [AuthorImage,setAImage] = useState("")
@@ -17,8 +17,10 @@ const RecipePage = (props)=> {
     const [text,setText] = useState("")
     const [userName,setUser] = useState("")
     const recipe = props.recipe;
+    
   
     useEffect(()=>{
+
         axios(`http://localhost:5000/user/${recipe.author}`)
         .then((response) => {
            
