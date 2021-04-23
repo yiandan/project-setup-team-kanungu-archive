@@ -10,17 +10,7 @@ const SearchBar=()=> {
   const [difficulty, setDifficulty] = useState('easy');
   const history= useHistory();
   const handleClick = async () => {
-    //send value to and get response from mock API
-    /*
-    await fetch(`https://my.api.mockaroo.com/search/${search}.json?key=4b96ff90`).then(async (response) => {
-      if (response.ok) {
-        history.push({
-          pathname: "/search",
-          result: await response.text(),
-        });
-      }
-    });
-    */
+    //send value to and get response from database
    console.log(category);
    console.log(difficulty);
    if (category=="") {
@@ -28,11 +18,12 @@ const SearchBar=()=> {
    }
    else {
     await fetch(`http://localhost:5000/recipes/list/${category}/${difficulty}/${search}`).then(async (response) => {
-      if (response.ok) {
+      if (response) {
         history.push({
           pathname: "/search",
-          result: await response.text(),
-        });
+          //result: response,
+          state: await response.json(),
+        });  
       }
     });
    }
@@ -60,7 +51,6 @@ const handleDifficulty= (event) => {
               <option value="name" >Recipe Name</option>
               <option value="ingredient" >Ingredient</option>
               <option value="cuisine">Cuisine</option>
-              <option value="person" >Person</option>
             </select>
 
             <select name="difficulty" id="dropdown" onChange={handleDifficulty}>
