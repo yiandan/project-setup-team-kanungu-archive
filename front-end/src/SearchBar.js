@@ -21,7 +21,6 @@ const SearchBar=()=> {
       if (response) {
         history.push({
           pathname: "/search",
-          //result: response,
           state: await response.json(),
         });  
       }
