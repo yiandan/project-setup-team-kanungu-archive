@@ -1,0 +1,11 @@
+textarea {
+    font-family: var(--font-family);
+    border: double;
+    
+  }
+  
+  
+  label {
+    
+    visibility: visible;
+  }
