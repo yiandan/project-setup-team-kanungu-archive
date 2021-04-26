@@ -80,18 +80,6 @@ const Home=(props)=> {
     return (
         <div className="container">
 
-            {/* <div className="top_bar">
-                <div className="bar" >
-                    <h1 className='item'>Home Page</h1>
-                    <div className="float_right">
-                        <Link to="./Login">
-                            <button type="button" className="login_btn">
-                                Login
-                            </button>
-                        </Link> 
-                    </div>
-                </div>
-            </div> */}
 
                 <h1 className='home_header'>Recipe Central</h1>
                 <Link to="./Login">
