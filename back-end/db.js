@@ -17,43 +17,28 @@ const userSchema = new mongoose.Schema({
     
 })
 userSchema.plugin(URLSlugs('username', { field: 'slug' }))
-/*
 // recipe schema
 const recipeSchema = new mongoose.Schema({
-    
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    
     title: { type: String, required: true },
-    ingredients: {type:String, required: true},
-    
     images: { type: [String], required: true },
     posted: { type: Date, required: true },
-    
     cuisine: {type: String, required:true},
     difficulty: {type: String, required:true},
-    instructions: {type:String, required: true},
-    
+    ingredients: [String],
+    instructions: [String],
     likes: { type: Number, required: true },
     comments:[{type: mongoose.Schema.Types.ObjectId,ref: 'Comment'}]
+   
 })
-*/
- 
-const recipeSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    ingredients: {type:String, required: true},
-    cuisine: {type: String, required:true},
-    difficulty: {type: String, required:true},
-    instructions: {type:String, required: true},
-
-});
 const commentSchema = new mongoose.Schema({
     author: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     text: {type: String,required:true},
     posted: {type:Date, required:true}
 })
-/*
+
 recipeSchema.plugin(URLSlugs('author.username title', { field: 'slug' }))
-*/
+
 module.exports = {
     User:  mongoose.model('User',userSchema),
     Recipe: mongoose.model('Recipe',recipeSchema),

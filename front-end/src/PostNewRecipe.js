@@ -14,19 +14,21 @@ const PostNewRecipe=()=> {
             
             <div className="wrapper">
             </div>
-             <form method="POST" action="">
+             <form>
              <fieldset>
                <legend>New Recipe:</legend>
-               <p>
-                 <label for="title">Name of Recipe: </label>  </p>
-                 <input type="text" id="title" name="title" value=""></input>
-                 <p>
-                 <label for = "ingredients"> Ingredients: </label> </p>
-                 <input type = "text" id="ingredients" name = "ingredients" value = ""></input>
-                 <p>
-                   <label for = "cuisine"> Cuisine</label>
-                 </p>
-               <select name="cuisine" id="cuisine"> 
+               <label>
+                 <p>Name of Recipe</p>
+                 <input name="NameOfRecipe" />
+               </label>
+               <label>
+                 <p>Ingredients</p>
+                 <input name="Ingredients" />
+               </label>
+               <label>
+                <p> Cuisine  </p>
+               </label>
+               <select name="cuisine" id="cuisine">
                  <optgroup>
                  <option value="Italian">Italian</option>
                  <option value="Chinese">Chinese</option>
@@ -39,12 +41,14 @@ const PostNewRecipe=()=> {
                  <option value="Vietnamese">Vietnamese</option>
                  </optgroup>
                  </select>
-                 <p> <label for = "difficulty"> Difficulty: </label> </p>
-               <select name="difficulty" id="difficulty">
+               <label>
+                <p> Difficulty </p>
+               </label>
+               <select name="diff" id="diff">
                  <optgroup>
-                 <option value="Beginner">Easy</option>
+                 <option value="Beginner">Beginner</option>
                  <option value="Intermediate">Intermediate</option>
-                 <option value="Difficult">Advanced</option>
+                 <option value="Difficult">Difficult</option>
                  </optgroup>
                  </select>
                  
@@ -61,10 +65,11 @@ const PostNewRecipe=()=> {
                        <input type="submit" name="btn_upload_multiple_images" value="Upload" />
                        </div> 
                   </form>
-               <p> <label for = "instruction"> Instructions: </label>
-               </p>
-               <textarea type="text" id="instructions" name="instructions" cols="80" rows="35" value=""></textarea>
                
+               <label>
+                 <p>Instructions</p>
+                 <textarea class="instructions" cols="80" rows="35"></textarea>
+               </label>
                  </fieldset>
                 <button type="post">Post</button>
               
