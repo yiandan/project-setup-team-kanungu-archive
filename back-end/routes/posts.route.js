@@ -75,7 +75,8 @@ router.route('/:id/comments').get((req, res) => {
 
 //Post comment  to recipe with corresponding id 
 router.route('/:id/comment').post((req, res) => {
-    User.findById(mongoose.Types.ObjectId(req.params.id)).then(user=>{
+    console.log(req.body._id)
+    User.findById(mongoose.Types.ObjectId(req.body._id)).then(user=>{
         Recipe.findById(mongoose.Types.ObjectId(req.params.id))
         .then(recipe => {
             const newComment = new Comment({
@@ -100,8 +101,13 @@ router.route('/:id/comment').post((req, res) => {
 });
 //Like post w/ corresponding id 
 
-router.route('/:id/like').post((req,res) =>{
-    Recipe.findById(mongoose.Types.ObjectId())
+router.route('/:id/like').put((req,res) =>{
+   
+    update = {likes:req.body.likes}
+    console.log(update)
+ Recipe.findOneAndUpdate({_id :req.params.id},update)
+ .then(()=>res.json("post liked!"))
+ .catch(err => res.status(400).json(err))
 
 });
 

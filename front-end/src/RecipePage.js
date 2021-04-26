@@ -18,7 +18,7 @@ const RecipePage = (props)=> {
 
     useEffect(()=>{
 
-
+        console.log(recipe.likes)
         const user = {firstName:recipe.author.firstName,lastName:recipe.author.lastName,profileImage:recipe.author.profileImage,username:recipe.author.username}
     setA(user)
 
@@ -32,7 +32,7 @@ const RecipePage = (props)=> {
             
             <div className = "recipe">
                 <img className = "avatar" src={Author.profileImage} alt="Avatars"></img>
-                <h1>{}</h1>
+                <h1>{recipe.title}</h1>
                 <div className = "authorName">
                     <h1>{Author.firstName + " " + Author.lastName}</h1>
                     
@@ -69,11 +69,11 @@ const RecipePage = (props)=> {
 </i>
 </div>
 
-        <div className = 'comment'><CommentBox></CommentBox></div>
+        <div className = 'comment'><CommentBox data = {{"author":Author,"recipe":recipe._id,"aid":recipe.author._id}}></CommentBox></div>
 
     
             </div>
-        <LikeButton></LikeButton>
+        <LikeButton data = {{"author":Author,"recipe":recipe._id,"aid":recipe.author._id,curr:recipe.likes}}></LikeButton>
         </div>
     )
     
