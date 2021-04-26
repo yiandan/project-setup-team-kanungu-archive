@@ -122,26 +122,6 @@ app.post('/upload-multiple-images', (req, res) => {
       res.send(result);
   });
 });
-app.post('/PostNewRecipe', (req, res) => {
-      const Recipe = new Recipe({
-          title: req.body.title,
-          ingredients: req.body.ingredients,
-          cuisine: req.body.instructions,
-          difficulty: req.body.difficulty,
-          instructions: req.body.instructions,
-      });
-      Recipe.save((err,result) => {
-          if(err !== null){
-              console.log(err);
-              console.log(result);
-              res.redirect('/Home');
-          }
-          else{
-              res.redirect('/');
-          }
-      });
-  
-});
 
 app.get("/", (req, res) => {
     res.send({ message: "We did it!" })
