@@ -1,7 +1,7 @@
 const router = require('express').Router();
 let User = require('../db').User;
 
-
+// const {validateBody, schemas} = require('../helpers/routeHelpers')
 
 router.route('/').get((req, res) => {
     User.find()
@@ -9,20 +9,36 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
-    const newUser = new User({
-    username : req.body.username,
-    email : req.body.email,
-    firstName : req.body.firstName,
-    lastName : req.body.lastName,
-    profileImage : req.body.image
-    });
+// router.route('/signup').post(validateBody(schemas.authSchema), 
+//     (req, res, next) => {
+//         console.log('.signup() called')
+//     }
+// )
+
+// router.route('/login').post(async (req, res, next) => {
+//     console.log('.login() called')
+
+// })
+
+// router.route('/secret').get(async (req, res, next) => {
+//     console.log('.secret() called')
+
+// })
+
+// router.route('/add').post((req, res) => {
+//     const newUser = new User({
+//     username : req.body.username,
+//     email : req.body.email,
+//     firstName : req.body.firstName,
+//     lastName : req.body.lastName,
+//     profileImage : req.body.image
+//     });
    
 
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-})
+//     newUser.save()
+//         .then(() => res.json('User added!'))
+//         .catch(err => res.status(400).json('Error: ' + err));
+// })
 
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)

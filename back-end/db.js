@@ -1,9 +1,18 @@
 const mongoose = require('mongoose')
 const URLSlugs = require('mongoose-url-slugs')
 
+//role schema
+const Role = mongoose.model(
+    "Role",
+    new mongoose.Schema({
+      name: String
+    })
+  );  
+
 // user schema
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique:true},
+    username: { type: String, required: true, unique : true},
+    password: { type: String, required: true},
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }],
     email: { type: String, required: true },
     firstName: { type: String, required: true },
@@ -13,9 +22,17 @@ const userSchema = new mongoose.Schema({
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }],
     profileImage: { type: String, required: true },
+    roles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role"
+        }
+      ]
     
 })
+
 userSchema.plugin(URLSlugs('username', { field: 'slug' }))
+
 // recipe schema
 const recipeSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -32,7 +49,17 @@ const recipeSchema = new mongoose.Schema({
 
 recipeSchema.plugin(URLSlugs('user.username title', { field: 'slug' }))
 
+const db = {};
+db.mongoose = mongoose;
+
+db.user = userSchema;
+db.role = Role;
+
+db.ROLES = ["user", "admin", "moderator"];
+
 module.exports = {
+    db: db,
+    // Roles: mongoose.model('Roles', roleSchema),
     User:  mongoose.model('User',userSchema),
     Recipe: mongoose.model('Recipe',recipeSchema)
 }
