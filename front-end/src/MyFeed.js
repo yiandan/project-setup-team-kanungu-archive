@@ -64,6 +64,7 @@ const obj =
 }
 const MyFeed=()=> {
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>My Feed</h1>
             <SearchBar />
@@ -80,6 +81,7 @@ const MyFeed=()=> {
                 <RecipePage recipe = {obj}/>
             </FeedPost>
          
+        </div>
         </div>
     )
 }

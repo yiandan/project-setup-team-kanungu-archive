@@ -19,6 +19,7 @@ const ChangePassword=(props)=> {
     }
 
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Profile</h1>
             <SearchBar />
@@ -63,6 +64,7 @@ const ChangePassword=(props)=> {
     
                 <p>{currentPW}</p>
                 <p>{newPW}</p>
+            </div>
             </div>
             </div>
     )

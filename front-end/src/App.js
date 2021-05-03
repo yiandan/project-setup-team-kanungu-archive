@@ -21,7 +21,7 @@ import Axios from "axios";
 import EditProfile from './EditProfile';
 import ChangePassword from './ChangePassword';
 import UploadProfileImg from './UploadProfileImg';
-
+import RecipePage from './RecipePage'
 
 function App() {
   Axios({
@@ -43,6 +43,7 @@ function App() {
    <Router>
      <Switch>
        <Route exact path="/" component={Home} />
+       <Route exact path="/recipe/:id"><RecipePage/></Route>
        <Route exact path="/search" component={Search} />
        <Route exact path="/Profile" component={Profile} />
        <Route exact path="/MyRecipes" component={MyRecipes} />

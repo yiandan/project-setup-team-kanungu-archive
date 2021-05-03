@@ -1,8 +1,15 @@
+.projectcss {
+    background-color: #ffb347;
+    height: 100vh;
+    min-height: 100%;
+    
+}
 .container {
     padding: 10px 50px 50px 10px;
 }
 
 p {
+    font-size:20px;
     /* border: 1px solid black; */
     padding: 5px 5px 5px 5px;
 }

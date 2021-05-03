@@ -32,7 +32,46 @@ const obj =
         "finally"
     ],
     "comments": [
-        "607efbd3ba150d52c9a5b127"
+        {
+            "_id": "607efbd3ba150d52c9a5b127",
+            "by": {
+                "_id": "607c9b35c463426a0e56e31b",
+                "username": "chef99"
+            },
+            "text": "My family hated this recipe",
+            "posted": "2020-08-20T04:00:00.000Z",
+            "__v": 0
+        },
+        {
+            "_id": "60860d601b6de1900d598287",
+            "by": {
+                "_id": "607c9b35c463426a0e56e31b",
+                "username": "chef99"
+            },
+            "text": "I hate this stupid recipe!",
+            "posted": "2021-04-26T00:46:24.000Z",
+            "__v": 0
+        },
+        {
+            "_id": "60860dc61b6de1900d598289",
+            "by": {
+                "_id": "607c9b35c463426a0e56e31b",
+                "username": "chef99"
+            },
+            "text": "THIS RECIPE IS HORRIBLE",
+            "posted": "2021-04-26T00:48:06.000Z",
+            "__v": 0
+        },
+        {
+            "_id": "60860e601b6de1900d59828a",
+            "by": {
+                "_id": "607c9b35c463426a0e56e31b",
+                "username": "chef99"
+            },
+            "text": "THIS RECIPE IS HORRIBLE AND I HATE IT",
+            "posted": "2021-04-26T00:50:40.000Z",
+            "__v": 0
+        }
     ],
     "slug": "empanadas",
     "_id": "607cd8046dced78cc134dffe",
@@ -66,8 +105,10 @@ const obj =
     "cuisine": "Mexican",
     "difficulty": "advanced",
     "likes": 10,
-    "__v": 1
+    "__v": 10
 }
+
+
 //import MyRecipes from './MyRecipes'
 
 
@@ -138,6 +179,7 @@ const Profile=()=> {
       };
 
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Profile</h1>
             <SearchBar />
@@ -180,6 +222,7 @@ const Profile=()=> {
                 <h4>Clike here to view all My Feed</h4>
             </Link>
                     
+        </div>
         </div>
     )
 }

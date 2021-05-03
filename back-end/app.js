@@ -188,7 +188,26 @@ app.post('/upload-multiple-images', (req, res) => {
       res.send(result);
   });
 });
-
+app.post('/PostNewRecipe', (req, res) => {
+      const Recipe = new Entry({
+          title: req.body.title,
+          ingredients: req.body.entry,
+          cuisine: req.body.cuisine,
+          difficulty: req.body.difficulty,
+          instructions: req.body.instructions
+      });
+      Recipe.save((err,result) => {
+          if(err !== null){
+              console.log(err);
+              console.log(result);
+              res.redirect('/home');
+          }
+          else{
+              res.redirect('/home');
+          }
+      });
+  
+});
 app.get("/", (req, res) => {
     res.send({ message: "We did it!" })
   })

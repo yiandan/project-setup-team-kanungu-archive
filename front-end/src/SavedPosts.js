@@ -69,6 +69,7 @@ const obj =
 
 const SavedPosts=(props)=> {
     return (
+        <div className="projectcss">
         <div>
         
             
@@ -94,6 +95,7 @@ const SavedPosts=(props)=> {
            
 
           
+        </div>
         </div>
         </div>
     )
