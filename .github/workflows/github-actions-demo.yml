@@ -17,4 +17,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: run front end
         run: npm start
-        run: echo "Job done"
+      - run: echo "Job done"
