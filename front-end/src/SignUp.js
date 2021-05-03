@@ -28,6 +28,7 @@ const SignUp = (props) => {
     }
 //https://serverless-stack.com/chapters/create-a-login-page.html
     return (
+      <div className="projectcss">
             <div className="SignUp">
                 <div className="form">
                 <Form onSubmit={handleSubmit}>
@@ -59,6 +60,7 @@ const SignUp = (props) => {
 
                 <p>{email}</p>
                 <p>{password}</p>
+            </div>
             </div>
     )
   }

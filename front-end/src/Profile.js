@@ -179,6 +179,7 @@ const Profile=()=> {
       };
 
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Profile</h1>
             <SearchBar />
@@ -221,6 +222,7 @@ const Profile=()=> {
                 <h4>Clike here to view all My Feed</h4>
             </Link>
                     
+        </div>
         </div>
     )
 }

@@ -38,6 +38,7 @@ const Home=(props)=> {
     },[])
     
     return RecipeList ? (
+        <div className="projectcss">
         <div className="container">
 
 
@@ -57,6 +58,7 @@ const Home=(props)=> {
 
             ))}
           
+        </div>
         </div>
     )
     : null
