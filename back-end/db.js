@@ -40,7 +40,7 @@ const recipeSchema = new mongoose.Schema({
 //     instructions: {type: String,  required: true}
 // });
 const commentSchema = new mongoose.Schema({
-    author: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    by: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     text: {type: String,required:true},
     posted: {type:Date, required:true}
 })

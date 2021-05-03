@@ -1,0 +1,19 @@
+.scroller{
+    
+    margin: 0 auto;
+    height: 100px;
+    width: 600px;
+    overflow:auto;
+    position:relative;
+    left:-200px;
+    background-color:paleturquoise;
+}
+.combox{
+    position:relative;
+    top:-100px;
+    left:80px;
+}
+.c{
+    position:relative;
+    left:-150px
+}
