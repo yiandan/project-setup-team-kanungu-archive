@@ -46,7 +46,7 @@ const recipeSchema = new mongoose.Schema({
     posted: { type: Date, required: true },
     cuisine: {type: String, required:true},
     difficulty: {type: String, required:true},
-    ingredients: [String],
+    ingredients: {type:String,required:true},
     instructions: {type: String, required: true},
     likes: { type: Number, required: true },
     comments:[{type: mongoose.Schema.Types.ObjectId,ref: 'Comment'}]
