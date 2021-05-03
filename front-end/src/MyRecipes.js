@@ -11,6 +11,7 @@ import RecipePage from './RecipePage'
 
 const MyRecipes=()=> {
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>My Recipes</h1>
             <SearchBar />
@@ -24,6 +25,7 @@ const MyRecipes=()=> {
                 <RecipePage/>
             </FeedPost>
             
+        </div>
         </div>
     )
 }

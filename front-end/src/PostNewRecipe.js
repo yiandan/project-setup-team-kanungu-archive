@@ -8,6 +8,7 @@ import Nav from './Nav'
 
 const PostNewRecipe=()=> {
     return (
+      <div className="projectcss">
         <div className="container">
             <h1>Post a New Recipe!</h1>
             <SearchBar />
@@ -75,6 +76,7 @@ const PostNewRecipe=()=> {
               
              </form>
         
+        </div>
         </div>
     )
 }

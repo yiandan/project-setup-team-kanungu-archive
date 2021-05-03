@@ -6,6 +6,7 @@ import App from './App'
 import './Search.css'
 import Nav from './Nav'
 import SearchBar from './SearchBar'
+import Preview from './Preview'
 
 const Search=()=> {
    const [data,setData] = useState([]);
@@ -22,16 +23,18 @@ const Search=()=> {
 
 
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Search Page</h1>
             <SearchBar />
             <br></br>
             <div>
             {data && data.map((d,i)=> (
-                <RecipePage recipe={d}/>
+                <Preview recipe={d}/>
             ))}
             </div>
             
+        </div>
         </div>
     )
 }

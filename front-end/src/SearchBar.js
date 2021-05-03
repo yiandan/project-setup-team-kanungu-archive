@@ -42,8 +42,7 @@ const handleDifficulty= (event) => {
   setDifficulty(event.target.value);
 }
     return (
-
-    <div class="wrapper">
+    <div className="wrapper">
         
         <select name="category" id="dropdown" onChange={handleSelect}>
             <option value="" disabled selected>Select a category</option>

@@ -1,7 +1,7 @@
 .recipe {
     position: relative;
-    left: 230px;
-    top: 20px;
+    left: 350px;
+    top: 209px;
     background-color: cornsilk;
     width: 600px;
     height: 750px;
@@ -9,6 +9,17 @@
     padding: 50px;
     /* margin: auto; */
 
+}
+.tit{
+    position:relative;
+    top:-150px;
+    left:20px;
+}
+.in{
+    line-height:2;
+    position:relative;
+    top:-350px;
+    left:-130px;
 }
 .avatar {
 position:relative;
@@ -18,40 +29,46 @@ width: 120px;
 height: 120px;
 
 }
+.Ip{
+    position:relative;
+    top:-370px;
+    left:-120px;
+}
 .ing{
     position:relative;
     left: 180px;
+    top:-60px;
     font-size:15px;
 }
 .authorName {
 font-size: 7px;
 padding-left: 130px;
 position: relative;
-top: -100px;
+top: -130px;
 left: -150px;
 
 }
 .car{
     position: relative;
-    top: -50px;
+    top: -150px;
     left: 10px;
 }
 .Text{
     border: none;
     position: relative;
-    top:-130px;
+    top:-200px;
     left:-110px;
     font-size:12px;
 }
-.like{
+.likey{
     position:relative;
-    left:240px;
-    top:20px;
+    left:320px;
+    top:-510px;
 
     
 }
 .comment{
     position:relative;
-    left: -100px;
-    top: -140px;
+    left: 143px;
+    top: 100px;
 }
