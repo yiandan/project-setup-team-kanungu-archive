@@ -12,7 +12,6 @@ const PostNewRecipe=()=> {
         <div className="container">
             <h1>Post a New Recipe!</h1>
             <SearchBar />
-            
             <div className="wrapper">
             </div>
              <form method="POST" action="">
@@ -70,7 +69,6 @@ const PostNewRecipe=()=> {
                  <p>Instructions</p>
                  <textarea class="instructions" cols="80" rows="35" id = "instructions"></textarea>
                 </label>
-               
                  </fieldset>
                 <button type="post">Post</button>
               
