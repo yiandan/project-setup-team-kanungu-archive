@@ -189,14 +189,14 @@ app.post('/upload-multiple-images', (req, res) => {
   });
 });
 app.post('/PostNewRecipe', (req, res) => {
-      const Recipe = new Entry({
+      const recipe = new Recipe({
           title: req.body.title,
-          ingredients: req.body.entry,
+          ingredients: req.body.ingredients,
           cuisine: req.body.cuisine,
           difficulty: req.body.difficulty,
           instructions: req.body.instructions
       });
-      Recipe.save((err,result) => {
+      recipe.save((err,result) => {
           if(err !== null){
               console.log(err);
               console.log(result);

@@ -47,7 +47,7 @@ router.route('/:id').get((req, res) => {
 });
 
 
-router.route('/post').post(async(req, res) => {
+router.route('/PostNewRecipe').post(async(req, res) => {
   const user = await User.findById(req.body._id);
 
    const newRecipe =new Recipe({

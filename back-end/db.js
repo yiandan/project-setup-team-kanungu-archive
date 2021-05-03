@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(URLSlugs('username', { field: 'slug' }))
 
 // recipe schema
+<<<<<<< HEAD
+
+=======
+>>>>>>> 70d406a7f1e4da29b60ee6d79955b7189ff14f71
 const recipeSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     title: { type: String, required: true },
@@ -43,11 +47,22 @@ const recipeSchema = new mongoose.Schema({
     cuisine: {type: String, required:true},
     difficulty: {type: String, required:true},
     ingredients: [String],
-    instructions: [String],
+    instructions: {type: String, required: true},
     likes: { type: Number, required: true },
     comments:[{type: mongoose.Schema.Types.ObjectId,ref: 'Comment'}]
    
 })
+<<<<<<< HEAD
+/*
+const recipeSchema = new mongoose.Schema({
+    title: {type: String, required: true},
+    ingredients: {type: String, required: true},
+    cuisine: {type:String, required: true },
+    difficulty: {type: String,  required: true},
+    instructions: {type: String,  required: true}
+});
+*/
+=======
 
 // const recipeSchema = new mongoose.Schema({
 //     title: {type: String, required: true},
@@ -56,6 +71,7 @@ const recipeSchema = new mongoose.Schema({
 //     difficulty: {type: String,  required: true},
 //     instructions: {type: String,  required: true}
 // });
+>>>>>>> 70d406a7f1e4da29b60ee6d79955b7189ff14f71
 const commentSchema = new mongoose.Schema({
     by: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     text: {type: String,required:true},

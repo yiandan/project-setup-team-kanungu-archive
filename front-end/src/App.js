@@ -40,6 +40,7 @@ function App() {
    <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
      
     </div>
+    
    <Router>
      <Switch>
        <Route exact path="/" component={Home} />
@@ -59,6 +60,7 @@ function App() {
        <Route exact path="/EditProfile" component={EditProfile} />
        <Route exact path="/ChangePassword" component={ChangePassword} />
        <Route exact path="/UploadProfileImg" component={UploadProfileImg} />
+       
        
      </Switch>
    </Router>
