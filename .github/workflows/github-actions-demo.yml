@@ -16,5 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: run front end
-        run: npm start
+        run: |
+          cd front-end/
+          npm start
       - run: echo "Job done"
