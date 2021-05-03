@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 
 const About=()=> {
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>About Recipe Central</h1>
             <SearchBar />
@@ -32,6 +33,7 @@ const About=()=> {
             <span>You can sign up here: <NavLink to="./SignedOutLogin"> Log In/Sign Up!</NavLink> </span>
             </p>
           
+        </div>
         </div>
     )
 }

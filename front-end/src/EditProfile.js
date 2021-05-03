@@ -8,6 +8,7 @@ import SearchBar from './SearchBar'
 
 const EditProfile=(props)=> {
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Edit Profile</h1>
             <SearchBar /> 
@@ -44,6 +45,7 @@ const EditProfile=(props)=> {
                 </div>
                 <button className="saveButton">Save</button>
             </div>
+        </div>
         </div>
     )
 }

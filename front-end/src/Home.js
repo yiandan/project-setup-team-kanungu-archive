@@ -78,6 +78,7 @@ const obj =
 
 const Home=(props)=> {
     return (
+        <div className="projectcss">
         <div className="container">
 
 
@@ -106,6 +107,7 @@ const Home=(props)=> {
             <FeedPost> 
                 <RecipePage recipe = {obj}/>
             </FeedPost>
+        </div>
         </div>
     )
 }

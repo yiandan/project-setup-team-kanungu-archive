@@ -22,6 +22,7 @@ const Search=()=> {
 
 
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>Search Page</h1>
             <SearchBar />
@@ -32,6 +33,7 @@ const Search=()=> {
             ))}
             </div>
             
+        </div>
         </div>
     )
 }
