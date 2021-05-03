@@ -55,7 +55,7 @@ useEffect(()=>{
     if(recipe){
         setAuthor(recipe.author)
         ingredients = recipe.ingredients;
-        instructions = recipe.instructions;
+        // instructions = recipe.instructions;
         
        
     }
@@ -101,11 +101,11 @@ useEffect(()=>{
                 ))}
                 </div>
         <div className = "Ip">Instructions</div>
-       {recipe.instructions.map((instruction)=>(
+       {/* {recipe.instructions.map((instruction)=>(
            <li className ="in">{instruction}</li>
            
        
-       ))}
+       ))} */}
 
 
         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>
