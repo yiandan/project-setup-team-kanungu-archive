@@ -1,13 +1,17 @@
 const config = require("../auth.config");
 const db = require("../db");
-const User = db.user;
-const Role = db.role;
+const {User, Role} = require("../db");
+// const Role = db.role;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
+  //console.log("req: ", req)
   const user = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    profileImage: "https://picsum.photos/id/222/200/300", //temp image
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)

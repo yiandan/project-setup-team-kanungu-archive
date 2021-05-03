@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const URLSlugs = require('mongoose-url-slugs')
 
-//role schema
+//role
 const Role = mongoose.model(
     "Role",
     new mongoose.Schema({
@@ -66,6 +66,8 @@ db.ROLES = ["user", "admin", "moderator"];
 
 module.exports = {
     db: db,
+    role: db.ROLES,
+    Role,
     // Roles: mongoose.model('Roles', roleSchema),
     User:  mongoose.model('User',userSchema),
     Recipe: mongoose.model('Recipe',recipeSchema),

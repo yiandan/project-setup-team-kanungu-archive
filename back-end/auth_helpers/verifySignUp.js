@@ -1,6 +1,7 @@
+const {User} = require("../db");
 const db = require("../db");
-const ROLES = db.ROLES;
-const User = db.user;
+const ROLES = db.role;
+// const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
     console.log(req.body);
@@ -32,12 +33,14 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         return;
       }
 
+      // console.log("before_next: ", req.body);
       next();
     });
   });
 };
 
 checkRolesExisted = (req, res, next) => {
+  // console.log(ROLES);
   if (req.body.roles) {
     for (let i = 0; i < req.body.roles.length; i++) {
       if (!ROLES.includes(req.body.roles[i])) {
