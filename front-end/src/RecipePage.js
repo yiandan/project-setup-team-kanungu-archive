@@ -1,83 +1,126 @@
-
+import { useParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './RecipePage.css'
+import { Link } from 'react-router-dom';
 import ImageSlider from './TestRecipe'
-import CommentBox from './commentBox'
 import LikeButton from './LikeButton'
-
+import CommentList from './CommentList'
+import Preview from './Preview'
+import axios from 'axios'
+import SearchBar from './SearchBar'
 const RecipePage = (props)=> {
+  
+   const{id} = useParams()
+   const [recipe, setRecipe] = useState(null)
+   const [Author,setAuthor] = useState(null)
+   const [reqError, setReqError] = useState(false)
+   const [isLoading,setIsLoading] =useState(true)
+    // if(props.location.aboutProps){
+     
+
+    // }
+    // else{
+    // recipe = props.recipe;
+    // }
+    // console.log(props)
    
 
-   const [Author, setA] = useState({firstName:'',lastName:'',profileImage:'',username:''})
- 
-    const recipe = props.recipe;
-    
-
-    
-
+var ingredients = [];
+var instructions = [];
     useEffect(()=>{
+        const fetchData =() =>{
+        setIsLoading(true)
+        axios({url:`http://localhost:5000/post/${id}`,method:"GET"})
+            .then((response) => {
+                setRecipe(response.data)
+                
+                
+                
 
-        console.log(recipe.likes)
-        const user = {firstName:recipe.author.firstName,lastName:recipe.author.lastName,profileImage:recipe.author.profileImage,username:recipe.author.username}
-    setA(user)
+                
+                console.log(recipe)
+            
+            })
+            .catch((err) => {
+                console.error(err)
+                setReqError(true)
+                
+            })
+        }
+        fetchData()
 
-
-    },[]);
-    
-    return (
+    },[id]);
+useEffect(()=>{
+    if(recipe){
+        setAuthor(recipe.author)
+        ingredients = recipe.ingredients;
+        instructions = recipe.instructions;
         
+       
+    }
+},[recipe])
+useEffect(()=>{
+    if(Author){
+        console.log(Author)
+        setIsLoading(false)
+    }
+},[Author])
+   if(isLoading === true){
+       return <div>LOADING</div>
+   }
+   else{
+    return (
+
+    
         <div className= "container">
-          
+            <h1 className='home_header'>Recipe Central</h1>
+                <Link to="./Login">
+                    <button type="button" className="float">
+                        Login
+                    </button>
+                </Link>
+
+            <SearchBar />
             
             <div className = "recipe">
                 <img className = "avatar" src={Author.profileImage} alt="Avatars"></img>
-                <h1>{recipe.title}</h1>
+                <h1 className = "tit">{recipe.title}</h1>
                 <div className = "authorName">
-                    <h1>{Author.firstName + " " + Author.lastName}</h1>
                     
+                    <h1>{Author.firstName + " " + Author.lastName}</h1>
+                  
                 </div>
                 <div className = 'car'><ImageSlider images={recipe.images}/></div>
-                <div className = 'ing'>
-                <i>ingredients<br>
-                </br>{recipe.ingredients[0]}<br>
-                </br>{recipe.ingredients[1]}<br>
-                </br>{recipe.ingredients[2]}
-                </i>
-                </div>
-                <div className = 'Text'>
-                <i>{recipe.instructions[0]}<br>
-                </br> adipiscing elit. Fusce vitae sapien malesuada<br>
-                </br>, fermentum orci id, commodo nulla. Quisque erat turpis<br>
-                </br>, mollis id sem quis, posuere dictum orci.<br>
-                </br> Nullam semper nunc nec dui porta iaculis.<br>
-                </br> {recipe.instructions[1]}<br>
-                </br> consectetur erat. Vivamus ultrices odio nunc,<br>
-                </br> a luctus orci bibendum non. Interdum et<br>
-                </br> malesuada fames ac ante ipsum primis in faucibus.<br>
-                </br> Fusce gravida tincidunt magna a facilisis.<br>
-                </br> Donec dignissim vulputate efficitur.<br>
-                </br> {recipe.instructions[2]}<br
-                ></br> Nulla in vehicula lacus. Donec bibendum diam a purus aliquam,<br>
-                </br> vitae iaculis orci viverra. Sed maximus non dolor<br>
-                </br> eu consectetur. Curabitur id urna accumsan, ornare ante quis,<br>
-                </br> mattis massa. Cras ex eros, varius ut lacinia sit amet,<br>
-                </br> accumsan mollis sem. Morbi id nulla rhoncus,<br>
-                </br> dictum dolor eu, tempus turpis. Praesent bibendum nibh velit,<br>
-                </br> vel laoreet quam rutrum quis.
                 
-</i>
-</div>
+                <div className = 'ing'>
+                <h2>Ingredients</h2>
+                {recipe.ingredients.map((ingredient)=>(
+                    
+                    <li className = 'ingre'>{ingredient}</li>
+                ))}
+                </div>
+        <div className = "Ip">Instructions</div>
+       {recipe.instructions.map((instruction)=>(
+           <li className ="in">{instruction}</li>
+           
+       
+       ))}
 
-        <div className = 'comment'><CommentBox data = {{"author":Author,"recipe":recipe._id,"aid":recipe.author._id}}></CommentBox></div>
 
+        <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>
+        
     
             </div>
-        <LikeButton data = {{"author":Author,"recipe":recipe._id,"aid":recipe.author._id,curr:recipe.likes}}></LikeButton>
+        <div className = "likey">
+        <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:Author._id}}></LikeButton>
+        </div>
         </div>
     )
-    
-}
+       }
+       }
+       
+
 
     
 export default RecipePage

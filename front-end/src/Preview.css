@@ -1,0 +1,53 @@
+.square{
+    width:400px;
+    height:400px;
+    left:390px;
+    background-color:moccasin;
+    position:relative;
+    margin:25px;
+
+}
+.avi{
+    border: radius 50%;
+    width:70px;
+    height:70px;
+    position:absolute;
+    top:15px;
+    left:10px
+}
+.pic{
+    position:absolute;
+    border: 10px solid white;
+    top:100px;
+    left:65px;
+    width:270px;
+    height:270px;
+    vertical-align: middle;
+}
+.title{
+    position:absolute;
+    font-style:italic;
+    top:35px;
+    justify-content: center;
+    left:165px;
+}
+.name{
+    font-size: small;
+    position:absolute;
+    font-weight:bold;
+    top:30px;
+    left:100px;
+}
+.date{
+    font-size:10px;
+    position:absolute;
+    top:10px;
+    left:310px;
+}
+.like{
+    position:absolute;
+    top:-305px;
+    left:-212px;
+    z-index:10;
+
+}
