@@ -42,12 +42,13 @@ const recipeSchema = new mongoose.Schema({
     posted: { type: Date, required: true },
     cuisine: {type: String, required:true},
     difficulty: {type: String, required:true},
-    ingredients: [String],
+    ingredients: {type:String,required:true},
     instructions: {type: String, required: true},
     likes: { type: Number, required: true },
     comments:[{type: mongoose.Schema.Types.ObjectId,ref: 'Comment'}]
    
 })
+<<<<<<< HEAD
 
 // const recipeSchema = new mongoose.Schema({
 //     title: {type: String, required: true},
@@ -56,6 +57,8 @@ const recipeSchema = new mongoose.Schema({
 //     difficulty: {type: String,  required: true},
 //     instructions: {type: String,  required: true}
 // });
+=======
+>>>>>>> 62a8a0a7b26b35791939691f6f5f4770c1b95df4
 const commentSchema = new mongoose.Schema({
     by: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     text: {type: String,required:true},
