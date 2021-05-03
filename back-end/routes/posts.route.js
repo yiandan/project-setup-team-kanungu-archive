@@ -8,8 +8,6 @@ let Recipe = db.Recipe;
 const User = db.User;
 const Comment = db.Comment;
 
-
-
 // router.route('/:slug').get((req, res) => {
 //     Recipe.findOne({slug: req.params.slug})
 //         .then(recipe => res.json(recipe))
@@ -49,7 +47,7 @@ router.route('/:id').get((req, res) => {
 });
 
 
-router.route('/post').post(async(req, res) => {
+router.route('/PostNewRecipe').post(async(req, res) => {
   const user = await User.findById(req.body._id);
 
    const newRecipe =new Recipe({
@@ -62,8 +60,6 @@ router.route('/post').post(async(req, res) => {
        cuisine:req.body.cuisine,
        instructions:req.body.instructions,
        likes:req.body.likes
-
-
 
    });
  

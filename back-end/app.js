@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const userRouter = require('./routes/user.route');
 const recipesRouter = require("./routes/recipes");
 const postsRouter = require("./routes/posts.route");
+// const authRouter = require('./routes/auth.route');
+// const userAuthRouter = require('./routes/user.auth.route');
 const multer = require('multer');
 const path = require('path');
 require('dotenv').config({path:'../.env'})
@@ -24,19 +26,83 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use("/recipes", recipesRouter);
 app.use('/user', userRouter);
-app.use('/post',postsRouter);
+app.use('/post', postsRouter);
+
+require('./routes/auth.route')(app);
+require('./routes/user.auth.route')(app);
+
+// app.use('/user', authRouter);
+// app.use('/post', userAuthRouter);
+// app.use('/users', require('./routes/users'));
 
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
 //Mongoose stuff 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@recipecentral.zmgix.mongodb.net/RecipeCentral?retryWrites=true&w=majority`
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
-// log connection success or error
-const dbConnection = mongoose.connection
-dbConnection.on('error', (err) => console.log(`Connection error ${err}`))
-dbConnection.once('open', () => console.log('Connected to database'))
+//auth stuff with mongoose
+mongoose.Promise = global.Promise;
+
+// // log connection success or error
+// const dbConnection = mongoose.connection
+// dbConnection.on('error', (err) => console.log(`Connection error ${err}`))
+// dbConnection.once('open', () => console.log('Connected to database'))
+
+//auth
+const database = require("./db");
+const db = database.db;
+const Role = db.role;
+
+db.mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Successfully connect to MongoDB.");
+    initial();
+  })
+  .catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+  });
+
+function initial() {
+  Role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Role({
+        name: "user"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'user' to roles collection");
+      });
+
+      new Role({
+        name: "moderator"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'moderator' to roles collection");
+      });
+
+      new Role({
+        name: "admin"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+}
 
 //storage type
 const storage = multer.diskStorage({
@@ -123,14 +189,14 @@ app.post('/upload-multiple-images', (req, res) => {
   });
 });
 app.post('/PostNewRecipe', (req, res) => {
-      const Recipe = new Entry({
+      const recipe = new Recipe({
           title: req.body.title,
-          ingredients: req.body.entry,
+          ingredients: req.body.ingredients,
           cuisine: req.body.cuisine,
           difficulty: req.body.difficulty,
           instructions: req.body.instructions
       });
-      Recipe.save((err,result) => {
+      recipe.save((err,result) => {
           if(err !== null){
               console.log(err);
               console.log(result);

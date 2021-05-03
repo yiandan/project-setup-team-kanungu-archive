@@ -18,16 +18,18 @@ const PostNewRecipe=()=> {
              <form method="POST" action="">
              <fieldset>
                <legend>New Recipe:</legend>
-               <p>
-                 <label for="title">Name of Recipe: </label>  </p>
-                 <input type="text" id="title" name="title" value=""></input>
-                 <p>
-                 <label for = "ingredients"> Ingredients: </label> </p>
-                 <input type = "text" id="ingredients" name = "ingredients" value = ""></input>
-                 <p>
-                   <label for = "cuisine"> Cuisine</label>
-                 </p>
-               <select name="cuisine" id="cuisine"> 
+               <label>
+                 <p>Name of Recipe</p>
+                 <input name="NameOfRecipe" id = "title" name = "title"/>
+               </label>
+               <label>
+                 <p>Ingredients</p>
+                 <input name="Ingredients" id= "ingredients" name= "ingredients" />
+               </label>
+               <label>
+                <p> Cuisine  </p>
+               </label>
+               <select name="cuisine" id="cuisine" name="cuisine">
                  <optgroup>
                  <option value="Italian">Italian</option>
                  <option value="Chinese">Chinese</option>
@@ -40,7 +42,9 @@ const PostNewRecipe=()=> {
                  <option value="Vietnamese">Vietnamese</option>
                  </optgroup>
                  </select>
-                 <p> <label for = "difficulty"> Difficulty: </label> </p>
+                 <label>
+                <p> Difficulty </p>
+               </label>
                <select name="difficulty" id="difficulty">
                  <optgroup>
                  <option value="Beginner">Easy</option>
@@ -62,9 +66,10 @@ const PostNewRecipe=()=> {
                        <input type="submit" name="btn_upload_multiple_images" value="Upload" />
                        </div> 
                   </form>
-               <p> <label for = "instructions"> Instructions: </label>
-               </p>
-               <textarea type="text" id="instructions" name="instructions" cols="80" rows="35" value=""></textarea>
+                  <label>
+                 <p>Instructions</p>
+                 <textarea class="instructions" cols="80" rows="35" id = "instructions"></textarea>
+                </label>
                
                  </fieldset>
                 <button type="post">Post</button>
