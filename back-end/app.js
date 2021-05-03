@@ -40,6 +40,7 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 //Mongoose stuff 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@recipecentral.zmgix.mongodb.net/RecipeCentral?retryWrites=true&w=majority`
+
 // mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
 //auth stuff with mongoose
