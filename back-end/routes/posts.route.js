@@ -20,7 +20,7 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/post').post(async(req, res) => {
+router.route('/PostNewRecipe').post(async(req, res) => {
   const user = await User.findById(req.body._id);
 
    const newRecipe =new Recipe({
