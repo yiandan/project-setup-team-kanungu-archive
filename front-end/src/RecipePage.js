@@ -72,7 +72,7 @@ useEffect(()=>{
    else{
     return (
 
-    
+        <div className="projectcss">
         <div className= "container">
             <h1 className='home_header'>Recipe Central</h1>
                 <Link to="./Login">
@@ -114,6 +114,7 @@ useEffect(()=>{
             </div>
         <div className = "likey">
         <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:Author._id}}></LikeButton>
+        </div>
         </div>
         </div>
     )

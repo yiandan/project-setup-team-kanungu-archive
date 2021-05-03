@@ -6,6 +6,7 @@ import App from './App'
 import './Search.css'
 import Nav from './Nav'
 import SearchBar from './SearchBar'
+import Preview from './Preview'
 
 const Search=()=> {
    const [data,setData] = useState([]);
@@ -29,7 +30,7 @@ const Search=()=> {
             <br></br>
             <div>
             {data && data.map((d,i)=> (
-                <RecipePage recipe={d}/>
+                <Preview recipe={d}/>
             ))}
             </div>
             
