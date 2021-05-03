@@ -11,20 +11,19 @@ const INITIAL_HEIGHT = 46;
  */
 
 const CommentBox = (props) =>{
-
-  const data = props.data;
   
-  const seed = Math.floor((Math.random() * 10) + 1);
+  console.log(props)
+ 
   const [isExpanded, setIsExpanded] = useState(false);
   const [commentValue, setCommentValue] = useState("");
-  const [userPic,setUserPic] = useState(data.author.profileImage)
+  const [userPic,setUserPic] = useState(props.data.author.profileImage)
 
   
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
   const containerRef = useRef(null);
   useDynamicHeightField(textRef, commentValue);
-  console.log(props)
+ 
   const onExpand = () => {
     if (!isExpanded) {
       outerHeight.current = containerRef.current.scrollHeight;
@@ -43,8 +42,8 @@ const CommentBox = (props) =>{
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios({url:`http://localhost:5000/post/${data.recipe}/comment`,method:'POST',data:{_id:data.aid,text:commentValue,date:Date().toLocaleString()}})
-            
+    axios({url:`http://localhost:5000/post/${props.id}/comment`,method:'POST',data:{_id:props.id,text:commentValue,date:Date().toLocaleString()}})
+            .then(props.OnChildClick({"_id":"nothing","by":{"_id":props.data.author._id, "username":props.data.author.username},text:commentValue,posted:Date().toLocaleString()}))
             .catch((err) => {
                 console.error(err)
                 
@@ -74,17 +73,17 @@ const CommentBox = (props) =>{
               alt="User avatar"
               className = 'avi'
             />
-            <span>{data.author.username}</span>
+            <span>{props.data.author.username}</span>
           </div>
         </div>
-        <label htmlFor="comment">What are your thoughts?</label>
+        <label htmlFor="comment">Leave a Comment!</label>
         <textarea
           ref={textRef}
           onClick={onExpand}
           onFocus={onExpand}
           onChange={onChange}
           className="comment-field"
-          placeholder="What are your thoughts?"
+          placeholder="Leave a comment!"
           value={commentValue}
           name="comment"
           id="comment"
