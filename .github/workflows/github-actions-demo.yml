@@ -26,6 +26,6 @@ jobs:
       - run: echo "Job done"
       - name: Run tests
         run: |
-        cd back-end/test
-        npm test
+          cd back-end/test
+          npm test
         
