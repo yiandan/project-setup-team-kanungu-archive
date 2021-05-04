@@ -3,6 +3,14 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    
+    env:
+      DB_PASS: ${{ secrets.DB_PASS }}
+      DB_USER: ${{ secrets.DB_USER }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      ORIGIN: ${{ secrets.ORIGIN }}
+      RBXPASS: ${{ secrets.RBXPASS }}
+      REACT_APP_ORIGIN: ${{ secrets.REACT_APP_ORIGIN }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
