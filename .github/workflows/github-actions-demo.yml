@@ -3,6 +3,10 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    
+    env:
+      DB_PASS: M@tthew1227
+      DB_USER: mv1572
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -18,8 +22,14 @@ jobs:
       - name: Install modules
         run: |
           npm install
+          npm install chai-http
       - name: Install backend modules
         run: |
           cd back-end/
           npm install
       - run: echo "Job done"
+      - name: Run tests
+        run: |
+          cd back-end/test
+          npm test
+        
