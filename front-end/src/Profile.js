@@ -11,7 +11,7 @@ import FeedPost from './FeedPost'
 import RecipePage from './RecipePage';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
-import Preview from './Preview'
+import SmallPreview from './SmallPreview'
 import PostNewRecipe from './PostNewRecipe';
 
 
@@ -151,7 +151,7 @@ if(isLoading ===false){
             <div className = "hi">
                 {posts.map((row)=>(
                <div>
-                   {row.map(col=>(<Preview recipe ={col}></Preview>))}
+                   {row.map(col=>(<SmallPreview recipe ={col}></SmallPreview>))}
 
                 </div>
                   ))}

@@ -30,6 +30,15 @@ const RecipePage = (props)=> {
 const[ingredients,setIngredients] = useState([])
 const[instructions,setInstructions] = useState([])
 
+let button;
+    if (!props.isSigned) {
+      button =  <Link to="./Login">
+                    <button type="button" className="float">
+                        Login
+                    </button>
+                </Link>;
+    }
+
     useEffect(()=>{
         const fetchData =() =>{
         setIsLoading(true)
@@ -79,11 +88,12 @@ useEffect(()=>{
         <div className="projectcss">
         <div className= "container">
             <h1 className='home_header'>Recipe Central</h1>
-                <Link to="./Login">
+                {/* <Link to="./Login">
                     <button type="button" className="float">
                         Login
                     </button>
-                </Link>
+                </Link> */}
+                {button}
 
             <SearchBar />
             

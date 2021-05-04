@@ -23,12 +23,12 @@ textarea {
   border: none;
   resize: none;
 }
-.container{
+/* .container{
   position:relative;
   top:0px;
   left:-100px;
   
-}
+} */
 textarea::placeholder {
   color: var(--gray);
 }
