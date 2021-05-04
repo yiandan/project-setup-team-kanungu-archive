@@ -73,9 +73,12 @@ router.route('/:id').delete((req, res) => {
 });
 
 router.route('/:id').put((req, res) => {
-    User.findById(req.params.id)
+    update = req.body
+    console.log(req.body)
+    User.findOneAndUpdate({_id:req.params.id},update)
+
         .then(user => {
-            user.profileImage= req.body.pic;
+            
 
             user.save()
                 .then(() => res.json('User updated!'))
