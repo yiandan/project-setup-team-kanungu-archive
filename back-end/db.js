@@ -48,6 +48,7 @@ const recipeSchema = new mongoose.Schema({
     comments:[{type: mongoose.Schema.Types.ObjectId,ref: 'Comment'}]
    
 })
+
 const commentSchema = new mongoose.Schema({
     by: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     text: {type: String,required:true},
