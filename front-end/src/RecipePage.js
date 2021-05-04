@@ -10,7 +10,7 @@ import Preview from './Preview'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 const RecipePage = (props)=> {
-  
+
    const{id} = useParams()
    const [recipe, setRecipe] = useState(null)
    const [Author,setAuthor] = useState(null)
@@ -113,7 +113,7 @@ useEffect(()=>{
     
             </div>
         <div className = "likey">
-        <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:Author._id}}></LikeButton>
+        <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:props.user._id}}></LikeButton>
         </div>
         </div>
         </div>

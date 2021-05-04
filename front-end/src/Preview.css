@@ -1,6 +1,6 @@
 .square{
-    width:400px;
-    height:400px;
+    width:380px;
+    height:380px;
     left:390px;
     background-color:moccasin;
     position:relative;
@@ -18,10 +18,10 @@
 .pic{
     position:absolute;
     border: 10px solid white;
-    top:100px;
-    left:65px;
-    width:270px;
-    height:270px;
+    top:80px;
+    left:60px;
+    width:260px;
+    height:260px;
     vertical-align: middle;
 }
 .title{
@@ -46,8 +46,8 @@
 }
 .like{
     position:absolute;
-    top:-305px;
-    left:-212px;
+    top:-320px;
+    left:-230px;
     z-index:10;
 
 }

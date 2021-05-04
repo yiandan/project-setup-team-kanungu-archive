@@ -24,6 +24,7 @@ import '512.svg';
 
 const Home=(props)=> {
     const [RecipeList,setList] = useState(null)
+    const [isLoading,setLoading] = useState(true)
     useEffect(()=>{
         //get all recipes 
         axios({url:`http://localhost:5000/post`,method:'GET'})
@@ -37,8 +38,15 @@ const Home=(props)=> {
             })
 
     },[])
+    useEffect(()=>{
+        if(RecipeList){
+            setLoading(false)
+            console.log(RecipeList)
+        }
+    },[RecipeList])
     
-    return RecipeList ? (
+    if(isLoading ===false){
+        return  (
         <div className="projectcss">
         <div className="container">
 
@@ -55,6 +63,7 @@ const Home=(props)=> {
             <h2>Explore Our Recipes Below</h2>
         
             {RecipeList.map((recipe)=>(
+                
                 <Preview recipe = {recipe}></Preview>
             
 
@@ -63,7 +72,12 @@ const Home=(props)=> {
         </div>
         </div>
     )
-    : null
+            }
+            else{
+                return (
+                    <div>loading...</div>
+                )
+            }
 }
 
 export default Home
