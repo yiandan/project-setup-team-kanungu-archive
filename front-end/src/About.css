@@ -4,6 +4,9 @@
     min-height: 100%;
     
 }
+body{
+    background-color: #ffb347;
+}
 .container {
     padding: 10px 50px 50px 10px;
 }

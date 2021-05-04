@@ -1,51 +1,24 @@
 const router = require('express').Router();
 const e = require('express');
-const mongoose = require('mongoose');
-mongoose.set('debug', true)
-mongoose.set('useFindAndModify', false);
+const mongoose = require('mongoose')
 let db = require('../db');
 let Recipe = db.Recipe;
 const User = db.User;
 const Comment = db.Comment;
 
-// router.route('/:slug').get((req, res) => {
-//     Recipe.findOne({slug: req.params.slug})
-//         .then(recipe => res.json(recipe))
-//         .catch(err => res.status(400).json('Error: ' + err));
-// });
+
+
+router.route('/:slug').get((req, res) => {
+    Recipe.findOne({slug: req.params.slug})
+        .then(recipe => res.json(recipe))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 router.route('/').get((req, res) => {
     Recipe.find()
-    .populate("author")
-        .populate({
-            path:'comments',
-            populate:{
-                path:'by',
-                model:'User',
-                select:['username']
-            }
-        })
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-router.route('/:id').get((req, res) => {
-    console.log(req.params.id)
-     Recipe.findById(req.params.id)
-           
-        .populate("author")
-        .populate({
-            path:'comments',
-            populate:{
-                path:'by',
-                model:'User',
-                select:['username']
-            }
-        })
-        .then(recipe => res.json(recipe))
-        
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
 
 router.route('/PostNewRecipe').post(async(req, res) => {
   const user = await User.findById(req.body._id);
@@ -60,6 +33,8 @@ router.route('/PostNewRecipe').post(async(req, res) => {
        cuisine:req.body.cuisine,
        instructions:req.body.instructions,
        likes:req.body.likes
+
+
 
    });
  
@@ -126,11 +101,10 @@ router.route('/:id/comment').post((req, res) => {
 });
 //Like post w/ corresponding id 
 
-
-router.route('/:id/like').put((req,res,next) =>{
-      console.log(req.body.met)
+router.route('/:id/like').put((req,res) =>{
    
     update = {likes:req.body.likes}
+<<<<<<< HEAD
 if(req.body.met == "del")
     return next('route');
  Recipe.findOneAndUpdate({_id :req.params.id},update).then(recipe =>{
@@ -158,12 +132,16 @@ router.route('/:id/like').put((req,res,next) =>{
  })
 
  
+=======
+    console.log(update)
+ Recipe.findOneAndUpdate({_id :req.params.id},update)
+>>>>>>> bc7de7daf398fc6f0f612255d06eb1e87088834b
  .then(()=>res.json("post liked!"))
  .catch(err => res.status(400).json(err))
 
 });
+
 router.route('/:id').delete((req, res) => {
-    
     User.findByIdAndDelete(req.params.id)
         .then(() => res.json('User deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
