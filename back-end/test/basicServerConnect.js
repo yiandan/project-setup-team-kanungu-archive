@@ -34,7 +34,6 @@ describe("Access Users" , () => {
       .request(app)
       .get("/user")
       .send()
-
     expect(res.status).to.equal(200)
     //expect((res[1]).to.have.property('images').that.is.a('string'))
   })
@@ -44,6 +43,7 @@ describe("Access a specific user" , () => {
   it("should return status 200", async () => {
     let res = await chai
       .request(app)
+
       .get("/user/607c9b35c463426a0e56e31b")
       .send()
 
