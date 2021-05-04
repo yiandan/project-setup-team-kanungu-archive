@@ -10,8 +10,9 @@ import Preview from './Preview'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 const RecipePage = (props)=> {
-
+    console.log(props)
    const{id} = useParams()
+   console.log(id)
    const [recipe, setRecipe] = useState(null)
    const [Author,setAuthor] = useState(null)
    const [reqError, setReqError] = useState(false)
@@ -26,15 +27,16 @@ const RecipePage = (props)=> {
     // console.log(props)
    
 
-var ingredients = [];
-var instructions = [];
+const[ingredients,setIngredients] = useState([])
+const[instructions,setInstructions] = useState([])
+
     useEffect(()=>{
         const fetchData =() =>{
         setIsLoading(true)
         axios({url:`http://localhost:5000/post/${id}`,method:"GET"})
             .then((response) => {
                 setRecipe(response.data)
-                
+                console.log(response.data)
                 
                 
 
@@ -54,8 +56,9 @@ var instructions = [];
 useEffect(()=>{
     if(recipe){
         setAuthor(recipe.author)
-        ingredients = recipe.ingredients;
-        // instructions = recipe.instructions;
+        setIngredients(recipe.ingredients.split(','));
+        
+        setInstructions(recipe.instructions.split(','));
         
        
     }
@@ -63,6 +66,7 @@ useEffect(()=>{
 useEffect(()=>{
     if(Author){
         console.log(Author)
+        console.log(ingredients)
         setIsLoading(false)
     }
 },[Author])
@@ -94,18 +98,21 @@ useEffect(()=>{
                 <div className = 'car'><ImageSlider images={recipe.images}/></div>
                 
                 <div className = 'ing'>
-                <h2>Ingredients</h2>
-                {recipe.ingredients.map((ingredient)=>(
-                    
-                    <li className = 'ingre'>{ingredient}</li>
-                ))}
-                </div>
-        <div className = "Ip">Instructions</div>
-       {/* {recipe.instructions.map((instruction)=>(
+                <h4>Ingredients</h4>
+                {ingredients.map((instruction)=>(
            <li className ="in">{instruction}</li>
            
        
-       ))} */}
+       ))}
+
+                </div>
+        <div className = "Ip"><h4>Instructions</h4>
+        </div>
+       {instructions.map((instruction)=>(
+           <li className ="int">{instruction}</li>
+           
+       
+       ))}
 
 
         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>

@@ -8,10 +8,20 @@ const Comment = db.Comment;
 
 
 
-router.route('/:slug').get((req, res) => {
-    Recipe.findOne({slug: req.params.slug})
+router.route('/:id').get((req, res) => {
+    Recipe.findById(req.params.id)
+    .populate('author')
+    .populate({
+        path:'comments',
+        populate:{
+            path:'by',
+            model:'User',
+            select:['username']
+        }
+    })
+    
         .then(recipe => res.json(recipe))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/').get((req, res) => {

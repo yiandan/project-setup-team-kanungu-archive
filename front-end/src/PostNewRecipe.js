@@ -14,7 +14,7 @@ const PostNewRecipe=()=> {
             <SearchBar />
             <div className="wrapper">
             </div>
-             <form method="POST" action="">
+             <form >
              <fieldset>
                <legend>New Recipe:</legend>
                <label>
@@ -56,7 +56,7 @@ const PostNewRecipe=()=> {
                  <label>
                    <p>Upload Recipe Images</p>
                  </label>
-                 <form method="POST" action="/upload-multiple-images" enctype="multipart/form-data">
+                 <form >
                    <div>
                      <label>Select multiple images:  </label>
                      <input type="file" name="multiple_images" multiple />

@@ -18,8 +18,15 @@
 .in{
     line-height:2;
     position:relative;
-    top:-350px;
-    left:-130px;
+    top:-30px;
+    left:-10px;
+}
+.int{
+    line-height:2;
+    position:relative;
+    top:-360px;
+    left:-120px;
+
 }
 .avatar {
 position:relative;
@@ -38,7 +45,7 @@ height: 120px;
     position:relative;
     left: 180px;
     top:-60px;
-    font-size:15px;
+    font-size:18px;
 }
 .authorName {
 font-size: 7px;
