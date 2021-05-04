@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-
+import axios from 'axios'
 import './EditProfile.css'
 import SearchBar from './SearchBar'
 
@@ -9,29 +9,38 @@ import SearchBar from './SearchBar'
 const EditProfile=(props)=> {
     const id = props.user._id
     console.log(id)
-    const [image, setImage] = useState({ preview: "", raw: "" });
+    const [image, setImage] = useState("");
 
   const handleChange = e => {
     if (e.target.files.length) {
-      setImage({
-        preview: URL.createObjectURL(e.target.files[0]),
-        raw: e.target.files[0]
-      });
-    }
+        console.log(e.target.files[0]);
+        var reader = new FileReader();
+        reader.readAsBinaryString(e.target.files[0]);
+    
+        reader.onload = function() {
+            console.log(btoa(reader.result));
+            setImage(e.target.files[0]);
+              
+            }
+            
+        };
+        reader.onerror = function() {
+            console.log('there are some problems');
+        };
+     
   };
 
   const handleUpload = async e => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image.raw);
+    const formData = new FormData()
+    formData.append('profileImg', image)
+    
 
-    await fetch(`http://localhost:5000/user/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      body: formData
-    });
+    axios.post(`http://localhost:5000/user-profile/${id}`, formData, {
+        }).then(res => {
+            console.log(res)
+            props.setUser()
+        })
   };
 
   return (

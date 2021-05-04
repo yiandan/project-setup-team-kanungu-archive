@@ -85,7 +85,7 @@ function App() {
       
        <Route exact path="/MyRecipes"> {IsSigned ? (<MyRecipes user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
-       <Route exact path="/PostNewRecipe"> {IsSigned ? (<PostNewRecipe user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+       <Route exact path="/PostNewRecipe"> {IsSigned ? (<PostNewRecipe user={user} />):(<Redirect to="/Login"></Redirect>)} </Route>
       
        <Route exact path="/MyFeed"> {IsSigned ? (<MyFeed user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
@@ -100,7 +100,7 @@ function App() {
       
        <Route exact path="/SignUp"> {!IsSigned ? (<SignUp/>):(<Redirect to="/"></Redirect>)} </Route>
        
-       <Route exact path="/EditProfile"> {IsSigned ? (<EditProfile user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+       <Route exact path="/EditProfile"> {IsSigned ? (<EditProfile user={user} setUser ={setUser}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
        <Route exact path="/ChangePassword"> {IsSigned ? (<ChangePassword user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        <Route exact path="/UploadProfileImg" component={UploadProfileImg} />
