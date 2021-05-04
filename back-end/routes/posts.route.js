@@ -104,8 +104,38 @@ router.route('/:id/comment').post((req, res) => {
 router.route('/:id/like').put((req,res) =>{
    
     update = {likes:req.body.likes}
+<<<<<<< HEAD
+if(req.body.met == "del")
+    return next('route');
+ Recipe.findOneAndUpdate({_id :req.params.id},update).then(recipe =>{
+     User.findOneAndUpdate({_id:req.body._id},{$addToSet:{likedPosts:recipe._id}})
+     .then(user =>{
+        
+     })
+ })
+
+ 
+.then(()=>res.json("post liked!"))
+.catch(err => res.status(400).json(err))
+
+});
+
+router.route('/:id/like').put((req,res,next) =>{
+   console.log("HIT")
+    update = {likes:req.body.likes}
+
+ Recipe.findOneAndUpdate({_id :req.params.id},update).then(recipe =>{
+    
+     User.findOneAndUpdate({_id:req.body._id},{$pull:{likedPosts:recipe._id}}).then(user=>{
+    
+     })
+ })
+
+ 
+=======
     console.log(update)
  Recipe.findOneAndUpdate({_id :req.params.id},update)
+>>>>>>> bc7de7daf398fc6f0f612255d06eb1e87088834b
  .then(()=>res.json("post liked!"))
  .catch(err => res.status(400).json(err))
 
