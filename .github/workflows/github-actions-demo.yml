@@ -15,6 +15,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - name: run front end
-        run: npm start
-        run: echo "Job done"
+      - name: Install modules
+        run: |
+          npm install
+      - name: Install backend modules
+        run: |
+          cd back-end/
+          npm install
+      - run: echo "Job done"

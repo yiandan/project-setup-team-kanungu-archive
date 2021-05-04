@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {React,useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route, useLocation, Redirect} from 'react-router-dom';
 import Home from './Home'
 import Search from './Search'
 import SignedOutLogin from './SignedOutLogin'
@@ -23,17 +23,50 @@ import ChangePassword from './ChangePassword';
 import UploadProfileImg from './UploadProfileImg';
 import RecipePage from './RecipePage'
 
-function App() {
-  Axios({
-    method: "GET",
-    url: "http://localhost:5000/",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    console.log(res.data.message);
-  });
 
+
+function App() {
+  let location = useLocation()
+  const [IsSigned, setIsSigned] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const [loaded, setLoaded] = useState(false)
+  useEffect(()=>{
+    console.log(localStorage.getItem('token'))
+    Axios({
+      method: "GET",
+      url: "http://localhost:5000/api/test/user",
+      headers: {
+        "x-access-token":localStorage.getItem('token')
+      }
+    }).then((res)=>{
+
+        if(res.data){
+          setIsSigned(true)
+          setUser(res.data)
+        }
+        else{
+
+          setIsSigned(false)
+          setUser({})
+
+        }
+  
+        
+    }).catch((err=>{
+      setIsSigned(false)
+      setUser({})
+    }))
+
+  },[location])
+  useEffect(()=>{
+    if(user){
+      setLoaded(true)
+    }
+
+  },[user])
+
+  if(loaded){
   return (
  <div className="App" id="inner-container">
    <div className="App" id="outer-container">
@@ -41,34 +74,50 @@ function App() {
      
     </div>
     
-   <Router>
+
      <Switch>
-       <Route exact path="/" component={Home} />
-       <Route exact path="/recipe/:id"><RecipePage/></Route>
+       <Route  exact path="/" component={Home} />
+       <Route exact path="/recipe/:id"><RecipePage user ={user} isSigned = {IsSigned}/></Route>
        <Route exact path="/search" component={Search} />
-       <Route exact path="/Profile" component={Profile} />
-       <Route exact path="/MyRecipes" component={MyRecipes} />
-       <Route exact path="/PostNewRecipe" component={PostNewRecipe} />
-       <Route exact path="/MyFeed" component={MyFeed} />
-       <Route exact path="/SavedPosts" component={SavedPosts} />
+
+       <Route exact path="/Profile"> {IsSigned ? (<Profile user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+      
+      
+       <Route exact path="/MyRecipes"> {IsSigned ? (<MyRecipes user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+       
+       <Route exact path="/PostNewRecipe"> {IsSigned ? (<PostNewRecipe user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+      
+       <Route exact path="/MyFeed"> {IsSigned ? (<MyFeed user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+       
+       <Route exact path="/SavedPosts"> {IsSigned ? (<SavedPosts user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        <Route exact path="/About" component={About} />
        <Route exact path="/signedOutLogin" component={SignedOutLogin} />
-       <Route exact path="/signOut" component={SignOut} />
+      
+       <Route exact path="/signOut"> {IsSigned ? (<SignOut user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        <Route exact path="/Results" component={Results} />
-       <Route exact path="/Login" component={Login} />
-       <Route exact path="/SignUp" component={SignUp} />
-       <Route exact path="/EditProfile" component={EditProfile} />
-       <Route exact path="/ChangePassword" component={ChangePassword} />
+       
+       <Route exact path="/Login"> {!IsSigned ? (<Login user={user}/>):(<Redirect to="/"></Redirect>)} </Route>
+      
+       <Route exact path="/SignUp"> {!IsSigned ? (<SignUp/>):(<Redirect to="/"></Redirect>)} </Route>
+       
+       <Route exact path="/EditProfile"> {IsSigned ? (<EditProfile user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+       
+       <Route exact path="/ChangePassword"> {IsSigned ? (<ChangePassword user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        <Route exact path="/UploadProfileImg" component={UploadProfileImg} />
+       <Route exact path="/UploadProfileImg"> {IsSigned ? (<UploadProfileImg user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
        
      </Switch>
-   </Router>
+
    
  </div>
 
 
-  );
+  )
+  }
+  else{
+    return(<div>Loading...</div>)
+  }
 }
 
 export default App;

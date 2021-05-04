@@ -45,6 +45,26 @@ router.route('/:id').get((req, res) => {
         .then(exercise => res.json(exercise))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/:id/posts').get((req, res) => {
+    User.findById(req.params.id)
+    .populate({
+        path:'posts',
+        model:'Recipe',
+        populate: {
+            path:'author',
+            model: 'User'
+        }
+    })
+        .then(exercise => res.json(exercise))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+router.route('/:id/saved').get((req, res) => {
+    User.findById(req.params.id)
+    .select("likedPosts")
+    .populate("likedPosts")
+        .then(exercise => res.json(exercise))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 router.route('/:id').delete((req, res) => {
     User.findByIdAndDelete(req.params.id)
@@ -55,7 +75,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/:id').put((req, res) => {
     User.findById(req.params.id)
         .then(user => {
-            user.username = req.body.username;
+            user.profileImage= req.body.pic;
 
             user.save()
                 .then(() => res.json('User updated!'))

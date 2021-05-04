@@ -19,10 +19,12 @@ import RecipePage from './RecipePage';
 import Login from './Login';
 import axios from 'axios'
 import Preview from './Preview'
+import '512.svg';
 
 
 const Home=(props)=> {
     const [RecipeList,setList] = useState(null)
+    const [isLoading,setLoading] = useState(true)
     useEffect(()=>{
         //get all recipes 
         axios({url:`http://localhost:5000/post`,method:'GET'})
@@ -36,13 +38,21 @@ const Home=(props)=> {
             })
 
     },[])
+    useEffect(()=>{
+        if(RecipeList){
+            setLoading(false)
+            console.log(RecipeList)
+        }
+    },[RecipeList])
     
-    return RecipeList ? (
+    if(isLoading ===false){
+        return  (
         <div className="projectcss">
         <div className="container">
 
 
                 <h1 className='home_header'>Recipe Central</h1>
+                <img src= "512.svg" alt="Recipe Central Logo" />
                 <Link to="./Login">
                     <button type="button" className="float">
                         Login
@@ -53,6 +63,7 @@ const Home=(props)=> {
             <h2>Explore Our Recipes Below</h2>
         
             {RecipeList.map((recipe)=>(
+                
                 <Preview recipe = {recipe}></Preview>
             
 
@@ -61,7 +72,12 @@ const Home=(props)=> {
         </div>
         </div>
     )
-    : null
+            }
+            else{
+                return (
+                    <div>loading...</div>
+                )
+            }
 }
 
 export default Home

@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import App from './App';
 import './Profile.css';
 import Nav from './Nav';
+import { Container, Row, Col} from 'reactstrap';
 
 import SearchBar from './SearchBar'
 import FeedPost from './FeedPost'
 import RecipePage from './RecipePage';
 import { Form } from 'react-bootstrap';
+import axios from 'axios';
+import Preview from './Preview'
+import PostNewRecipe from './PostNewRecipe';
 
 
 const Avatar = 'https://picsum.photos/200';
@@ -152,7 +156,40 @@ const styles = {
     backgroundColor: "#FF2D00"
 }
 
-const Profile=()=> {
+const Profile=(props)=> {
+    console.log(props)
+    const [posts,setPosts] = useState(null)
+const [isLoading,setIsLoading] = useState(true)
+    useEffect(()=>{
+        axios({url:`http://localhost:5000/user/607c9b35c463426a0e56e31b/posts`,method:"GET"})
+        .then((response) => {
+            console.log(response)
+            var i, j, resArray=[], chunk = 2;
+for (i = 0, j = response.data.posts.length; i < j; i += chunk) {
+  resArray.push(response.data.posts.slice(i, i + chunk));
+}
+console.log(resArray)
+            setPosts(resArray)
+            
+           
+            
+
+            
+            console.log(response.data)
+        
+        })
+        .catch((err) => {
+            console.error(err)
+            
+            
+        })
+    
+    },[])
+    useEffect(()=>{
+        if(posts)
+        
+        setIsLoading(false)
+    },[posts])
     const [image, setImage] = useState({ preview: "", raw: "" });
 
     const handleChange = e => {
@@ -177,7 +214,7 @@ const Profile=()=> {
           body: formData
         });
       };
-
+if(isLoading ===false){
     return (
         <div className="projectcss">
         <div className="container">
@@ -196,35 +233,32 @@ const Profile=()=> {
             </section>
   
             <optionRow>
-                <Link to="./EditProfile">
+               <Link to = {{pathname:"./EditProfile",state:props.user._id}}>
                     <button className="button">Edit Profile</button>
-                </Link>
+             </Link>
             </optionRow>
 
-            <optionRow>
-                <Link to="./ChangePassword">
-                    <button className="button">Change Password</button>
-                </Link>
-            </optionRow>
            
-            <row>
-                <FeedPost> <button className="button"><RecipePage recipe ={obj}/> </button> </FeedPost>
-                <FeedPost> <RecipePage recipe = {obj}/> </FeedPost>
-                <FeedPost> <RecipePage recipe = {obj}/> </FeedPost>
-            </row>
+            <div className = "hi">
+                {posts.map((row)=>(
+               <div>
+                   {row.map(col=>(<Preview recipe ={col}></Preview>))}
 
-            <row>
-                <FeedPost> <RecipePage recipe = {obj}/> </FeedPost>
-                <FeedPost> <RecipePage recipe = {obj}/> </FeedPost>
-                <FeedPost> <RecipePage recipe = {obj}/> </FeedPost>
-            </row>
-            <Link to="./MyFeed">
-                <h4>Clike here to view all My Feed</h4>
-            </Link>
+                </div>
+                  ))}
+                  </div>
+         
+         </div>
+
+           
                     
         </div>
-        </div>
+        
     )
+}
+else{
+    return(<div>Loading...</div>)
+}
 }
 
 export default Profile

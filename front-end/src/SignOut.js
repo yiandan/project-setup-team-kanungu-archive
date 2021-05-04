@@ -8,6 +8,7 @@ import Nav from './Nav'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const SignOut=()=> {
+    localStorage.removeItem('token')
     return (
         <div className="projectcss">
         <div className="container">
