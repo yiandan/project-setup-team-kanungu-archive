@@ -19,12 +19,17 @@ const Preview = (props)=>{
             <div className = "square">
 
                 <img className = "avi" src={props.recipe.author.profileImage}alt="Avatar"></img>
-
                 <div className = "name">{props.recipe.author.username}</div>
-                       
-                <div className = "date">{fdate}</div>
-                <a className = "title" href={'/recipe/'+ props.recipe._id}>{props.recipe.title}</a>
-                <img className = "pic" src={props.recipe.images[0]} alt = "Food"></img>
+
+                <div  className = "box_center">
+                    <div className = "date">{fdate}</div>
+                    <a className = "title" href={'/recipe/'+ props.recipe._id}>{props.recipe.title}</a>
+                </div>
+                
+                <div class="rect-img-container">
+                    <img className = "pic" src={props.recipe.images[0]} alt = "Food"></img>
+                </div>
+                
                 <div className = "like">  <LikeButton data ={{recipe:props.recipe._id,curr:props.recipe.likes,user:props.recipe.author._id}}></LikeButton></div>
               
             </div>

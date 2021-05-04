@@ -5,6 +5,8 @@ const cors = require("cors")
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
+
 const userRouter = require('./routes/user.route');
 const recipesRouter = require("./routes/recipes");
 const postsRouter = require("./routes/posts.route");
@@ -20,7 +22,7 @@ require('dotenv').config({path:'../.env'})
 
 
 app.use(cors())
-app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static('public'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
@@ -35,8 +37,8 @@ require('./routes/user.auth.route')(app);
 // app.use('/post', userAuthRouter);
 // app.use('/users', require('./routes/users'));
 
-app.use(express.json()) // decode JSON-formatted incoming POST data
-app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
+app.use(express.json({limit:'100mb'})) // decode JSON-formatted incoming POST data
+app.use(express.urlencoded({ extended: true,limit:'100mb' })) // decode url-encoded incoming POST data
 
 //Mongoose stuff 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@recipecentral.zmgix.mongodb.net/RecipeCentral?retryWrites=true&w=majority`
@@ -53,9 +55,12 @@ mongoose.Promise = global.Promise;
 
 //auth
 const database = require("./db");
+
 const db = database.db;
 const Role = db.role;
 
+const User = database.User
+const Recipe = database.Recipe;
 db.mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -106,19 +111,56 @@ function initial() {
 }
 
 //storage type
+const DIR = './public/';
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-      cb(null, './uploads/');
+      cb(null, DIR);
   },
 
   // By default, multer removes file extensions so add them back
   filename: function(req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    const fileName = file.originalname.toLowerCase().split(' ').join('-');
+    cb(null, uuidv4() + '-' + fileName)
   }
 });
 
 //middleware function
-const upload = multer({storage: storage})
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+      if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+          cb(null, true);
+      } else {
+          cb(null, false);
+          return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+      }
+  }
+});
+
+app.post('/user-profile/:id', upload.single('profileImg'), (req, res, next) => {
+  const url = req.protocol + '://' + req.get('host')
+
+  User.findById(req.params.id)
+  .then(user=>{
+    user.profileImage = url + '/public/' + req.file.filename;
+    user.save().then(result => {
+      res.status(201).json({
+          result
+
+      })
+      console.log(result)
+  }).catch(err=>{
+    console.log(err),
+    res.status(500).json({
+        error: err
+    });
+
+  })
+  
+  
+
+})
+})
 
 //upload.array('images', 10)
 //https://medium.com/lucideus-engineering/file-uploads-with-multer-the-complete-guide-aefe5d2f6026
