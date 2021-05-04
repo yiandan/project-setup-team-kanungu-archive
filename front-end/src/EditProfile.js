@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 
 import './EditProfile.css'
 import SearchBar from './SearchBar'
@@ -7,47 +7,58 @@ import SearchBar from './SearchBar'
 
 
 const EditProfile=(props)=> {
-    return (
-        <div className="projectcss">
-        <div className="container">
-            <h1>Edit Profile</h1>
-            <SearchBar /> 
+    const id = props.user._id
+    console.log(id)
+    const [image, setImage] = useState({ preview: "", raw: "" });
 
-           
-            <div className="rec">
-                <div className="inputCol"><labeling>Username</labeling><input type="text" className="name" placeholder="asd123"/>*</div>
-                <div className="inputCol"><labeling>First Name</labeling><input type="text" className="name" placeholder="John"/>*</div>
-                <div className="inputCol"><labeling>Last Name</labeling><input type="text" className="name" placeholder="Smith"/>*</div>
-                <div className="inputCol">
-                    <labeling>Gender</labeling>
-                    <select id="cuisine">
-                        <option value="" disabled selected>Choose your gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                    </select>
-                </div>
-                <div className="inputCol"><labeling>Email Address</labeling><input type="text" className="name" placeholder="abc@gmail.com"/>*</div>
-                <div className="inputCol"><labeling>Occupation</labeling><input type="text" name="name" placeholder="Student"/></div>
-                <div className="inputCol">
-                    <labeling>Favorite Cuisine</labeling>
-                    <select id="cuisine">
-                        <option value="" disabled selected>Choose your favorite cuisine</option>
-                        <option value="chinese">Chinese</option>
-                        <option value="thai">Thai</option>
-                        <option value="japanese">Japanese</option>
-                        <option value="french">French</option>
-                        <option value="american">American</option>
-                        <option value="italian">Italian</option>
-                        <option value="germany">Germany</option>
-                        <option value="korean">Korean</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <button className="saveButton">Save</button>
-            </div>
-        </div>
-        </div>
-    )
+  const handleChange = e => {
+    if (e.target.files.length) {
+      setImage({
+        preview: URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0]
+      });
+    }
+  };
+
+  const handleUpload = async e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.raw);
+
+    await fetch(`http://localhost:5000/user/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "multipart/form-data"
+      },
+      body: formData
+    });
+  };
+
+  return (
+    <div>
+      <label htmlFor="upload-button">
+        {image.preview ? (
+          <img src={image.preview} alt="dummy" width="300" height="300" />
+        ) : (
+          <>
+            <span className="fa-stack fa-2x mt-3 mb-2">
+              <i className="fas fa-circle fa-stack-2x" />
+              <i className="fas fa-store fa-stack-1x fa-inverse" />
+            </span>
+            <h5 className="text-center">CHOOSE FILE</h5>
+          </>
+        )}
+      </label>
+      <input
+        type="file"
+        id="upload-button"
+        style={{ display: "none" }}
+        onChange={handleChange}
+      />
+      <br />
+      <button onClick={handleUpload}>Upload</button>
+    </div>
+  );
 }
 
 

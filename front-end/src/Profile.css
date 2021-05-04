@@ -1,10 +1,19 @@
+
 section {
+    position:relative;
+    top:100px;
+    left:140px;
     display: flex;
     padding: 10px;
     margin-right: 60%;
     margin-left: 20%;
+    
+   
 }
-  
+.ed{
+    position:relative;
+    top:60px;
+}
 article {
     flex: auto;
     margin: 20px;
@@ -25,6 +34,7 @@ article {
     color: white;
   }
 
+
 .profileImg {
     position: relative;
     left: 200px;
@@ -37,14 +47,26 @@ article {
 #profile_img {
     margin-left: 50%;
 }
-
+h5{
+    position:relative;
+    top:100px;
+}
 optionRow {
     display: block;  
 }
+.button{
+    position:relative;
+    top:100px;
+    left:50px;
+}
 
-row {
-    display: flex;  
-    margin-left: 25%;
-    margin-right: 25%;
+.hi{
+    position:relative;
+    left:-317px;
+    top:260px;
+    display:flex;
+    align-items: center;
+    columns: 2 auto;
+    
 }
 
