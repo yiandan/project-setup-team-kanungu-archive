@@ -18,8 +18,14 @@ jobs:
       - name: Install modules
         run: |
           npm install
+          npm install chai-http
       - name: Install backend modules
         run: |
           cd back-end/
           npm install
       - run: echo "Job done"
+      - name: Run tests
+        run: |
+          cd back-end/test
+          npm test
+        
