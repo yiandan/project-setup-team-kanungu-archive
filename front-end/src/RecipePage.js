@@ -114,14 +114,20 @@ useEffect(()=>{
        
        ))}
 
-
-        <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>
+      
+     
         
-    
-            </div>
+{props.isSigned==true &&
+         <>
+         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>
         <div className = "likey">
         <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:props.user._id}}></LikeButton>
         </div>
+         </>
+        }
+            </div>
+          
+   
         </div>
         </div>
     )
