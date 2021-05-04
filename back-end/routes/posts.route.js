@@ -134,7 +134,10 @@ router.route('/:id/like').put((req,res,next) =>{
 if(req.body.met == "del")
     return next('route');
  Recipe.findOneAndUpdate({_id :req.params.id},update).then(recipe =>{
-     User.findOneAndUpdate({_id:req.body._id},{$addToSet:{likedPosts:recipe}})
+     User.findOneAndUpdate({_id:req.body._id},{$addToSet:{likedPosts:recipe._id}})
+     .then(user =>{
+        
+     })
  })
 
  
@@ -148,9 +151,9 @@ router.route('/:id/like').put((req,res,next) =>{
     update = {likes:req.body.likes}
 
  Recipe.findOneAndUpdate({_id :req.params.id},update).then(recipe =>{
-     console.log(recipe)
+    
      User.findOneAndUpdate({_id:req.body._id},{$pull:{likedPosts:recipe._id}}).then(user=>{
-         console.log(user)
+    
      })
  })
 
