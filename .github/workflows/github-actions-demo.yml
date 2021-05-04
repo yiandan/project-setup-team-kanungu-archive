@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      DB_PASS: M@tthew1227
-      DB_USER: mv1572
+      DB_PASS: defaultUSER
+      DB_USER: defaultPASS
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
