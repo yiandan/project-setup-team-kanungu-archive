@@ -69,13 +69,13 @@ left: -150px;
 }
 .likey{
     position:relative;
-    left:320px;
-    top:-510px;
+    left:260px;
+    top:-78px;
 
     
 }
 .comment{
-    position:relative;
-    left: 143px;
-    top: 100px;
+    position:absolute;
+    left: 0px;
+    top: 750px;
 }

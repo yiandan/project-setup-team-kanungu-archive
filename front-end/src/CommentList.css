@@ -5,13 +5,13 @@
     width: 600px;
     overflow:auto;
     position:relative;
-    left:-200px;
+    left:-00px;
     background-color:paleturquoise;
 }
 .combox{
     position:relative;
     top:-100px;
-    left:80px;
+    left:-70px;
 }
 .c{
     position:relative;
