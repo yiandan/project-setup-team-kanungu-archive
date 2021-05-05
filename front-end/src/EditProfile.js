@@ -10,23 +10,19 @@ const EditProfile=(props)=> {
     const id = props.user._id
     console.log(id)
     const [image, setImage] = useState("");
-
+    const [preview,setPreview] = useState(null)
   const handleChange = e => {
     if (e.target.files.length) {
         console.log(e.target.files[0]);
-        var reader = new FileReader();
-        reader.readAsBinaryString(e.target.files[0]);
-    
-        reader.onload = function() {
-            console.log(btoa(reader.result));
+     
+ 
+           
             setImage(e.target.files[0]);
-              
-            }
+            setPreview(URL.createObjectURL(e.target.files[0]))
+           
             
         };
-        reader.onerror = function() {
-            console.log('there are some problems');
-        };
+      
      
   };
 
@@ -46,15 +42,15 @@ const EditProfile=(props)=> {
   return (
     <div>
       <label htmlFor="upload-button">
-        {image.preview ? (
-          <img src={image.preview} alt="dummy" width="300" height="300" />
+        {preview ? (
+          <img src={preview} alt="dummy" width="300" height="300" />
         ) : (
           <>
             <span className="fa-stack fa-2x mt-3 mb-2">
               <i className="fas fa-circle fa-stack-2x" />
               <i className="fas fa-store fa-stack-1x fa-inverse" />
             </span>
-            <h5 className="text-center">CHOOSE FILE</h5>
+            <h5 className="text-center">Change profile image!</h5>
           </>
         )}
       </label>
@@ -65,7 +61,7 @@ const EditProfile=(props)=> {
         onChange={handleChange}
       />
       <br />
-      <button onClick={handleUpload}>Upload</button>
+      <button className = "bu" onClick={handleUpload}>Upload</button>
     </div>
   );
 }

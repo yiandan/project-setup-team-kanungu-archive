@@ -42,7 +42,7 @@ const CommentBox = (props) =>{
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios({url:`http://localhost:5000/post/${props.id}/comment`,method:'POST',data:{_id:props.id,text:commentValue,date:Date().toLocaleString()}})
+    axios({url:`http://localhost:5000/post/${props.data.id}/comment`,method:'POST',data:{_id:props.id,text:commentValue,date:Date().toLocaleString()}})
             .then(props.OnChildClick({"_id":"nothing","by":{"_id":props.data.author._id, "username":props.data.author.username},text:commentValue,posted:Date().toLocaleString()}))
             .catch((err) => {
                 console.error(err)

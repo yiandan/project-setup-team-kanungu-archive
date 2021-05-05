@@ -86,7 +86,7 @@ const Login = (props) => {
                         block
                         disabled={emptyField()}
                     >
-                        Sign In
+                        Log In
                     </Button>
                 </Form>
                 <div className="redirectSignIn">Don't have an account?</div>

@@ -16,7 +16,7 @@ const Comment = (props) =>{
     return(
         <div className = "item">
            
-               <h4></h4>
+               <h4>{props.data.by.username}</h4>
           
            {props.data["text"]}
         </div>
