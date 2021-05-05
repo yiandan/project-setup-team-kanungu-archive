@@ -4,10 +4,20 @@
     
 }
 body{
-    background-image: url("https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0dGluZyUyMGJvYXJkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+    background-image: url("https://media.istockphoto.com/photos/texture-of-plywood-board-highlydetailed-natural-pattern-background-picture-id611873244?k=6&m=611873244&s=170667a&w=0&h=DwXOG3fiy_QTs2mtyAzBlKLfhwLvm3YISCeTu4Ygp9s=");
     height: 100%;
     background-position: center;
     background-size: cover;
+
+}
+h1{
+    font-family: 'Garamond', serif;
+    font-size: 60px;
+
+}
+h2{
+    font-family: 'Garamond', serif;
+    font-size: 38px;
 
 
 }
