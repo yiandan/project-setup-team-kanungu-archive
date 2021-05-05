@@ -69,7 +69,7 @@ const Profile=(props)=> {
     const [posts,setPosts] = useState(null)
 const [isLoading,setIsLoading] = useState(true)
     useEffect(()=>{
-        axios({url:`http://localhost:5000/user/607c9b35c463426a0e56e31b/posts`,method:"GET"})
+        axios({url:`http://localhost:5000/user/${props.user._id}/posts`,method:"GET"})
         .then((response) => {
             len = response.data.posts.length
             console.log(response)
@@ -136,16 +136,12 @@ if(isLoading ===false){
                 <Article number={len} content="Posts"> </Article>
                 <Article number="000" content="Followers"> </Article>
                 <Article number="000" content="Following"> </Article>
-                <Link to="./UploadProfileImg">
+                <Link to="./EditProfile">
                     <input type="image" className = "profileImg" alt="Click to upload profile image" src={props.user.profileImage}></input>
                 </Link>
             </section>
   
-            <optionRow>
-               <Link to = {{pathname:"./EditProfile",state:props.user._id}}>
-                    <button className="button">Edit Profile</button>
-             </Link>
-            </optionRow>
+  
 
            
             <div className = "hi">
