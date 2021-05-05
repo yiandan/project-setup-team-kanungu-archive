@@ -21,13 +21,7 @@
     top:-30px;
     left:-10px;
 }
-.int{
-    line-height:2;
-    position:relative;
-    top:-360px;
-    left:-120px;
 
-}
 .avatar {
 position:relative;
 left:-200px;
@@ -40,6 +34,41 @@ height: 120px;
     position:relative;
     top:-370px;
     left:-120px;
+}
+.int{
+    line-height:2;
+    position:relative;
+    top:-365px;
+    left:-120px;
+
+}
+
+.Cuisine{
+    position:relative;
+    top:-350px;
+    left:-120px;
+}
+
+.cui{
+    line-height:2;
+    position:relative;
+    top:-345px;
+    left:-120px;
+
+}
+
+.Difficulty{
+    position:relative;
+    top:-330px;
+    left:-120px;
+}
+
+.dif{
+    line-height:2;
+    position:relative;
+    top:-325px;
+    left:-120px;
+
 }
 .ing{
     position:relative;

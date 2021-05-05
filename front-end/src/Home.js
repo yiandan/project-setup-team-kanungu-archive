@@ -60,12 +60,6 @@ const Home=(props)=> {
         <div className="container">
                 <h1 className='home_header'>Recipe Central</h1>
 
-                
-                
-
-                <img src= "512.svg" alt="Recipe Central Logo" />
-
-                
                 {button}
 
             <SearchBar />
