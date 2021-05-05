@@ -116,6 +116,11 @@ useEffect(()=>{
            
        
        ))}
+       <div className= "Cuisine"> <h4>Cuisine</h4> </div>
+            <li className="cui"> {recipe.cuisine}</li> 
+
+       <div className= "Difficulty"> <h4>Difficulty</h4> </div>
+            <li className="dif"> {recipe.difficulty}</li> 
 
       
      
