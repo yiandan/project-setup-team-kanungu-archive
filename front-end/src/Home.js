@@ -45,30 +45,44 @@ const Home=(props)=> {
         }
     },[RecipeList])
     
+    let button;
+    if (!props.isSigned) {
+      button =  <Link to="./Login">
+                    <button type="button" className="float">
+                        Login
+                    </button>
+                </Link>;
+    }
+
     if(isLoading ===false){
         return  (
         <div className="projectcss">
         <div className="container">
-
-
                 <h1 className='home_header'>Recipe Central</h1>
+
                 
                 <Link to="./Login">
+
+                <img src= "512.svg" alt="Recipe Central Logo" />
+
+                {/* <Link to="./Login">
                     <button type="button" className="float">
                         Login
                     </button>
-                </Link>
+                </Link> */}
+                {button}
 
             <SearchBar />
             <h2>Explore Our Recipes Below</h2>
         
-            {RecipeList.map((recipe)=>(
+            {/* <div className="home_header"> */}
+                {RecipeList.map((recipe)=>(
+                    
+                    <Preview recipe = {recipe}></Preview>
                 
-                <Preview recipe = {recipe}></Preview>
-            
 
-            ))}
-          
+                ))}
+            {/* </div> */}
         </div>
         </div>
     )

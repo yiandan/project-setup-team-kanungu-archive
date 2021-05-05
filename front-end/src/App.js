@@ -76,7 +76,7 @@ function App() {
     
 
      <Switch>
-       <Route  exact path="/" component={Home} />
+       <Route  exact path="/" component={Home}> {<Home isSigned = {IsSigned}/>} </Route>
        <Route exact path="/recipe/:id"><RecipePage user ={user} isSigned = {IsSigned}/></Route>
        <Route exact path="/search" component={Search} />
 

@@ -30,7 +30,7 @@ const About=()=> {
             continue to learn more recipes to share with others. 
             <br></br>
             <br></br>
-            <span>You can sign up here: <NavLink to="./SignedOutLogin"> Log In/Sign Up!</NavLink> </span>
+            <span>You can sign up here: <NavLink to="./Login"> Log In/Sign Up!</NavLink> </span>
             </p>
           
         </div>

@@ -1,15 +1,19 @@
 .projectcss {
-    background-color: #ffb347;
     height: 100vh;
     min-height: 100%;
     
 }
 body{
-    background-color: #ffb347;
+    background-image: url("https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0dGluZyUyMGJvYXJkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+
+
 }
-.container {
+/* .container {
     padding: 10px 50px 50px 10px;
-}
+} */
 
 p {
     font-size:20px;

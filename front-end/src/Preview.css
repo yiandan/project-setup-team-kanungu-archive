@@ -1,53 +1,97 @@
 .square{
-    width:380px;
-    height:380px;
-    left:390px;
+    /* width:auto;
+    height:auto; */
+    /* position: relative; */
+    width: 50%;
+    /* left:390px; */
     background-color:moccasin;
     position:relative;
-    margin:25px;
-
+    margin:auto;
+    margin-bottom: 40px;
+    padding: 30px;
+    border: 2px solid black;
+    
 }
+.box_center{
+    position: relative;
+    width: 100%;
+    height: 65px;
+    padding: 20px;
+}
+
 .avi{
+    /* align: center; */
     border: radius 50%;
     width:70px;
     height:70px;
     position:absolute;
-    top:15px;
-    left:10px
+    /* margin: auto; */
+    top:1%;
+    left:1%;
 }
 .pic{
-    position:absolute;
+    /* position:relative;
+    margin: auto;
     border: 10px solid white;
-    top:80px;
-    left:60px;
-    width:260px;
-    height:260px;
-    vertical-align: middle;
+    width:300px;
+    height:300px;
+    object-fit: cover;*/
+    display: block;
+    position: absolute;
+  width: 80%;
+  height: 80%;
+  /* width: 40%; */
+  /* margin: auto; */
+  /* margin-right: auto; */
+
+  transform: translate(10%, 10%);
+  object-fit: cover;
+  
+  border: 10px solid white;
+  /* padding: 10px; */
 }
+
+.rect-img-container::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+.rect-img-container {
+  position: relative;
+  
+}
+
 .title{
     position:absolute;
-    font-style:italic;
-    top:35px;
-    justify-content: center;
-    left:165px;
+    text-align: center;
+    /* font-style:italic; */
+    font-size: large;
+    /* padding: 10px; */
+    /* margin: 10px; */
+    transform: translate(-50%, -50%);
+    top:10%;
+    /* justify-content: center; */
+    /* left:165px; */
 }
 .name{
-    font-size: small;
+    font-size: medium;
     position:absolute;
     font-weight:bold;
-    top:30px;
-    left:100px;
+    top:3%;
+    left:11%;
 }
 .date{
     font-size:10px;
-    position:absolute;
-    top:10px;
-    left:310px;
+    text-align: center;
+    position: relative;
+    /* top:4%; */
+    /* top:10px; */
+    /* left:310px; */
 }
 .like{
     position:absolute;
-    top:-320px;
-    left:-230px;
-    z-index:10;
-
+    /* transform: translate(50%, 50%); */
+    bottom:4%;
+    left: 4%;
 }

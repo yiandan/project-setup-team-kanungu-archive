@@ -37,13 +37,7 @@ const Login = (props) => {
               localStorage.setItem('token',response.data.accessToken)
               setSignIn(true)
 
-            }
-            
-            
-            
-
-            
-            
+            }  
         
         })
         .catch((err) => {
@@ -56,12 +50,14 @@ const Login = (props) => {
 
     if (!signIn) {
         return (
-            <div className="signIn">
+            <div className="LogIn">
+                <div className="form">
                 <Form className="inputs">
                     <Form.Group className={error ? 'text-muted' : 'hidden'}>
                         <Form.Text>{errorMessage}</Form.Text>
                     </Form.Group>
-                    <Form.Group className="username" controlId="username">
+                    <Form.Group size="lg" className="username" controlId="username">
+                    <Form.Label>Username: </Form.Label>
                         <Form.Control
                             size="md"
                             type="username"
@@ -70,7 +66,8 @@ const Login = (props) => {
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group className="password" controlId="password">
+                    <Form.Group size="lg" className="password" controlId="password">
+                    <Form.Label>Password: </Form.Label>
                         <Form.Control
                             size="md"
                             type="password"
@@ -84,24 +81,26 @@ const Login = (props) => {
                         onClick={handleSubmit}
                         variant="info"
                         block
+                        block size="lg"
                         disabled={emptyField()}
                     >
                         Log In
+
                     </Button>
                 </Form>
-                <div className="redirectSignIn">Don't have an account?</div>
-                <div className="createAccountDiv">
+                </div>
+                {/* <div className="redirectSignIn">Don't have an account?</div> */}
+                <div>
                     <a
-                        className="createAccountLink text-info"
-                        href="/create-account"
+                        // className="createAccountLink text-info"
+                        href="/SignUp"
                     >
-                        Create Account
+                        Don't have an account?
                     </a>
                 </div>
             </div>
         )
     } else {
-       
         return <Redirect to="/" />
     }
 }
