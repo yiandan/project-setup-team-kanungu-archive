@@ -29,11 +29,10 @@ const Login = (props) => {
         event.preventDefault()
         setError(false)
         setErrorMessage('')
-        Axios({url:"http://localhost:5000/auth/signin",method:"POST",data:{username:username,password:password}})
+        Axios({url:"http://localhost:5000/auth/signin", method:"POST", data:{username:username, password:password}})
         .then((response) => {
           console.log(response)
             if(response.data.accessToken){
-              
               localStorage.setItem('token',response.data.accessToken)
               setSignIn(true)
 
@@ -41,8 +40,16 @@ const Login = (props) => {
         
         })
         .catch((err) => {
-            console.error(err)
-            
+            console.error("ERROR", err)
+            setError(true)
+              if (err.response.status === 404) {
+                setErrorMessage("Invalid user. Please sign up.")
+              } else if (err.response.status === 401) {
+                setErrorMessage("Wrong password.")
+              } 
+              else {
+                setErrorMessage(err.message)
+              }
             
         })
 

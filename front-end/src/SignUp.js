@@ -48,6 +48,14 @@ const SignUp = (props) => {
           })
           .catch((err) => {
               console.error(err)
+              setError(true)
+              if (err.response.status === 400) {
+                setErrorMessage("Username already taken.")
+              } 
+              else {
+                setErrorMessage(err.message)
+              }
+            
               history.push("/SignUp")
           })
   };
