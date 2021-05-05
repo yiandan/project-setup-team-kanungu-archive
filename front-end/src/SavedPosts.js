@@ -19,7 +19,6 @@ import RecipePage from './RecipePage';
 import Login from './Login';
 import axios from 'axios'
 import Preview from './Preview'
-import '512.svg';
 
 
 const SavedPosts=(props)=> {
@@ -53,12 +52,6 @@ const SavedPosts=(props)=> {
 
 
                 <h1 className='home_header'>Recipe Central</h1>
-                <img src= "512.svg" alt="Recipe Central Logo" />
-                <Link to="./Login">
-                    <button type="button" className="float">
-                        Login
-                    </button>
-                </Link>
 
             <SearchBar />
             <h2>My Feed</h2>
