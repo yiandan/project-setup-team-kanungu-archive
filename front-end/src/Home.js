@@ -58,7 +58,7 @@ const Home=(props)=> {
         return  (
         <div className="projectcss">
         <div className="container">
-                <h1 className='home_header'>Recipe Central</h1>
+                <h1 className='home_header'>Recipe Central 🍽</h1>
 
                 
                 
