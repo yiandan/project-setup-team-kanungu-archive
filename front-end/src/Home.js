@@ -61,15 +61,11 @@ const Home=(props)=> {
                 <h1 className='home_header'>Recipe Central</h1>
 
                 
-                <Link to="./Login">
+                
 
                 <img src= "512.svg" alt="Recipe Central Logo" />
 
-                {/* <Link to="./Login">
-                    <button type="button" className="float">
-                        Login
-                    </button>
-                </Link> */}
+                
                 {button}
 
             <SearchBar />

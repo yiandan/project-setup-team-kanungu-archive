@@ -73,10 +73,10 @@ const CommentBox = (props) =>{
               alt="User avatar"
               className = 'avi'
             />
-            <span>{props.data.author.username}</span>
+            <span className = "na">{props.data.author.username}</span>
           </div>
         </div>
-        <label htmlFor="comment">Leave a Comment!</label>
+        {/* <label htmlFor="comment" className = "cc">Leave a Comment!</label> */}
         <textarea
           ref={textRef}
           onClick={onExpand}
