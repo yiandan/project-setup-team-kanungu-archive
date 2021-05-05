@@ -64,14 +64,15 @@ const styles = {
 }
 
 const Profile=(props)=> {
-    var len = 0;
+    
     console.log(props)
     const [posts,setPosts] = useState(null)
+    const [len,setLength] = useState(0)
 const [isLoading,setIsLoading] = useState(true)
     useEffect(()=>{
         axios({url:`http://localhost:5000/user/${props.user._id}/posts`,method:"GET"})
         .then((response) => {
-            len = response.data.posts.length
+            setLength(response.data.posts.length)
             console.log(response)
             var i, j, resArray=[], chunk = 2;
 for (i = 0, j = response.data.posts.length; i < j; i += chunk) {
@@ -79,7 +80,7 @@ for (i = 0, j = response.data.posts.length; i < j; i += chunk) {
 }
 console.log(resArray)
             setPosts(resArray)
-            
+            console.log(response.data.posts.length)
            
             
 
@@ -130,7 +131,7 @@ if(isLoading ===false){
             <h1>Profile</h1>
             <SearchBar />
 
-            <h5> Good evening, {props.user.username}</h5>
+            <h3> Howdy, {props.user.username}</h3>
 
             <section>
                 <Article number={len} content="Posts"> </Article>
@@ -144,14 +145,13 @@ if(isLoading ===false){
   
 
            
-            <div className = "hi">
                 {posts.map((row)=>(
-               <div>
+               <div className ="hi">
                    {row.map(col=>(<SmallPreview recipe ={col}></SmallPreview>))}
 
                 </div>
                   ))}
-                  </div>
+                  
          
          </div>
 

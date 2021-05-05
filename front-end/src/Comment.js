@@ -4,22 +4,31 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 // import './Comment.css'
 const Comment = (props) =>{
-    
-    
+    let by= props.data.by;
+    let text = props.data.text
+    const [loading,setLoading] =useState(true)
+   console.log(props)
     useEffect(()=>{
         
-        console.log(props.data)
         
+        if(props.data){
+            setLoading(false)
+        }
 
 
-    },[]);
-    return(
+    },);
+    if(by &&text)return(
         <div className = "item">
            
-               <h4>{props.data.by.username}</h4>
+               <h4>{by.username}</h4>
           
-           {props.data["text"]}
+           {text}
         </div>
     )
+    else{
+        return(
+            <div>Loading..</div>
+        )
+    }
 }
 export default Comment
