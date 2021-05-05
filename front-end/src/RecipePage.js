@@ -31,15 +31,6 @@ const RecipePage = (props)=> {
 const[ingredients,setIngredients] = useState([])
 const[instructions,setInstructions] = useState([])
 
-let button;
-    if (!props.isSigned) {
-      button =  <Link to="./Login">
-                    <button type="button" className="float" onClick={()=>{ history.replace("/Login")}}>
-                      Login
-                    </button>
-                </Link>;
-    }
-
     useEffect(()=>{
         const fetchData =() =>{
         setIsLoading(true)
@@ -89,14 +80,12 @@ useEffect(()=>{
         <div className="projectcss">
         <div className= "container">
             <h1 className='home_header'>Recipe Central</h1>
-
-                {/* <Link to="./Login">
-                    <button type="button" className="float">
-                        Login
+                
+                    
+                    <button type="button" className="float" onClick={()=>{ history.replace("/Login")}}>
+                      Login
                     </button>
-                </Link> */}
-                {button}
-
+               
 
             <SearchBar />
             
@@ -112,6 +101,7 @@ useEffect(()=>{
                 
                 <div className = 'ing'>
                 <h4>Ingredients</h4>
+                
                 {ingredients.map((instruction)=>(
            <li className ="in">{instruction}</li>
            
@@ -132,7 +122,7 @@ useEffect(()=>{
         
 {props.isSigned==true &&
          <>
-         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":Author}}></CommentList></div>
+         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":props.user}}></CommentList></div>
         <div className = "likey">
         <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:props.user._id}}></LikeButton>
         </div>

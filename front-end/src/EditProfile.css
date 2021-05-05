@@ -9,5 +9,12 @@
 .bu{
     position:relative;
     left:0px;
-    top:100px;
+    top:260px;
+}
+.text-center{
+    position:absolute;
+    top:200px;
+    left:530px;
+    background-color:white;
+    border-radius: 30px;
 }

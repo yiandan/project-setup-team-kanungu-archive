@@ -50,7 +50,7 @@ const EditProfile=(props)=> {
               <i className="fas fa-circle fa-stack-2x" />
               <i className="fas fa-store fa-stack-1x fa-inverse" />
             </span>
-            <h5 className="text-center">Change profile image!</h5>
+            <h3 className="text-center">Change profile image!</h3>
           </>
         )}
       </label>

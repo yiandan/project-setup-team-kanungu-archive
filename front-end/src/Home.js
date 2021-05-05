@@ -74,7 +74,7 @@ const Home=(props)=> {
             {/* <div className="home_header"> */}
                 {RecipeList.map((recipe)=>(
                     
-                    <Preview recipe = {recipe}></Preview>
+                    <Preview recipe = {recipe} isSigned={props.isSigned}></Preview>
                 
 
                 ))}
