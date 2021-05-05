@@ -108,7 +108,7 @@ const SignUp = (props) => {
                   </Button>
                 </Form>
                 </div>
-                <a href="SignUp">Already have an account?</a>
+                <a href="Login">Already have an account?</a>
             </div>
             </div>
     )
