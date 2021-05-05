@@ -76,7 +76,7 @@ function App() {
     
 
      <Switch>
-       <Route  exact path="/" component={Home}> {<Home isSigned = {IsSigned}/>} </Route>
+       <Route  exact path="/" ><Home user = {user} isSigned = {IsSigned}></Home></Route>
        <Route exact path="/recipe/:id"><RecipePage user ={user} isSigned = {IsSigned}/></Route>
        <Route exact path="/search" component={Search} />
 
@@ -87,7 +87,7 @@ function App() {
        
        <Route exact path="/PostNewRecipe"> {IsSigned ? (<PostNewRecipe user={user} />):(<Redirect to="/Login"></Redirect>)} </Route>
       
-       <Route exact path="/MyFeed"> {IsSigned ? (<MyFeed user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
+
        
        <Route exact path="/SavedPosts"> {IsSigned ? (<SavedPosts user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        <Route exact path="/About" component={About} />

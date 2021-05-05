@@ -29,9 +29,9 @@ const Preview = (props)=>{
                 <div class="rect-img-container">
                     <img className = "pic" src={props.recipe.images[0]} alt = "Food"></img>
                 </div>
-                
+                {props.isSigned ===true &&
                 <div className = "like">  <LikeButton data ={{recipe:props.recipe._id,curr:props.recipe.likes,user:props.recipe.author._id}}></LikeButton></div>
-              
+            }
             </div>
     )
 }

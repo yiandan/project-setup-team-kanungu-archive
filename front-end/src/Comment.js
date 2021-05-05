@@ -27,7 +27,7 @@ const Comment = (props) =>{
     )
     else{
         return(
-            <div>Loading..</div>
+            <div></div>
         )
     }
 }

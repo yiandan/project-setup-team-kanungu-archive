@@ -5,7 +5,7 @@ let db = require('../db');
 let Recipe = db.Recipe;
 const User = db.User;
 const Comment = db.Comment;
-
+const { body, validationResult } = require('express-validator');
 
 
 router.route('/:id').get((req, res) => {
@@ -85,7 +85,7 @@ router.route('/:id/comments').get((req, res) => {
 });
 
 //Post comment  to recipe with corresponding id 
-router.route('/:id/comment').post((req, res) => {
+router.route('/:id/comment',body('text').isLength({min:4,max:50})).post((req, res) => {
     console.log(req.body._id)
     User.findById(mongoose.Types.ObjectId(req.body._id)).then(user=>{
         Recipe.findById(mongoose.Types.ObjectId(req.params.id))
@@ -95,7 +95,10 @@ router.route('/:id/comment').post((req, res) => {
                 text: req.body.text, 
                 posted: req.body.date
             })
-            
+            const errors = validationResult(req);
+            if(! errors.isEmpty()){
+                return res.status(400).json({ errors: errors.array() })
+            }
             newComment.save()
             .then( recipe.comments.push(newComment))
             .then(recipe.save())
