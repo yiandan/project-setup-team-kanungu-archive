@@ -19,7 +19,7 @@ import RecipePage from './RecipePage';
 import Login from './Login';
 import axios from 'axios'
 import Preview from './Preview'
-import '512.svg';
+
 
 
 const Home=(props)=> {
@@ -59,6 +59,10 @@ const Home=(props)=> {
         <div className="projectcss">
         <div className="container">
                 <h1 className='home_header'>Recipe Central</h1>
+
+                
+                <Link to="./Login">
+
                 <img src= "512.svg" alt="Recipe Central Logo" />
 
                 {/* <Link to="./Login">

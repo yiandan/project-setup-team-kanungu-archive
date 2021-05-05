@@ -58,7 +58,7 @@ const database = require("./db");
 
 const db = database.db;
 const Role = db.role;
-
+console.log("hi")
 const User = database.User
 const Recipe = database.Recipe;
 db.mongoose.connect(uri, {
@@ -164,40 +164,54 @@ app.post('/user-profile/:id', upload.single('profileImg'), (req, res, next) => {
 
 //upload.array('images', 10)
 //https://medium.com/lucideus-engineering/file-uploads-with-multer-the-complete-guide-aefe5d2f6026
-app.post("/upload-recipe", upload.single('img'), (req, res, next) => {
-    console.log(req.file);
-    const data = {
-        recipe_data: {
+app.post("/newRecipe", upload.array("multiple_images",10), (req, res, next) => {
+  console.log(req.files)
+  if (!req.files){
+    res.status(400).json({
+      
+    })
+  }
+  const url = req.protocol + '://' + req.get('host')
+  
+  var ur = req.files.map(x => url + '/public/' +x.filename)
+   
+    const recipe = new Recipe({
+          _id: new mongoose.Types.ObjectId(),
           title: req.body.title,
           author: req.body.author,
-          text: req.body.text,
-          images: req.body.images, //nothing happens here
-        },
-      }
-    
-    // // now do something amazing with the data we received from the client
-    // if (!req.body.images) {
-    //     // failure!
-    //     const error = new Error("Please upload some files!")
-    //     error.httpStatusCode = 400
-    //     return next(error)
-    //   } else {
-    //     // success
-    //     // send a message back to the client, for example, a simple JSON object
-    //     const data = {
-    //         recipe_data: {
-    //           title: req.body.title,
-    //           author: req.body.author,
-    //           text: req.body.text,
-    //           images: req.body.images,
-    //         },
-    //       }
+          images: ur,
+          posted:req.body.posted,
+          cuisine:req.body.cuisine,
+          difficulty:req.body.difficulty,
+          ingredients:req.body.ingredients,
+          instructions:req.body.instructions,
+          likes:req.body.likes
+        
+      })
+      User.findOneAndUpdate({_id:req.body.author},{$addToSet:{posts:recipe._id}}).then((user)=>{
+        user.save().then(()=>{recipe.save().then(()=>res.status(201).json({
+        message: "Recipe created successfully!",
+        recipe: {
+            recipe
+        }
+    })).catch(err => {
+      console.log(err),
+          res.status(500).json({
+              error: err
+          });
+  })})
+      
+})
+})
 
-    //     // ... then send a response of some kind to client
-    //     res.json(data)
-    //   }
-      res.json(data)
-  })
+        
+
+
+
+    
+    
+   
+  
 
 app.post('/upload-multiple-images', (req, res) => {
   // 'profile_pic' is the name of our file input field in the HTML form

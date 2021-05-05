@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams ,useHistory } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './RecipePage.css'
@@ -10,6 +10,7 @@ import Preview from './Preview'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 const RecipePage = (props)=> {
+    const history = useHistory();
     console.log(props)
    const{id} = useParams()
    console.log(id)
@@ -33,8 +34,8 @@ const[instructions,setInstructions] = useState([])
 let button;
     if (!props.isSigned) {
       button =  <Link to="./Login">
-                    <button type="button" className="float">
-                        Login
+                    <button type="button" className="float" onClick={()=>{ history.replace("/Login")}}>
+                      Login
                     </button>
                 </Link>;
     }
@@ -88,12 +89,14 @@ useEffect(()=>{
         <div className="projectcss">
         <div className= "container">
             <h1 className='home_header'>Recipe Central</h1>
+
                 {/* <Link to="./Login">
                     <button type="button" className="float">
                         Login
                     </button>
                 </Link> */}
                 {button}
+
 
             <SearchBar />
             

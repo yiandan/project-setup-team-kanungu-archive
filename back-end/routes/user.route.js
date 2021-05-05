@@ -42,6 +42,14 @@ router.route('/').get((req, res) => {
 
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)
+    .populate({
+        path:'posts',
+        model:'Recipe',
+        populate: {
+            path:'author',
+            model: 'User'
+        }
+    })
         .then(exercise => res.json(exercise))
         .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -60,8 +68,14 @@ router.route('/:id/posts').get((req, res) => {
 });
 router.route('/:id/saved').get((req, res) => {
     User.findById(req.params.id)
-    .select("likedPosts")
-    .populate("likedPosts")
+    .populate({
+        path:'likedPosts',
+        model:'Recipe',
+        populate: {
+            path:'author',
+            model: 'User'
+        }
+    })
         .then(exercise => res.json(exercise))
         .catch(err => res.status(400).json('Error: ' + err));
 });

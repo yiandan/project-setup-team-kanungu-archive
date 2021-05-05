@@ -1,78 +1,111 @@
-import React from 'react'
+import React, { useState,useRef,useEffect } from 'react'
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, Redirect,useHistory } from 'react-router-dom';
 import App from './App'
+import axios from 'axios'
 import './PostNewRecipe.css'
 import SearchBar from './SearchBar'
 import Nav from './Nav'
 import Axios from "axios"
 import axios from 'axios';
 
+const PostNewRecipe=(props)=> {
+  const history = useHistory();
+  const [cuisine,setCuisine] = useState("Italian")
+  const [difficulty,setDifficulty] = useState("Easy")
+  const [Image,setImage] = useState([])
+  const [Title,setTitle] = useState("")
+  const [Ingredients,setIngredients] = useState("")
+  const [Instructions,setInstructions] = useState("")
 
-class PostNewRecipe extends React.Component {
-  constructor(props) {
-    super(props);
+  const handleChange = e => {
+    if (e.target.files.length) {
+        console.log(e.target.files);
+        
+    
+     
+           
+            setImage(e.target.files);
+              
+           
+            
+        };
+       
+     
+  };
+  const handle = e =>{
+    setCuisine(e.target.value)
 
-    this.state = {
-      title: '',
-      ingredients: '',
-      cuisine: '',
-      difficulty: '',
-      multiple_imahes: '',
-      instructions: ''
-    };
   }
 
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
 
-  handleSubmit = e => {
+  const handleUpload = async e => {
     e.preventDefault();
+    console.log(cuisine)
+    const formData = new FormData()
+    formData.append('author', props.user._id)
+    formData.append('title',Title)
+    for (const i of Object.keys(Image)) {
+      formData.append('multiple_images', Image[i])
+    }
+    formData.append('posted',Date().toLocaleString())
+    formData.append('cuisine',cuisine)
+    formData.append('difficulty',difficulty)
+    formData.append('ingredients',Ingredients)
+    formData.append('instructions',Instructions)
+    formData.append('likes',0)
+    
+    
 
-    const {  title, ingredients, cuisine, difficulty,multiple_images,instructions} = this.state;
-
-    const recipe = {
-      title,
-      ingredients,
-      cuisine,
-      difficulty,
-      multiple_images,
-      instructions
-    };
-
-    axios
-      .post('http://localhost:3000/PostNewRecipe', recipe)
-      .then(() => console.log('Recipe Created'))
-      .catch(err => {
-        console.error(err);
-      });
+    axios.post(`http://localhost:5000/newRecipe/`, formData, {
+        }).then(res => {
+            console.log(res);
+            history.push("/Profile")
+            
+        })
+        
+        .catch((err) => {
+          history.push("/")
+         
+          
+      })
   };
+  
 
-  render() {
     return (
-      <div>
-        <br />
+      <div className="projectcss">
+        <SearchBar />
+
+
         <div className="container">
-        <h1>Post a New Recipe!</h1>
-            <SearchBar />
-          <form onSubmit={this.handleSubmit}>
-          <fieldset>
+            <h1>Post a New Recipe!</h1>
+            
+            <div className="wrapper">
+            </div>
+             <form >
+             <fieldset>
+
                <legend>New Recipe:</legend>
             <label>
                  <p>Name of Recipe</p>
-                 <input name="NameOfRecipe" id = "title" name = "title" onChange= {this.handleInputChange}/>
+
+                 <input name="NameOfRecipe" id = "title" name = "title" onChange={(event)=>{
+                   setTitle(event.target.value)
+                 }}/>
                </label>
                <label>
                  <p>Ingredients</p>
-                 <input name="Ingredients" id= "ingredients" name= "ingredients"  onChange= {this.handleInputChange}/>
+                 <input name="Ingredients" id= "ingredients" name= "ingredients" onChange={(event)=>{
+                   setIngredients(event.target.value)
+                 }}/>
+
                </label>
                <label>
                 <p> Cuisine  </p>
                </label>
-               <select name="cuisine" id="cuisine" name="cuisine"  onChange= {this.handleInputChange}>
+
+               <select id="cuisine" name="cuisine" onChange={e=>handle(e)}>
+
                  <optgroup>
                  <option value="Italian">Italian</option>
                  <option value="Chinese">Chinese</option>
@@ -88,7 +121,11 @@ class PostNewRecipe extends React.Component {
                  <label>
                 <p> Difficulty </p>
                </label>
-               <select name="difficulty" id="difficulty"  onChange= {this.handleInputChange}>
+
+               <select name="difficulty"  onChange={(event)=>{
+                   setDifficulty(event.target.value)
+                 }}>
+
                  <optgroup>
                  <option value="Beginner">Easy</option>
                  <option value="Intermediate">Intermediate</option>
@@ -101,19 +138,24 @@ class PostNewRecipe extends React.Component {
                  <form method="POST" action="/upload-multiple-images" enctype="multipart/form-data"  onChange= {this.handleInputChange}>
                    <div>
                      <label>Select multiple images:  </label>
-                     <input type="file" name="multiple_images" multiple />
+                     <input type="file" name="multiple_images" multiple onChange={handleChange} />
                      </div>
-                     <div>
-                       <input type="submit" name="btn_upload_multiple_images" value="Upload" />
-                       </div> 
+                     
                   </form>
                   <label>
                  <p>Instructions</p>
-                 <textarea class="instructions" cols="80" rows="35" id = "instructions"  onChange= {this.handleInputChange}></textarea>
+
+                 <textarea class="instructions" cols="80" rows="35" id = "instructions" onChange={(event)=>{
+                   setInstructions(event.target.value)
+                 }}></textarea>
                 </label>
-                </fieldset>
-                <button type="post">Post</button>
-          </form>
+                 </fieldset>
+                <button type="post" onClick={handleUpload}>Post</button>
+              
+             </form>
+        
+        </div>
+
         </div>
       </div>
     );

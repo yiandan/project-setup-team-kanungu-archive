@@ -39,7 +39,7 @@ const recipeSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     title: { type: String, required: true },
     images: { type: [String], required: true },
-    posted: { type: Date, required: true },
+    posted: { type: Date, required: false},
     cuisine: {type: String, required:true},
     difficulty: {type: String, required:true},
     ingredients: {type:String,required:true},

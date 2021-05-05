@@ -84,7 +84,8 @@ const Login = (props) => {
                         block size="lg"
                         disabled={emptyField()}
                     >
-                        Sign Up
+                        Log In
+
                     </Button>
                 </Form>
                 </div>
