@@ -26,7 +26,7 @@ Recipe Central came as an idea for the Spring 2021 Agile Software Development Co
 
 ## Instructions for Building and Testing Project
 
-TBD
+Building and testing of the project can be done via the GitFlow actions tab. The app is also continuously deployed through a droplet on Digital Ocean, and can be visited here: http://134.209.112.241:3000 . 
 
 ## Additional Information/ Miscellaneous
 
