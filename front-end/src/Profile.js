@@ -137,7 +137,7 @@ if(isLoading ===false){
                 <Article number={len} content="Posts"> </Article>
                 <Article number="000" content="Followers"> </Article>
                 <Article number="000" content="Following"> </Article>
-                <Link to="./EditProfile">
+                <Link to="/EditProfile">
                     <input type="image" className = "profileImg" alt="Click to upload profile image" src={props.user.profileImage}></input>
                 </Link>
             </section>
