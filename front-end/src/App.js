@@ -103,7 +103,7 @@ function App() {
        <Route exact path="/EditProfile"> {IsSigned ? (<EditProfile user={user} setUser ={setUser}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
        <Route exact path="/ChangePassword"> {IsSigned ? (<ChangePassword user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
-       <Route exact path="/UploadProfileImg" component={UploadProfileImg} />
+      
        <Route exact path="/UploadProfileImg"> {IsSigned ? (<UploadProfileImg user={user}/>):(<Redirect to="/Login"></Redirect>)} </Route>
        
        

@@ -90,13 +90,13 @@ const PostNewRecipe=(props)=> {
                  }}/>
                </label>
                <label>
-                 <p>Ingredients</p>
+                 <p>Ingredients(Seperated by commas)</p>
                  <input name="Ingredients" id= "ingredients" name= "ingredients" onChange={(event)=>{
                    setIngredients(event.target.value)
                  }}/>
                </label>
                <label>
-                <p> Cuisine  </p>
+                <p> Cuisine(Seperated by commas) </p>
                </label>
                <select id="cuisine" name="cuisine" onChange={e=>handle(e)}>
                  <optgroup>

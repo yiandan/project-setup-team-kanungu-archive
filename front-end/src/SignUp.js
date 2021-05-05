@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import {useHistory } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import axios from 'axios'
 import "./SignUp.css";
 import { Redirect } from "react-router";
 
 const SignUp = (props) => {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -41,9 +43,12 @@ const SignUp = (props) => {
           roles: ["user"]
         }}).then(res=>{
             console.log(res);
+            history.push("/")
+
           })
           .catch((err) => {
               console.error(err)
+              history.push("/SignUp")
           })
   };
 

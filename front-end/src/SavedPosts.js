@@ -23,7 +23,7 @@ import '512.svg';
 
 
 const SavedPosts=(props)=> {
-    const [RecipeList,setList] = useState([])
+    const [RecipeList,setList] = useState(null)
     const [isLoading,setLoading] = useState(true)
     useEffect(()=>{
         //get all recipes 
@@ -40,7 +40,7 @@ const SavedPosts=(props)=> {
 
     },[])
     useEffect(()=>{
-        if(RecipeList.length !=0){
+        if(RecipeList){
             setLoading(false)
             console.log(RecipeList)
         }

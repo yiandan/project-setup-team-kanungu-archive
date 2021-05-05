@@ -63,7 +63,6 @@ const Home=(props)=> {
                 
                 
 
-                <img src= "512.svg" alt="Recipe Central Logo" />
 
                 
                 {button}

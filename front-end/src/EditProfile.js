@@ -7,6 +7,7 @@ import SearchBar from './SearchBar'
 
 
 const EditProfile=(props)=> {
+    console.log(props)
     const id = props.user._id
     console.log(id)
     const [image, setImage] = useState("");
@@ -35,7 +36,7 @@ const EditProfile=(props)=> {
     axios.post(`http://localhost:5000/user-profile/${id}`, formData, {
         }).then(res => {
             console.log(res)
-            props.setUser()
+            
         })
   };
 
