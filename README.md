@@ -28,20 +28,3 @@ Recipe Central came as an idea for the Spring 2021 Agile Software Development Co
 
 Building and testing of the project can be done via the GitFlow actions tab. The app is also continuously deployed through a droplet on Digital Ocean, and can be visited here: http://134.209.112.241:3000 . 
 
-## Additional Information/ Miscellaneous
-
-
-
-
-## Initial Instructions
-
-This repository will be used for team projects. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./project-setup-instructions.md)
-
-- a description of project, including the Product Vision Statement
-- the core team members, including links to their GitHub accounts and any other web presence they have
-- a short history of how the project came to be and information about how to contribute to the project (i.e. a link to the CONTRIBUTING.md document)
-- instructions for building and testing the project (update with that information once the project reaches that stage)
-- links to any additional Markdown documents or web pages that may be relevant reading about the project
-- anything else you think is important to communicate to people viewing the project
-
-See the [Sprint Planning instructions](./sprint-planning-instructions.md) once the basic Project Kickoff tasks have been completed.
