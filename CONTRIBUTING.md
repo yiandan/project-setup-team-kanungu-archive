@@ -71,5 +71,5 @@ Zoom for team meeting
 Visual Studio to be used as the code editor
 
 ## How to Build and Test Project
-TBD
+The project can be built following the steps seen in the github actions workflow. Namely, once the project has been cloned, npm install must be run in the main project directory, as well as the back-end directory. Some modules may not load, even though they are in the dependencies list, so be alert for some errors. Unfortunately, which modules are not installed seems somewhat irregular so it cannot be predicted beforehand. The module errors will inform which did not install. A .env file will also need to be added to the main directory, which conents have been shared via slack channel. 
 
