@@ -4,11 +4,14 @@ import {NavLink, Link } from 'react-router-dom';
 import App from './App'
 import './About.css'
 import Nav from './Nav'
+import SearchBar from './SearchBar';
 
 const About=()=> {
     return (
+        <div className="projectcss">
         <div className="container">
             <h1>About Recipe Central</h1>
+            <SearchBar />
             <p>
             Recipe Central allows for users to write and share recipes. Users are 
             able to post recipes and save and comment on others.
@@ -27,9 +30,10 @@ const About=()=> {
             continue to learn more recipes to share with others. 
             <br></br>
             <br></br>
-            <span>You can sign up here: <NavLink to="./SignedOutLogin"> Log In/Sign Up!</NavLink> </span>
+            <span>You can sign up here: <NavLink to="./Login"> Log In/Sign Up!</NavLink> </span>
             </p>
           
+        </div>
         </div>
     )
 }

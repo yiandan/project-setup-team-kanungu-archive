@@ -1,7 +1,7 @@
 .recipe {
     position: relative;
-    left: 230px;
-    top: 20px;
+    left: 350px;
+    top: 209px;
     background-color: cornsilk;
     width: 600px;
     height: 750px;
@@ -10,6 +10,18 @@
     /* margin: auto; */
 
 }
+.tit{
+    position:relative;
+    top:-150px;
+    left:20px;
+}
+.in{
+    line-height:2;
+    position:relative;
+    top:-30px;
+    left:-10px;
+}
+
 .avatar {
 position:relative;
 left:-200px;
@@ -18,11 +30,57 @@ width: 120px;
 height: 120px;
 
 }
+.Ip{
+    position:relative;
+    top:-370px;
+    left:-120px;
+}
+.int{
+    line-height:2;
+    position:relative;
+    top:-365px;
+    left:-120px;
+
+}
+
+.Cuisine{
+    position:relative;
+    top:-350px;
+    left:-120px;
+}
+
+.cui{
+    line-height:2;
+    position:relative;
+    top:-345px;
+    left:-120px;
+
+}
+
+.Difficulty{
+    position:relative;
+    top:-330px;
+    left:-120px;
+}
+
+.dif{
+    line-height:2;
+    position:relative;
+    top:-325px;
+    left:-120px;
+
+}
+.ing{
+    position:relative;
+    left: 180px;
+    top:-60px;
+    font-size:18px;
+}
 .authorName {
 font-size: 7px;
 padding-left: 130px;
 position: relative;
-top: -100px;
+top: -130px;
 left: -150px;
 
 }
@@ -34,7 +92,19 @@ left: -150px;
 .Text{
     border: none;
     position: relative;
-    top:-220px;
+    top:-200px;
     left:-110px;
     font-size:12px;
+}
+.likey{
+    position:relative;
+    left:260px;
+    top:-78px;
+
+    
+}
+.comment{
+    position:absolute;
+    left: 0px;
+    top: 750px;
 }

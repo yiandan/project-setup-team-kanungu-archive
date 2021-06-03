@@ -1,40 +1,148 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-
+import { useParams ,useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
 import './RecipePage.css'
+import { Link } from 'react-router-dom';
 import ImageSlider from './TestRecipe'
-const Comment = require('./comment.png')
-const Avatar = 'https://picsum.photos/200/300';
-const food1 = 'https://picsum.photos/300/400';
-const food2 = 'https://picsum.photos/500/600';
-const food3 = 'https://picsum.photos/600/700';
+import LikeButton from './LikeButton'
+import CommentList from './CommentList'
+import Preview from './Preview'
+import axios from 'axios'
+import SearchBar from './SearchBar'
+const RecipePage = (props)=> {
+    const history = useHistory();
+    console.log(props)
+   const{id} = useParams()
+   console.log(id)
+   const [recipe, setRecipe] = useState(null)
+   const [Author,setAuthor] = useState(null)
+   const [reqError, setReqError] = useState(false)
+   const [isLoading,setIsLoading] =useState(true)
+    // if(props.location.aboutProps){
+     
 
-const RecipePage=()=> {
+    // }
+    // else{
+    // recipe = props.recipe;
+    // }
+    // console.log(props)
    
-    return (
-        <div className= "container">
-            <h1>Recipe Page</h1>
-       
-            <div className = "recipe">
-                <img className = "avatar" src={Avatar} alt="Avatars"></img>
+
+const[ingredients,setIngredients] = useState([])
+const[instructions,setInstructions] = useState([])
+
+    useEffect(()=>{
+        const fetchData =() =>{
+        setIsLoading(true)
+        axios({url:`http://localhost:5000/post/${id}`,method:"GET"})
+            .then((response) => {
+                setRecipe(response.data)
+                console.log(response.data)
                 
-                <div className = "authorName">
-                    <h1>Author Name</h1>
-                   
-                </div>
-                <div className = 'car'><ImageSlider images={[food1,food2,food3]}/></div>
-                <div className = 'Text'>
-                <i>Lorem ipsum dolor sit amet, consectetur<br></br> adipiscing elit. Fusce vitae sapien malesuada<br></br>, fermentum orci id, commodo nulla. Quisque erat turpis<br></br>, mollis id sem quis, posuere dictum orci.<br></br> Nullam semper nunc nec dui porta iaculis.<br></br> Maecenas quis placerat ipsum, eget<br></br> consectetur erat. Vivamus ultrices odio nunc,<br></br> a luctus orci bibendum non. Interdum et<br></br> malesuada fames ac ante ipsum primis in faucibus.<br></br> Fusce gravida tincidunt magna a facilisis.<br></br> Donec dignissim vulputate efficitur.<br></br> Nulla tristique bibendum ipsum sed bibendum.<br></br> Nulla in vehicula lacus. Donec bibendum diam a purus aliquam,<br></br> vitae iaculis orci viverra. Sed maximus non dolor<br></br> eu consectetur. Curabitur id urna accumsan, ornare ante quis,<br></br> mattis massa. Cras ex eros, varius ut lacinia sit amet,<br></br> accumsan mollis sem. Morbi id nulla rhoncus,<br></br> dictum dolor eu, tempus turpis. Praesent bibendum nibh velit,<br></br> vel laoreet quam rutrum quis.
-               
-</i>
-</div>
-            </div>
+                
+
+                
+                console.log(recipe)
             
+            })
+            .catch((err) => {
+                console.error(err)
+                setReqError(true)
+                
+            })
+        }
+        fetchData()
+
+    },[id]);
+useEffect(()=>{
+    if(recipe){
+        setAuthor(recipe.author)
+        setIngredients(recipe.ingredients.split(','));
+        
+        setInstructions(recipe.instructions.split(','));
+        
+       
+    }
+},[recipe])
+useEffect(()=>{
+    if(Author){
+        console.log(Author)
+        console.log(ingredients)
+        setIsLoading(false)
+    }
+},[Author])
+   if(isLoading === true){
+       return <div>LOADING</div>
+   }
+   else{
+    return (
+
+        <div className="projectcss">
+        <div className= "container">
+            <h1 className='home_header'>Recipe Central</h1>
+                
+                    
+                    <button type="button" className="float" onClick={()=>{ history.replace("/Login")}}>
+                      Login
+                    </button>
+               
+
+            <SearchBar />
+            
+            <div className = "recipe">
+                <img className = "avatar" src={Author.profileImage} alt="Avatars"></img>
+                <h1 className = "tit">{recipe.title}</h1>
+                <div className = "authorName">
+                    
+                    <h1>{Author.firstName + " " + Author.lastName}</h1>
+                  
+                </div>
+                <div className = 'car'><ImageSlider images={recipe.images}/></div>
+                
+                <div className = 'ing'>
+                <h4>Ingredients</h4>
+                
+                {ingredients.map((instruction)=>(
+           <li className ="in">{instruction}</li>
+           
+       
+       ))}
+
+                </div>
+        <div className = "Ip"><h4>Instructions</h4>
+        </div>
+       {instructions.map((instruction)=>(
+           <li className ="int">{instruction}</li>
+           
+       
+       ))}
+       <div className= "Cuisine"> <h4>Cuisine</h4> </div>
+            <li className="cui"> {recipe.cuisine}</li> 
+
+       <div className= "Difficulty"> <h4>Difficulty</h4> </div>
+            <li className="dif"> {recipe.difficulty}</li> 
+
+      
+     
+        
+{props.isSigned==true &&
+         <>
+         <div className = 'comment'><CommentList data = {{"recipe":recipe,"author":props.user}}></CommentList></div>
+        <div className = "likey">
+        <LikeButton data = {{recipe:recipe._id,curr:recipe.likes,user:props.user._id}}></LikeButton>
+        </div>
+         </>
+        }
+            </div>
+          
+   
+        </div>
         </div>
     )
-    
-}
+       }
+       }
+       
+
 
     
 export default RecipePage

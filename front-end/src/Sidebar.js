@@ -23,29 +23,22 @@ export default props => {
       <a className="menu-item" href="/Search">
         Search
       </a>
-      <a className="menu-item" href="/MyRecipes">
-        My Recipes
-      </a>
+
       <a className="menu-item" href="/PostNewRecipe">
         Post New Recipe
       </a>
-      <a className="menu-item" href="/MyFeed">
-        My Feed
-      </a>
+    
       <a className="menu-item" href="/SavedPosts">
         Saved Posts
       </a>
       <a className="menu-item" href="/About">
         About
       </a>
-      <a className="menu-item" href="/SignedOutLogin">
-        Sign In
+      <a className="menu-item" href="/Login">
+        Log In
       </a>
       <a className="menu-item" href="/SignOut">
         Sign Out
-      </a>
-      <a className="menu-item" href="/Results">
-        Results
       </a>
     </Menu>
     

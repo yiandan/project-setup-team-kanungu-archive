@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import App from './App'
@@ -17,41 +17,71 @@ import SearchBar from './SearchBar'
 import FeedPost from './FeedPost'
 import RecipePage from './RecipePage';
 import Login from './Login';
+import axios from 'axios'
+import Preview from './Preview'
 
 
 
 const Home=(props)=> {
-    return (
-        <div className="container">
+    const [RecipeList,setList] = useState(null)
+    const [isLoading,setLoading] = useState(true)
+    useEffect(()=>{
+        //get all recipes 
+        axios({url:`http://localhost:5000/post`,method:'GET'})
+            .then(res =>{
+                const recipes = res.data;
+                setList(recipes)
+            })
+            .catch((err) => {
+                console.error(err)
+                
+            })
 
-            {/* <div className="top_bar">
-                <div className="bar" >
-                    <h1 className='item'>Home Page</h1>
-                    <div className="float_right">
-                        <Link to="./Login">
-                            <button type="button" className="login_btn">
-                                Login
-                            </button>
-                        </Link> 
-                    </div>
-                </div>
-            </div> */}
-
-                <h1 className='home_header'>Home Page</h1>
-                <Link to="./Login">
+    },[])
+    useEffect(()=>{
+        if(RecipeList){
+            setLoading(false)
+            console.log(RecipeList)
+        }
+    },[RecipeList])
+    
+    let button;
+    if (!props.isSigned) {
+      button =  <Link to="./Login">
                     <button type="button" className="float">
                         Login
                     </button>
-                </Link>
+                </Link>;
+    }
+
+    if(isLoading ===false){
+        return  (
+        <div className="projectcss">
+        <div className="container">
+                <h1 className='home_header'>Recipe Central 🍽</h1>
+
+                {button}
 
             <SearchBar />
-            <h2>Please pardon our appearance... hopefully we'll have a cute app soon</h2>
+            <h2>Explore Our Recipes Below</h2>
+        
+            {/* <div className="home_header"> */}
+                {RecipeList.map((recipe)=>(
+                    
+                    <Preview recipe = {recipe} isSigned={props.isSigned}></Preview>
+                
 
-            <FeedPost> 
-                <RecipePage/>
-            </FeedPost>
+                ))}
+            {/* </div> */}
+        </div>
         </div>
     )
+            }
+            else{
+                return (
+                    <div>loading...</div>
+                )
+            }
 }
 
 export default Home

@@ -1,31 +1,72 @@
 import './SearchBar.css'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import React, {useState} from 'react';
+import FeedPost from './FeedPost';
 const SearchBar=()=> {
 
-    return (
-    /*
-     <div className="SearchBar">
-        <input type="text" className="input" placeholder="Search..." />
-    </div>
+  const [search, setSearch] = useState('');
+  const [result, setResult] = useState('');
+  const [category, setCategory] = useState('');
+  const [difficulty, setDifficulty] = useState('easy');
+  const history= useHistory();
+  const handleClick = async () => {
+    //send value to and get response from database
+   console.log(category);
+   console.log(difficulty);
+   if (category=="") {
+     alert("please select a category");
+   }
+   else {
+    await fetch(`http://localhost:5000/recipes/list/${category}/${difficulty}/${search}`).then(async (response) => {
+      if (response) {
+        history.push({
+          pathname: "/search",
+          state: await response.json(),
+        });  
+      }
+    });
+   }
 
-    
-    */
-    <div class="wrapper">
+ }
+
+ //save value typed into bar
+ const handleSearch =(event) => {
+  setSearch(event.target.value);
+}
+
+const handleSelect =(event) => {
+  setCategory(event.target.value);
+}
+
+const handleDifficulty= (event) => {
+  setDifficulty(event.target.value);
+}
+    return (
+    <div className="wrapper">
         
-        <select name="category" id="dropdown">
+        <select name="category" id="dropdown" onChange={handleSelect}>
             <option value="" disabled selected>Select a category</option>
+              <option value="name" >Recipe Name</option>
               <option value="ingredient" >Ingredient</option>
-              <option value="cuisine" >Cuisine</option>
-              <option value="person" >Person</option>
+              <option value="cuisine">Cuisine</option>
             </select>
+
+            <select name="difficulty" id="dropdown" onChange={handleDifficulty}>
+            <option value="" disabled selected>Difficulty Level</option>
+              <option value="easy" selected>Easy</option>
+              <option value="intermediate" >Intermediate</option>
+              <option value="advanced" >Advanced</option>
+            </select>
+
     <input placeholder="Search"
            type="text" 
-           class="search"/>
-    <img class="clear-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxLjk3NiA1MS45NzYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxLjk3NiA1MS45NzY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNNDQuMzczLDcuNjAzYy0xMC4xMzctMTAuMTM3LTI2LjYzMi0xMC4xMzgtMzYuNzcsMGMtMTAuMTM4LDEwLjEzOC0xMC4xMzcsMjYuNjMyLDAsMzYuNzdzMjYuNjMyLDEwLjEzOCwzNi43NywwICAgQzU0LjUxLDM0LjIzNSw1NC41MSwxNy43NCw0NC4zNzMsNy42MDN6IE0zNi4yNDEsMzYuMjQxYy0wLjc4MSwwLjc4MS0yLjA0NywwLjc4MS0yLjgyOCwwbC03LjQyNS03LjQyNWwtNy43NzgsNy43NzggICBjLTAuNzgxLDAuNzgxLTIuMDQ3LDAuNzgxLTIuODI4LDBjLTAuNzgxLTAuNzgxLTAuNzgxLTIuMDQ3LDAtMi44MjhsNy43NzgtNy43NzhsLTcuNDI1LTcuNDI1Yy0wLjc4MS0wLjc4MS0wLjc4MS0yLjA0OCwwLTIuODI4ICAgYzAuNzgxLTAuNzgxLDIuMDQ3LTAuNzgxLDIuODI4LDBsNy40MjUsNy40MjVsNy4wNzEtNy4wNzFjMC43ODEtMC43ODEsMi4wNDctMC43ODEsMi44MjgsMGMwLjc4MSwwLjc4MSwwLjc4MSwyLjA0NywwLDIuODI4ICAgbC03LjA3MSw3LjA3MWw3LjQyNSw3LjQyNUMzNy4wMjIsMzQuMTk0LDM3LjAyMiwzNS40NiwzNi4yNDEsMzYuMjQxeiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
-    <Link to="/Search"><button>
+           class="search"
+           onChange= {handleSearch}
+           />
+
+        <button onClick= {handleClick}>
               Go
             </button>
-            </Link>
     </div>
     )
 }
